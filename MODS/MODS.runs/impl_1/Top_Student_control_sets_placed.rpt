@@ -1,0 +1,82 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Sun Oct  8 12:27:08 2023
+| Host         : MSI running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Top_Student_control_sets_placed.rpt
+| Design       : Top_Student
+| Device       : xc7a35t
+----------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    15 |
+| Unused register locations in slices containing registers |    38 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            1 |
+|      8 |            1 |
+|     14 |            1 |
+|    16+ |           12 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             190 |           31 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             224 |           36 |
+| Yes          | No                    | No                     |              52 |            6 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             176 |           27 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-----------------+------------------------------------------------------+------------------------------------------------------+------------------+----------------+
+|   Clock Signal  |                     Enable Signal                    |                   Set/Reset Signal                   | Slice Load Count | Bel Load Count |
++-----------------+------------------------------------------------------+------------------------------------------------------+------------------+----------------+
+| ~CLK_6P25M_BUFG |                                                      |                                                      |                1 |              2 |
+|  CLK_IBUF_BUFG  | mouse/Inst_Ps2Interface/shift_frame                  | mouse/Inst_Ps2Interface/reset_bit_count              |                2 |              8 |
+|  CLK_IBUF_BUFG  | mouse/Inst_Ps2Interface/delay_63clk_count[6]_i_2_n_0 | mouse/Inst_Ps2Interface/delay_63clk_count[6]_i_1_n_0 |                3 |             14 |
+|  CLK_IBUF_BUFG  | mouse/Inst_Ps2Interface/load_rx_data                 |                                                      |                2 |             16 |
+|  CLK_IBUF_BUFG  | mouse/tx_data0                                       |                                                      |                2 |             16 |
+|  CLK_IBUF_BUFG  | mouse/Inst_Ps2Interface/frame[9]_i_1_n_0             |                                                      |                2 |             20 |
+|  CLK_IBUF_BUFG  | mouse/Inst_Ps2Interface/delay_20us_count[10]_i_2_n_0 | mouse/Inst_Ps2Interface/delay_20us_count[10]_i_1_n_0 |                3 |             22 |
+|  CLK_IBUF_BUFG  | mouse/Inst_Ps2Interface/delay_100us_count[0]_i_2_n_0 | mouse/Inst_Ps2Interface/clear                        |                4 |             28 |
+| ~CLK_6P25M_BUFG |                                                      | btnC_IBUF                                            |                7 |             34 |
+| ~CLK_6P25M_BUFG | oled/delay[0]_i_1_n_0                                | btnC_IBUF                                            |                5 |             40 |
+|  CLK_IBUF_BUFG  |                                                      | mouse/reset_timeout_cnt_reg_n_0                      |                6 |             48 |
+|  CLK_IBUF_BUFG  |                                                      | mouse/reset_periodic_check_cnt__0                    |                6 |             52 |
+| ~CLK_6P25M_BUFG | oled/state                                           | btnC_IBUF                                            |               10 |             64 |
+| ~CLK_6P25M_BUFG |                                                      | oled/spi_word[39]_i_1_n_0                            |               17 |             90 |
+|  CLK_IBUF_BUFG  |                                                      |                                                      |               30 |            188 |
++-----------------+------------------------------------------------------+------------------------------------------------------+------------------+----------------+
+
+
