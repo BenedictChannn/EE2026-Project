@@ -23,7 +23,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log Top_Student.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top_Student.tcl" );
+         "-log MouseOledPaint_Setup.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source MouseOledPaint_Setup.tcl" );
 
 
 

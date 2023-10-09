@@ -1,12 +1,12 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
-----------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Mon Oct  9 01:24:46 2023
+| Date         : Mon Oct  9 12:30:33 2023
 | Host         : MSI running 64-bit major release  (build 9200)
-| Command      : report_control_sets -verbose -file Top_Student_control_sets_placed.rpt
-| Design       : Top_Student
+| Command      : report_control_sets -verbose -file MouseOledPaint_Setup_control_sets_placed.rpt
+| Design       : MouseOledPaint_Setup
 | Device       : xc7a35t
-----------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 
 Control Set Information
 
@@ -67,35 +67,35 @@ Table of Contents
 +----------------------------------------+------------------------------------------------------+------------------------------------------------------+------------------+----------------+
 | ~CLK_6P25M_BUFG                        |                                                      |                                                      |                1 |              2 |
 |  mouse/state0                          |                                                      |                                                      |                1 |              6 |
-|  canvas/ccd_inst_27/CLK                |                                                      |                                                      |                2 |              8 |
-|  clk_2                                 | canvas/nn_inst/nn1/digit[3]_i_1_n_0                  | canvas/nn_inst/nn_algo_rst                           |                3 |              8 |
-|  canvas/unit_6p25m/clk_6p25MHz         |                                                      | canvas/mouse_press_y[5]_i_1_n_0                      |                1 |              8 |
-|  CLK_IBUF_BUFG                         |                                                      | mouse/Inst_Ps2Interface/data_inter0                  |                1 |              8 |
-|  CLK_IBUF_BUFG                         |                                                      | mouse/Inst_Ps2Interface/clk_inter0                   |                1 |              8 |
-|  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/shift_frame                  | mouse/Inst_Ps2Interface/reset_bit_count              |                2 |              8 |
 |  clk_2                                 | canvas/nn_inst/nn1/FSM_sequential_state[1]_i_1_n_0   | canvas/nn_inst/nn_algo_rst                           |                3 |              8 |
+|  canvas/unit_6p25m/clk_6p25MHz         |                                                      | canvas/mouse_press_y[5]_i_1_n_0                      |                1 |              8 |
+|  canvas/ccd_inst_27/CLK                |                                                      |                                                      |                2 |              8 |
+|  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/shift_frame                  | mouse/Inst_Ps2Interface/reset_bit_count              |                2 |              8 |
 |  clk_2                                 |                                                      | canvas/nn_inst/nn_rst                                |                4 |              8 |
+|  CLK_IBUF_BUFG                         |                                                      | mouse/Inst_Ps2Interface/clk_inter0                   |                1 |              8 |
+|  CLK_IBUF_BUFG                         |                                                      | mouse/Inst_Ps2Interface/data_inter0                  |                1 |              8 |
+|  clk_2                                 | canvas/nn_inst/nn1/digit[3]_i_1_n_0                  | canvas/nn_inst/nn_algo_rst                           |                3 |              8 |
 |  canvas/colour_chooser_reg[15]_i_2_n_0 |                                                      |                                                      |                3 |             10 |
-|  clk_2                                 | canvas/nn_inst/nn1/i[5]_i_1_n_0                      | canvas/nn_inst/nn_algo_rst                           |                2 |             12 |
 |  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/right_down_reg               |                                                      |                1 |             12 |
+|  clk_2                                 | canvas/nn_inst/nn1/i[5]_i_1_n_0                      | canvas/nn_inst/nn_algo_rst                           |                2 |             12 |
 |  clk_2                                 | canvas/nn_inst/nn1/next_out_valid                    | canvas/nn_inst/nn_algo_rst                           |                3 |             14 |
 |  clk_2                                 | canvas/nn_inst/nn1/addr_inter0                       | canvas/nn_inst/nn_algo_rst                           |                5 |             14 |
 |  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/delay_63clk_count[6]_i_2_n_0 | mouse/Inst_Ps2Interface/delay_63clk_count[6]_i_1_n_0 |                2 |             14 |
-|  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/y_inc_reg[0]                 |                                                      |                4 |             16 |
 |  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/x_inc_reg[0]                 |                                                      |                1 |             16 |
+|  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/y_inc_reg[0]                 |                                                      |                4 |             16 |
 |  CLK_IBUF_BUFG                         | mouse/tx_data0                                       |                                                      |                2 |             16 |
 |  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/load_rx_data                 |                                                      |                2 |             16 |
-|  clk_2                                 | canvas/nn_inst/nn1/j[9]_i_1_n_0                      | canvas/nn_inst/nn_algo_rst                           |                7 |             20 |
 |  clk_2                                 | canvas/nn_inst/nn1/addr_img0                         | canvas/nn_inst/nn_algo_rst                           |                7 |             20 |
+|  clk_2                                 | canvas/nn_inst/nn1/j[9]_i_1_n_0                      | canvas/nn_inst/nn_algo_rst                           |                7 |             20 |
 |  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/frame[9]_i_1_n_0             |                                                      |                3 |             20 |
 |  clk_2                                 | canvas/nn_inst/imgw_valid_i_1_n_0                    | canvas/nn_inst/nn_rst                                |                4 |             22 |
 |  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/delay_20us_count[10]_i_2_n_0 | mouse/Inst_Ps2Interface/delay_20us_count[10]_i_1_n_0 |                3 |             22 |
-|  CLK_IBUF_BUFG                         | mouse/y_new_reg_n_0                                  |                                                      |                4 |             24 |
 |  CLK_IBUF_BUFG                         | mouse/x_new_reg_n_0                                  |                                                      |                4 |             24 |
+|  CLK_IBUF_BUFG                         | mouse/y_new_reg_n_0                                  |                                                      |                4 |             24 |
 |  CLK_IBUF_BUFG                         |                                                      | canvas/nn_inst/nn_rst_i_1_n_0                        |                8 |             28 |
 |  CLK_IBUF_BUFG                         | mouse/Inst_Ps2Interface/delay_100us_count[0]_i_2_n_0 | mouse/Inst_Ps2Interface/clear                        |                4 |             28 |
-|  CLK_IBUF_BUFG                         |                                                      | canvas/invY_reg                                      |                7 |             32 |
 |  clk_2                                 | canvas/nn_inst/nn1/addr_const[15]_i_1_n_0            | canvas/nn_inst/nn_algo_rst                           |                8 |             32 |
+|  CLK_IBUF_BUFG                         |                                                      | canvas/invY_reg                                      |                7 |             32 |
 | ~CLK_6P25M_BUFG                        |                                                      | btnC_IBUF                                            |                5 |             34 |
 |  mouse/left                            |                                                      |                                                      |               14 |             36 |
 |  clk_2                                 | canvas/nn_inst/nn1/digit_valid                       | canvas/nn_inst/nn_rst                                |                4 |             40 |
@@ -103,31 +103,31 @@ Table of Contents
 |  canvas/unit_6p25m/clk_6p25MHz         |                                                      |                                                      |               11 |             42 |
 |  CLK_IBUF_BUFG                         |                                                      | mouse/reset_timeout_cnt_reg_n_0                      |                5 |             48 |
 |  CLK_IBUF_BUFG                         |                                                      | mouse/reset_periodic_check_cnt__0                    |                7 |             52 |
-|  CLK_IBUF_BUFG                         | canvas/nn_inst/nn_rst_i_1_n_0                        | canvas/nn_inst/rst_counter                           |                8 |             64 |
-|  CLK_IBUF_BUFG                         |                                                      | canvas/reset_count[31]_i_1_n_0                       |                9 |             64 |
-| ~CLK_6P25M_BUFG                        | oled/state                                           | btnC_IBUF                                            |                8 |             64 |
-|  CLK_IBUF_BUFG                         |                                                      | canvas/clock_mouse/clear                             |                8 |             64 |
 |  CLK_IBUF_BUFG                         |                                                      | canvas/unit_6p25m/clear                              |                8 |             64 |
+|  CLK_IBUF_BUFG                         |                                                      | canvas/reset_count[31]_i_1_n_0                       |                9 |             64 |
+|  CLK_IBUF_BUFG                         |                                                      | canvas/clock_mouse/clear                             |                8 |             64 |
+|  CLK_IBUF_BUFG                         | canvas/nn_inst/nn_rst_i_1_n_0                        | canvas/nn_inst/rst_counter                           |                8 |             64 |
+| ~CLK_6P25M_BUFG                        | oled/state                                           | btnC_IBUF                                            |                8 |             64 |
 |  clk_2                                 |                                                      |                                                      |               27 |             66 |
 |  CLK_IBUF_BUFG                         | canvas/nn_inst/ct_inst/nextDY                        | canvas/invY_reg                                      |                9 |             68 |
 |  clockMouse                            |                                                      | mouse/right                                          |               10 |             82 |
 | ~CLK_6P25M_BUFG                        |                                                      | oled/spi_word[39]_i_1_n_0                            |               14 |             90 |
 |  clk_2                                 | canvas/nn_inst/nn1/val_out[63]_i_1_n_0               | canvas/nn_inst/nn_algo_rst                           |               29 |            128 |
-|  clockMouse                            |                                                      | mouse/pixel_data_reg[65][1]                          |               17 |            128 |
-|  clockMouse                            |                                                      | mouse/pixel_data_reg[129][0]                         |               18 |            128 |
-|  clockMouse                            |                                                      | mouse/pixel_data_reg[129][2]                         |               17 |            128 |
-|  clockMouse                            |                                                      | mouse/pixel_data_reg[193][0]                         |               14 |            128 |
-|  clockMouse                            |                                                      | mouse/pixel_data_reg[193][1]                         |               17 |            128 |
-|  clockMouse                            |                                                      | mouse/pixel_data_reg[193][2]                         |               16 |            128 |
-|  clockMouse                            |                                                      | mouse/pixel_data_reg[1][0]                           |               19 |            128 |
-|  clockMouse                            |                                                      | mouse/pixel_data_reg[65][0]                          |               16 |            128 |
 |  clockMouse                            |                                                      | mouse/pixel_data_reg[129][1]                         |               19 |            128 |
+|  clockMouse                            |                                                      | mouse/pixel_data_reg[193][1]                         |               17 |            128 |
 |  clockMouse                            |                                                      | mouse/pixel_data_reg[1][2]                           |               16 |            128 |
 |  clockMouse                            |                                                      | mouse/pixel_data_reg[257][0]                         |               14 |            128 |
+|  clockMouse                            |                                                      | mouse/pixel_data_reg[1][0]                           |               19 |            128 |
 |  clockMouse                            |                                                      | mouse/pixel_data_reg[257][1]                         |               16 |            128 |
+|  clockMouse                            |                                                      | mouse/pixel_data_reg[193][0]                         |               14 |            128 |
+|  clockMouse                            |                                                      | mouse/pixel_data_reg[193][2]                         |               16 |            128 |
+|  clockMouse                            |                                                      | mouse/pixel_data_reg[129][2]                         |               17 |            128 |
 |  clockMouse                            |                                                      | mouse/pixel_data_reg[257][2]                         |               16 |            128 |
-|  clockMouse                            |                                                      | mouse/pixel_data_reg[65][2]                          |               18 |            128 |
 |  clockMouse                            |                                                      | mouse/pixel_data_reg[1][1]                           |               18 |            128 |
+|  clockMouse                            |                                                      | mouse/pixel_data_reg[129][0]                         |               18 |            128 |
+|  clockMouse                            |                                                      | mouse/pixel_data_reg[65][1]                          |               17 |            128 |
+|  clockMouse                            |                                                      | mouse/pixel_data_reg[65][2]                          |               18 |            128 |
+|  clockMouse                            |                                                      | mouse/pixel_data_reg[65][0]                          |               16 |            128 |
 |  clockMouse                            |                                                      | mouse/pixel_data_reg[321][0]                         |               19 |            164 |
 |  CLK_IBUF_BUFG                         |                                                      |                                                      |               66 |            314 |
 +----------------------------------------+------------------------------------------------------+------------------------------------------------------+------------------+----------------+

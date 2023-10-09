@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log Top_Student.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top_Student.tcl
+EAStep vivado -log MouseOledPaint_Setup.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source MouseOledPaint_Setup.tcl

@@ -1,16 +1,16 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
--------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Mon Oct  9 01:25:30 2023
+| Date             : Mon Oct  9 12:31:11 2023
 | Host             : MSI running 64-bit major release  (build 9200)
-| Command          : report_power -file Top_Student_power_routed.rpt -pb Top_Student_power_summary_routed.pb -rpx Top_Student_power_routed.rpx
-| Design           : Top_Student
+| Command          : report_power -file MouseOledPaint_Setup_power_routed.rpt -pb MouseOledPaint_Setup_power_summary_routed.pb -rpx MouseOledPaint_Setup_power_routed.rpx
+| Design           : MouseOledPaint_Setup
 | Device           : xc7a35tcpg236-1
 | Design State     : routed
 | Grade            : commercial
 | Process          : typical
 | Characterization : Production
--------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Power Report
 
@@ -144,7 +144,7 @@ Table of Contents
 +--------------------------------------------------+-----------+
 | Name                                             | Power (W) |
 +--------------------------------------------------+-----------+
-| Top_Student                                      |     0.036 |
+| MouseOledPaint_Setup                             |     0.036 |
 |   PS2Clk_IOBUF_inst                              |     0.000 |
 |   PS2Data_IOBUF_inst                             |     0.000 |
 |   canvas                                         |     0.025 |

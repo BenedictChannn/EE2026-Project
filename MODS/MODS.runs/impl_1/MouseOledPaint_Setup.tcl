@@ -67,13 +67,13 @@ set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
   set_param xicom.use_bs_reader 1
-  open_checkpoint Top_Student_routed.dcp
+  open_checkpoint MouseOledPaint_Setup_routed.dcp
   set_property webtalk.parent_dir C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.cache/wt [current_project]
   set_property XPM_LIBRARIES XPM_MEMORY [current_project]
-  catch { write_mem_info -force Top_Student.mmi }
-  write_bitstream -force Top_Student.bit 
-  catch {write_debug_probes -quiet -force Top_Student}
-  catch {file copy -force Top_Student.ltx debug_nets.ltx}
+  catch { write_mem_info -force MouseOledPaint_Setup.mmi }
+  write_bitstream -force MouseOledPaint_Setup.bit 
+  catch {write_debug_probes -quiet -force MouseOledPaint_Setup}
+  catch {file copy -force MouseOledPaint_Setup.ltx debug_nets.ltx}
   close_msg_db -file write_bitstream.pb
 } RESULT]
 if {$rc} {
