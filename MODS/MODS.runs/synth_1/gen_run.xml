@@ -1,37 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1696825569">
-  <File Type="PA-TCL" Name="MouseOledPaint_Setup.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="MouseOledPaint_Setup_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="MouseOledPaint_Setup_reports.tcl"/>
-  <File Type="RDS-RDS" Name="MouseOledPaint_Setup.vds"/>
-  <File Type="RDS-UTIL" Name="MouseOledPaint_Setup_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="MouseOledPaint_Setup_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="MouseOledPaint_Setup.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="MouseOledPaint_Setup_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="MouseOledPaint_Setup_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1696838931">
+  <File Type="PA-TCL" Name="Top_Student.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="Top_Student_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="Top_Student_reports.tcl"/>
+  <File Type="RDS-RDS" Name="Top_Student.vds"/>
+  <File Type="RDS-UTIL" Name="Top_Student_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="Top_Student_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="Top_Student.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="Top_Student_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="Top_Student_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/imports/Desktop/blk_mem_gen_inter/blk_mem_gen_inter.xci">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/Desktop/blk_mem_gen_0_1/blk_mem_gen_0.xci">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/Desktop/CanvasTransfer.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/imports/Desktop/Oled_Display.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../../Oled_Display.v"/>
@@ -50,8 +29,33 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/imports/Desktop/blk_mem_gen_inter/blk_mem_gen_inter.xci">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Desktop/blk_mem_gen_0_1/blk_mem_gen_0.xci">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Desktop/CanvasTransfer.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/imports/Desktop/clk_divider.v">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -59,6 +63,7 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/Desktop/module_pack.v">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -66,6 +71,7 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/Desktop/neural_net.v">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -73,6 +79,7 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/Desktop/paint.v">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/../paint.v"/>
         <Attr Name="ImportTime" Val="1696088641"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -82,6 +89,7 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/Desktop/ss_display.v">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -89,6 +97,7 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/Desktop/Mouse_Control.vhd">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../../Mouse_Control.vhd"/>
         <Attr Name="ImportTime" Val="1676185106"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -97,6 +106,7 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/Desktop/Ps2Interface.vhd">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../../Ps2Interface.vhd"/>
         <Attr Name="ImportTime" Val="1667157208"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -105,6 +115,7 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/MouseOledPaint_Setup.v">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -130,7 +141,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="MouseOledPaint_Setup"/>
+      <Option Name="TopModule" Val="Top_Student"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -151,6 +162,4 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_const"/>
-  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_img"/>
 </GenRun>
