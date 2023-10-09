@@ -36,6 +36,11 @@ module Top_Student (
     // Box parameters
     parameter BOX_COLOUR = 16'hFFFF;
     parameter BOX_DELAY = 32'd300000000;
+    parameter CENTER_BOX_LEFT = 44;
+    parameter CENTER_BOX_RIGHT = 52;
+    parameter CENTER_BOX_BOTTOM = 28;
+    parameter CENTER_BOX_TOP = 36;
+    parameter SHIFT_ONE = 20;
     
     wire [6:0] col, row;
     wire [12:0] pixel_index;
@@ -56,23 +61,19 @@ module Top_Student (
     
     // Pixel data generation with border
     always @ (pixel_index) begin
-        if(draw_box) begin
-            if ((col > 39 && col <= 57) && ((row > 23 && row <= 26) || (row > 38 && row <= 41)) || (row > 26 && row <= 38) && ((col > 39 && col <= 42) || (col > 54 && col <= 57))) begin
-                pixel_data <= BORDER_COLOUR;
-            end else if (col > 44 && col <= 52 && row > 28 && row <= 36) begin
-                pixel_data <= BOX_COLOUR;
-            end else begin 
-                pixel_data <= 16'h0000;
-            end
-        end else begin
-            if ((col > 39 && col <= 57) && ((row > 23 && row <= 26) || (row > 38 && row <= 41)) || (row > 26 && row <= 38) && ((col > 39 && col <= 42) || (col > 54 && col <= 57))) begin
-                pixel_data <= BORDER_COLOUR;
-            end else begin 
-                pixel_data <= 16'h0000;
-            end
+        if ((col > 39 && col <= 57) && ((row > 23 && row <= 26) || (row > 38 && row <= 41)) || (row > 26 && row <= 38) && ((col > 39 && col <= 42) || (col > 54 && col <= 57))) begin
+            pixel_data <= BORDER_COLOUR;
+        end else if (((col > CENTER_BOX_LEFT && col <= CENTER_BOX_RIGHT && row > CENTER_BOX_BOTTOM && row <= CENTER_BOX_TOP) 
+        || (col > CENTER_BOX_LEFT - SHIFT_ONE && col <= CENTER_BOX_RIGHT - SHIFT_ONE && row > CENTER_BOX_BOTTOM && row <= CENTER_BOX_TOP)
+        || (col > CENTER_BOX_LEFT - 2 * SHIFT_ONE && col <= CENTER_BOX_RIGHT - 2 * SHIFT_ONE && row > CENTER_BOX_BOTTOM && row <= CENTER_BOX_TOP)
+        || (col > CENTER_BOX_LEFT + SHIFT_ONE && col <= CENTER_BOX_RIGHT + SHIFT_ONE && row > CENTER_BOX_BOTTOM && row <= CENTER_BOX_TOP)
+        || (col > CENTER_BOX_LEFT + 2 * SHIFT_ONE && col <= CENTER_BOX_RIGHT + 2 * SHIFT_ONE && row > CENTER_BOX_BOTTOM && row <= CENTER_BOX_TOP))
+        && draw_box) begin
+            pixel_data <= BOX_COLOUR;
+        end else begin 
+            pixel_data <= 16'h0000;
         end
     end
-      
 
     // Instantiate Oled display to display either green or red depending on sw4
     Oled_Display oled (.clk(CLK_6P25M), .pixel_index(pixel_index), .pixel_data(pixel_data), .reset(btnC), .cs(JC[0]), .sdin(JC[1]),
