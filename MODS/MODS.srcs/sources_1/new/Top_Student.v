@@ -33,9 +33,12 @@ module Top_Student (
     parameter BORDER_THICKNESS = 3;
     parameter BORDER_COLOUR = 16'h07E0;
     
+    // Box Colour
+    parameter BOX_COLOUR = 16'hFFFF;
+    
+    wire [6:0] col, row;
     wire [12:0] pixel_index;
     reg [15:0] pixel_data;
-    wire [6:0] col, row;
     
     assign col = pixel_index % 96;
     assign row = pixel_index / 96;
@@ -44,6 +47,8 @@ module Top_Student (
     always @ (pixel_index) begin
         if ((col > 39 && col <= 57) && ((row > 23 && row <= 26) || (row > 38 && row <= 41)) || (row > 26 && row <= 38) && ((col > 39 && col <= 42) || (col > 54 && col <= 57))) begin
             pixel_data <= BORDER_COLOUR;
+        end else if (col > 44 && col <= 52 & row > 28 && row <= 36) begin
+            pixel_data <= BOX_COLOUR;
         end else begin 
             pixel_data <= 16'h0000;
         end
