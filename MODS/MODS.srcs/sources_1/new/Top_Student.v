@@ -33,24 +33,43 @@ module Top_Student (
     parameter BORDER_THICKNESS = 3;
     parameter BORDER_COLOUR = 16'h07E0;
     
-    // Box Colour
+    // Box parameters
     parameter BOX_COLOUR = 16'hFFFF;
+    parameter BOX_DELAY = 32'd300000000;
     
     wire [6:0] col, row;
     wire [12:0] pixel_index;
     reg [15:0] pixel_data;
+    reg [31:0] box_delay_counter = 32'd0;
+    reg draw_box = 1'b0;
     
     assign col = pixel_index % 96;
     assign row = pixel_index / 96;
 
+    always @(posedge CLK) begin
+        if (box_delay_counter < BOX_DELAY) begin
+            box_delay_counter <= box_delay_counter + 1;
+        end else begin
+            draw_box <= 1'b1;
+        end
+    end
+    
     // Pixel data generation with border
     always @ (pixel_index) begin
-        if ((col > 39 && col <= 57) && ((row > 23 && row <= 26) || (row > 38 && row <= 41)) || (row > 26 && row <= 38) && ((col > 39 && col <= 42) || (col > 54 && col <= 57))) begin
-            pixel_data <= BORDER_COLOUR;
-        end else if (col > 44 && col <= 52 & row > 28 && row <= 36) begin
-            pixel_data <= BOX_COLOUR;
-        end else begin 
-            pixel_data <= 16'h0000;
+        if(draw_box) begin
+            if ((col > 39 && col <= 57) && ((row > 23 && row <= 26) || (row > 38 && row <= 41)) || (row > 26 && row <= 38) && ((col > 39 && col <= 42) || (col > 54 && col <= 57))) begin
+                pixel_data <= BORDER_COLOUR;
+            end else if (col > 44 && col <= 52 && row > 28 && row <= 36) begin
+                pixel_data <= BOX_COLOUR;
+            end else begin 
+                pixel_data <= 16'h0000;
+            end
+        end else begin
+            if ((col > 39 && col <= 57) && ((row > 23 && row <= 26) || (row > 38 && row <= 41)) || (row > 26 && row <= 38) && ((col > 39 && col <= 42) || (col > 54 && col <= 57))) begin
+                pixel_data <= BORDER_COLOUR;
+            end else begin 
+                pixel_data <= 16'h0000;
+            end
         end
     end
       
