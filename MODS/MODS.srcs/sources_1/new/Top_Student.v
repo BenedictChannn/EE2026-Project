@@ -34,7 +34,7 @@ module Top_Student (
     parameter BORDER_COLOUR = 16'h07E0;
     parameter LEFT_BORDER = -2 * SHIFT_ONE;
     parameter RIGHT_BORDER = 2 * SHIFT_ONE;
-    reg signed [6:0] border_shift = -38;
+    reg signed [6:0] border_shift = 0;
     
     // Box parameters
     parameter BOX_COLOUR = 16'hFFFF;
@@ -44,7 +44,10 @@ module Top_Student (
     parameter CENTER_BOX_BOTTOM = 28;
     parameter CENTER_BOX_TOP = 36;
     parameter SHIFT_ONE = 19;
-
+    
+    // Debouncing
+    parameter BOUNCE_TIME = 32'd10000000;
+    reg [31:0] bounce_counter = 32'd0;
     
     wire signed [7:0] col, row;
     wire [12:0] pixel_index;
@@ -64,10 +67,17 @@ module Top_Student (
             draw_box <= 1'b1;
         end
         
+        //Debounce
+        if (bounce_counter > 0) begin
+            bounce_counter <= bounce_counter - 1;
+        end
+        
         // btn shift left/ right for green border
-        if (btnL && (border_shift > LEFT_BORDER)) begin
+        if (btnL && (border_shift > LEFT_BORDER) && bounce_counter == 32'd0) begin
+            bounce_counter <= BOUNCE_TIME;
             border_shift = border_shift - SHIFT_ONE;
-        end else if (btnR && (border_shift < RIGHT_BORDER)) begin
+        end else if (btnR && (border_shift < RIGHT_BORDER) && bounce_counter == 32'd0) begin
+            bounce_counter <= BOUNCE_TIME;
             border_shift = border_shift + SHIFT_ONE;
         end
          
