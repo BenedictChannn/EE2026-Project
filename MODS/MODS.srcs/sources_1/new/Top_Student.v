@@ -4,7 +4,7 @@
 //
 //  FILL IN THE FOLLOWING INFORMATION:
 //  STUDENT A NAME: 
-//  STUDENT B NAME:
+//  STUDENT B NAME: Benedict Chan
 //  STUDENT C NAME: 
 //  STUDENT D NAME:  
 //
@@ -14,7 +14,7 @@
 module Top_Student (
     // Delete this comment and include Basys3 inputs and outputs here
     input CLK,
-    input btnC,
+    input btnC, btnR, btnL,
     output [7:0] JC,
     inout PS2Clk, PS2Data
     );
@@ -25,13 +25,16 @@ module Top_Student (
     // Generate clk signal of 6.25 MHz
     clk6p25m clk625 (CLK, CLK_6P25M);
     
-    // Oled settings
-    parameter SCREEN_HEIGHT = 64;
-    parameter SCREEN_WIDTH = 96;
+//    // Oled settings
+//    parameter SCREEN_HEIGHT = 64;
+//    parameter SCREEN_WIDTH = 96;
     
     // Border Thickness and colour
     parameter BORDER_THICKNESS = 3;
     parameter BORDER_COLOUR = 16'h07E0;
+    parameter LEFT_BORDER = -2 * SHIFT_ONE;
+    parameter RIGHT_BORDER = 2 * SHIFT_ONE;
+    reg signed [6:0] border_shift = -38;
     
     // Box parameters
     parameter BOX_COLOUR = 16'hFFFF;
@@ -40,9 +43,10 @@ module Top_Student (
     parameter CENTER_BOX_RIGHT = 52;
     parameter CENTER_BOX_BOTTOM = 28;
     parameter CENTER_BOX_TOP = 36;
-    parameter SHIFT_ONE = 20;
+    parameter SHIFT_ONE = 19;
+
     
-    wire [6:0] col, row;
+    wire signed [7:0] col, row;
     wire [12:0] pixel_index;
     reg [15:0] pixel_data;
     reg [31:0] box_delay_counter = 32'd0;
@@ -50,18 +54,26 @@ module Top_Student (
     
     assign col = pixel_index % 96;
     assign row = pixel_index / 96;
-
-    always @(posedge CLK) begin
+    
+    // Pixel data generation with border
+    always @ (posedge CLK) begin
+        // White boxes to only appear after 3 seconds
         if (box_delay_counter < BOX_DELAY) begin
             box_delay_counter <= box_delay_counter + 1;
         end else begin
             draw_box <= 1'b1;
         end
-    end
-    
-    // Pixel data generation with border
-    always @ (pixel_index) begin
-        if ((col > 39 && col <= 57) && ((row > 23 && row <= 26) || (row > 38 && row <= 41)) || (row > 26 && row <= 38) && ((col > 39 && col <= 42) || (col > 54 && col <= 57))) begin
+        
+        // btn shift left/ right for green border
+        if (btnL && (border_shift > LEFT_BORDER)) begin
+            border_shift = border_shift - SHIFT_ONE;
+        end else if (btnR && (border_shift < RIGHT_BORDER)) begin
+            border_shift = border_shift + SHIFT_ONE;
+        end
+         
+        // Logic white boxes and green border 
+        if ((col > 39 + border_shift && col <= 57 + border_shift) && ((row > 23 && row <= 26) || (row > 38 && row <= 41)) 
+        || (row > 26 && row <= 38) && ((col > 39 + border_shift && col <= 42 + border_shift) || (col > 54 + border_shift && col <= 57 + border_shift))) begin
             pixel_data <= BORDER_COLOUR;
         end else if (((col > CENTER_BOX_LEFT && col <= CENTER_BOX_RIGHT && row > CENTER_BOX_BOTTOM && row <= CENTER_BOX_TOP) 
         || (col > CENTER_BOX_LEFT - SHIFT_ONE && col <= CENTER_BOX_RIGHT - SHIFT_ONE && row > CENTER_BOX_BOTTOM && row <= CENTER_BOX_TOP)
