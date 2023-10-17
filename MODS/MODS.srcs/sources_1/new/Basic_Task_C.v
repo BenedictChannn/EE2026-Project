@@ -21,6 +21,7 @@
 
 
 module Basic_Task_C(
+    input active,
     input CLOCK,
     input btnC,
     input [12:0] pixel_index,
@@ -43,6 +44,7 @@ module Basic_Task_C(
     wire [6:0] pixel_row, pixel_col;
     assign pixel_col = pixel_index % 96;
     assign pixel_row = pixel_index / 96;
+    
     always @ (posedge CLOCK) begin
         COUNT_6P25MHZ <= (COUNT_6P25MHZ == 3'b111) ? 0 : COUNT_6P25MHZ + 1;
         clk6p25m <= (COUNT_6P25MHZ == 3'b111) ? ~clk6p25m : clk6p25m;
@@ -87,6 +89,18 @@ module Basic_Task_C(
     end
     
     always @ (posedge clk20) begin
+        if (active == 0) begin
+            COUNT_GREEN = 32'b0;
+            COUNT_RED = 32'b0;
+            first = 0;
+            button_pressed = 0;
+            green_reverse = 0;
+            green_square = 0;
+            row_end = 2;
+            col_end = 49;
+            green_row_end = 30;
+            green_col_end = 63;
+        end
         if (btnC == 1) begin
             button_pressed = 1;
         end
@@ -121,7 +135,6 @@ module Basic_Task_C(
                     green_row_end = 30;
                     green_col_end = 63;
                 end
-    
             end
         end
     end

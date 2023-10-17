@@ -25,6 +25,7 @@ module Top_Student (
     );
     reg [24:0] COUNT = 0;
     reg toggle = 1'b0;
+    reg active = 0;
     
     wire [6:0] seg_paint; // Must be placed before seg_v a l
     wire [6:0] seg_v = 7'b1000001;
@@ -53,7 +54,7 @@ module Top_Student (
         COUNT <= (COUNT == 25'b1001100010010110100000000) ? 0 : COUNT + 1;
         toggle <= (COUNT == 0) ? ~toggle : toggle;
         an = 4'b1111;
-        
+        active = 1;
         case(sw)
             4'b0001: begin
                 pixel_data <= pixel_data_A;
@@ -71,7 +72,8 @@ module Top_Student (
                 pixel_data <= pixel_data_D;
                 led = 16'b0000000000001000;
             end
-            4'b0000: begin
+            default: begin
+                active = 0;
                 pixel_data <= pixel_data_paint;
                 if (toggle) begin
                     led <= led_blink;
@@ -86,7 +88,7 @@ module Top_Student (
                 end else begin
                     cyc_cnt <= cyc_cnt + 1;
                 end
-                                
+                
                 // Logic to select which segment and character to display
                 dp = 1'b1;  // Decimal point default off
                 case (mux_counter)
@@ -103,8 +105,8 @@ module Top_Student (
                         seg = seg_l;
                         dp = 1'b0;  // Decimal point on for L
                     end
-                    2'b11: begin 
-                        an = 4'b1110;  
+                    2'b11: begin
+                        an = 4'b1110;
                         seg = seg_paint;
                     end
                 endcase
@@ -112,10 +114,10 @@ module Top_Student (
         endcase
     end
     
-    Basic_Task_A A (.CLOCK(CLK), .centre(btnC), .up(btnU), .pixel_index(pixel_index), .oled_data(pixel_data_A));
-    Basic_Task_B B (.CLK(CLK), .btnC(btnC), .btnR(btnR), .btnL(btnL), .pixel_index(pixel_index), .pixel_data(pixel_data_B));
-    Basic_Task_C C (.CLOCK(CLK), .btnC(btnC), .pixel_index(pixel_index), .oled_data(pixel_data_C));
-    Basic_Task_D D (.clk(CLK_45K), .reset(btnC), .move_left(btnL), .move_right(btnR), .move_up(btnU), .move_down(btnD), .pixel_index(pixel_index), .colour_chooser(pixel_data_D));
+    Basic_Task_A A (.active(active), .CLOCK(CLK), .centre(btnC), .up(btnU), .pixel_index(pixel_index), .oled_data(pixel_data_A));
+    Basic_Task_B B (.active(active), .CLK(CLK), .btnC(btnC), .btnR(btnR), .btnL(btnL), .pixel_index(pixel_index), .pixel_data(pixel_data_B));
+    Basic_Task_C C (.active(active), .CLOCK(CLK), .btnC(btnC), .pixel_index(pixel_index), .oled_data(pixel_data_C));
+    Basic_Task_D D (.active(active), .clk(CLK_45K), .reset(btnC), .move_left(btnL), .move_right(btnR), .move_up(btnU), .move_down(btnD), .pixel_index(pixel_index), .colour_chooser(pixel_data_D));
     
     MouseOledPaint_Setup paint (.CLK(CLK), .pixel_index(pixel_index), .PS2Clk(PS2Clk), 
     .PS2Data(PS2Data), .led(led_blink), .seg(seg_paint), .pixel_data(pixel_data_paint));

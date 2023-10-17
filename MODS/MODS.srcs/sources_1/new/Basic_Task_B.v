@@ -13,6 +13,7 @@
 
 module Basic_Task_B (
     // Delete this comment and include Basys3 inputs and outputs here
+    input active,
     input CLK,
     input btnC, btnR, btnL,
     input [12:0] pixel_index,
@@ -54,6 +55,12 @@ module Basic_Task_B (
     
     // Pixel data generation with border
     always @ (posedge CLK) begin
+        if (active == 0) begin
+            border_shift = 0;
+            bounce_counter = 32'd0;
+            box_delay_counter = 32'd0;
+            draw_box = 1'b0;
+        end
         // White boxes to only appear after 3 seconds
         if (box_delay_counter < BOX_DELAY) begin
             box_delay_counter <= box_delay_counter + 1;

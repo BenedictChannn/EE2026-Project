@@ -20,6 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module Basic_Task_D(
+    input active,             // Normal operation if active
     input clk,                // Clock signal
     input reset,              // Center pushbutton
     input move_left,          // Left pushbutton
@@ -57,6 +58,14 @@ assign col = pixel_index % 96;
 assign row = pixel_index / 96;
 
 always @(posedge clk) begin
+    if (active == 0) begin
+        current_state = TOP_LEFT;
+        next_state = TOP_LEFT;
+        square_x = 2;
+        square_y = 2;
+        movement_counter = 0;
+    end
+
     // Check direction button presses first
     if (move_right && current_state != MOVING_RIGHT) next_state <= MOVING_RIGHT;
     else if (move_left && current_state != MOVING_LEFT) next_state <= MOVING_LEFT;
