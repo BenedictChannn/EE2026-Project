@@ -16,8 +16,7 @@ module Basic_Task_B (
     input CLK,
     input btnC, btnR, btnL,
     input [12:0] pixel_index,
-    output reg [15:0] pixel_data,
-    inout PS2Clk, PS2Data
+    output reg [15:0] pixel_data
     );
     wire CLK_6P25M;
     

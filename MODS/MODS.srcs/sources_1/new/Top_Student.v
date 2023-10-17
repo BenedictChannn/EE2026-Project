@@ -14,7 +14,7 @@
 module Top_Student (
     // Delete this comment and include Basys3 inputs and outputs here
     input CLK,
-    input btnC, btnR, btnL,
+    input btnC, btnR, btnL, btnU, btnD,
     input [3:0] sw,
     output [7:0] JC,
     output reg [15:0] led,
@@ -53,6 +53,10 @@ module Top_Student (
         an = 4'b1111;
         
         case(sw)
+            4'b0001: begin
+                pixel_data <= pixel_data_A;
+                led = 16'b0000000000000001;
+            end
             4'b0010: begin
                 pixel_data <= pixel_data_B;
                 led = 16'b0000000000000010;
@@ -97,8 +101,9 @@ module Top_Student (
             end
         endcase
     end
-            
-    Basic_Task_B B (.CLK(CLK), .btnC(btnC), .btnR(btnR), .btnL(btnL), .PS2Clk(PS2Clk), .PS2Data(PS2Data), .pixel_index(pixel_index), .pixel_data(pixel_data_B));
+    
+    Basic_Task_A A (.CLOCK(CLK), .centre(btnC), .up(btnU), .pixel_index(pixel_index), .oled_data(pixel_data_A));
+    Basic_Task_B B (.CLK(CLK), .btnC(btnC), .btnR(btnR), .btnL(btnL), .pixel_index(pixel_index), .pixel_data(pixel_data_B));
 
     MouseOledPaint_Setup paint (.CLK(CLK), .pixel_index(pixel_index), .PS2Clk(PS2Clk), 
     .PS2Data(PS2Data), .led(led_blink), .seg(seg_paint), .pixel_data(pixel_data_paint));
