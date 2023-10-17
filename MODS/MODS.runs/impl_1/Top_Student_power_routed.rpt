@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Tue Oct 17 14:19:20 2023
+| Date             : Tue Oct 17 18:08:10 2023
 | Host             : MSI running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_Student_power_routed.rpt -pb Top_Student_power_summary_routed.pb -rpx Top_Student_power_routed.rpx
 | Design           : Top_Student
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.078        |
+| Total On-Chip Power (W)  | 0.110        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.007        |
-| Device Static (W)        | 0.072        |
+| Dynamic (W)              | 0.037        |
+| Device Static (W)        | 0.073        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 84.6         |
-| Junction Temperature (C) | 25.4         |
+| Max Ambient (C)          | 84.5         |
+| Junction Temperature (C) | 25.5         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,17 +52,20 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |     0.002 |      675 |       --- |             --- |
-|   LUT as Logic |     0.002 |      354 |     20800 |            1.70 |
-|   CARRY4       |    <0.001 |       49 |      8150 |            0.60 |
-|   Register     |    <0.001 |      190 |     41600 |            0.46 |
-|   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |        8 |       --- |             --- |
-| Signals        |     0.002 |      463 |       --- |             --- |
-| I/O            |     0.002 |       12 |       106 |           11.32 |
-| Static Power   |     0.072 |          |           |                 |
-| Total          |     0.078 |          |           |                 |
+| Clocks         |     0.006 |        3 |       --- |             --- |
+| Slice Logic    |     0.011 |     7245 |       --- |             --- |
+|   LUT as Logic |     0.009 |     3616 |     20800 |           17.38 |
+|   CARRY4       |    <0.001 |      297 |      8150 |            3.64 |
+|   F7/F8 Muxes  |    <0.001 |      353 |     32600 |            1.08 |
+|   Register     |    <0.001 |     1989 |     41600 |            4.78 |
+|   BUFG         |    <0.001 |        3 |        32 |            9.38 |
+|   Others       |     0.000 |      128 |       --- |             --- |
+| Signals        |     0.011 |     5484 |       --- |             --- |
+| Block RAM      |     0.005 |     26.5 |        50 |           53.00 |
+| DSPs           |     0.002 |       19 |        90 |           21.11 |
+| I/O            |     0.002 |       39 |       106 |           36.79 |
+| Static Power   |     0.073 |          |           |                 |
+| Total          |     0.110 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,16 +75,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.014 |       0.005 |      0.010 |
+| Vccint    |       1.000 |     0.045 |       0.035 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
-| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
+| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.000 |       0.000 |      0.000 |
+| Vccbram   |       1.000 |     0.001 |       0.000 |      0.001 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
@@ -138,13 +141,109 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+-------------+-----------+
-| Name        | Power (W) |
-+-------------+-----------+
-| Top_Student |     0.007 |
-|   B         |     0.003 |
-|   clk625    |    <0.001 |
-|   oled      |     0.001 |
-+-------------+-----------+
++----------------------------------------------------+-----------+
+| Name                                               | Power (W) |
++----------------------------------------------------+-----------+
+| Top_Student                                        |     0.037 |
+|   PS2Clk_IOBUF_inst                                |     0.000 |
+|   PS2Data_IOBUF_inst                               |     0.000 |
+|   clk625                                           |    <0.001 |
+|   oled                                             |     0.005 |
+|   paint                                            |     0.029 |
+|     canvas                                         |     0.024 |
+|       ccd_inst_2                                   |    <0.001 |
+|       ccd_inst_27                                  |    <0.001 |
+|       clock_mouse                                  |    <0.001 |
+|       nn_inst                                      |     0.011 |
+|         blk_mem_gen_0_inst                         |     0.002 |
+|           U0                                       |     0.002 |
+|             inst_blk_mem_gen                       |     0.002 |
+|               gnbram.gnativebmg.native_blk_mem_gen |     0.002 |
+|                 valid.cstr                         |     0.002 |
+|                   ramloop[0].ram.r                 |     0.002 |
+|                     prim_noinit.ram                |     0.002 |
+|         blk_mem_gen_const_inst                     |     0.003 |
+|           U0                                       |     0.003 |
+|             inst_blk_mem_gen                       |     0.003 |
+|               gnbram.gnativebmg.native_blk_mem_gen |     0.003 |
+|                 valid.cstr                         |     0.003 |
+|                   has_mux_a.A                      |    <0.001 |
+|                   ramloop[0].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[10].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[11].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[12].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[13].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[14].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[15].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[16].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[17].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[18].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[19].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[1].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[20].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[21].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[22].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[23].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[24].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[25].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[26].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[27].ram.r                |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[2].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[3].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[4].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[5].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[6].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[7].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[8].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|                   ramloop[9].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|         blk_mem_gen_img_inst                       |    <0.001 |
+|           U0                                       |    <0.001 |
+|             inst_blk_mem_gen                       |    <0.001 |
+|               gnbram.gnativebmg.native_blk_mem_gen |    <0.001 |
+|                 valid.cstr                         |    <0.001 |
+|                   ramloop[0].ram.r                 |    <0.001 |
+|                     prim_init.ram                  |    <0.001 |
+|         blk_mem_gen_inter_inst                     |    <0.001 |
+|           U0                                       |    <0.001 |
+|             inst_blk_mem_gen                       |    <0.001 |
+|               gnbram.gnativebmg.native_blk_mem_gen |    <0.001 |
+|                 valid.cstr                         |    <0.001 |
+|                   ramloop[0].ram.r                 |    <0.001 |
+|                     prim_noinit.ram                |    <0.001 |
+|         ct_inst                                    |    <0.001 |
+|         nn1                                        |     0.004 |
+|       ssd1                                         |     0.000 |
+|       unit_6p25m                                   |    <0.001 |
+|     mouse                                          |     0.005 |
+|       Inst_Ps2Interface                            |     0.001 |
++----------------------------------------------------+-----------+
 
 
