@@ -22,12 +22,10 @@
 module MouseOledPaint_Setup (
     // Delete this comment and include Basys3 inputs and outputs here
     input CLK,
-    input btnC,
     input [12:0] pixel_index,
     inout PS2Clk, PS2Data,
     output [15:0] led,
     output [6:0] seg,
-    output [3:0] an,
     output [15:0] pixel_data
     );
     
@@ -37,8 +35,6 @@ module MouseOledPaint_Setup (
     wire [11:0] mouse_y_pos;
     wire [12:0] pixel_index;
     wire [15:0] colour_chooser;
-    assign an = 4'b0000;
-    //reg [15:0] oled_data = (sw4 == 1) ? 16'hF800 : 16'h07E0;
    
     // Generate clk signal of 6.25 MHz
     clk6p25m clk625 (CLK, CLK_6P25M);
