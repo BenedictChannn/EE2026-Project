@@ -61,6 +61,10 @@ module Top_Student (
                 pixel_data <= pixel_data_B;
                 led = 16'b0000000000000010;
             end
+            4'b0100: begin
+                pixel_data <= pixel_data_C;
+                led = 16'b0000000000000100;
+            end
             4'b0000: begin
                 pixel_data <= pixel_data_paint;
                 if (toggle) begin
@@ -104,6 +108,7 @@ module Top_Student (
     
     Basic_Task_A A (.CLOCK(CLK), .centre(btnC), .up(btnU), .pixel_index(pixel_index), .oled_data(pixel_data_A));
     Basic_Task_B B (.CLK(CLK), .btnC(btnC), .btnR(btnR), .btnL(btnL), .pixel_index(pixel_index), .pixel_data(pixel_data_B));
+    Basic_Task_C C (.CLOCK(CLK), .btnC(btnC), .pixel_index(pixel_index), .oled_data(pixel_data_C));
 
     MouseOledPaint_Setup paint (.CLK(CLK), .pixel_index(pixel_index), .PS2Clk(PS2Clk), 
     .PS2Data(PS2Data), .led(led_blink), .seg(seg_paint), .pixel_data(pixel_data_paint));

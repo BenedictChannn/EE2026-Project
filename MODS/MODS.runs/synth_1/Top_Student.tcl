@@ -37,6 +37,7 @@ add_files C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/source
 read_verilog -library xil_defaultlib {
   C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Basic_Task_A.v
   C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Basic_Task_B.v
+  C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Basic_Task_C.v
   C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/CanvasTransfer.v
   C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/MouseOledPaint_Setup.v
   C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v

@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Tue Oct 17 22:14:33 2023
+| Date         : Tue Oct 17 22:39:48 2023
 | Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Top_Student_utilization_synth.rpt -pb Top_Student_utilization_synth.pb
 | Design       : Top_Student
@@ -30,11 +30,11 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             | 3928 |     0 |     20800 | 18.88 |
-|   LUT as Logic          | 3928 |     0 |     20800 | 18.88 |
+| Slice LUTs*             | 4121 |     0 |     20800 | 19.81 |
+|   LUT as Logic          | 4121 |     0 |     20800 | 19.81 |
 |   LUT as Memory         |    0 |     0 |      9600 |  0.00 |
-| Slice Registers         | 2125 |     0 |     41600 |  5.11 |
-|   Register as Flip Flop | 2117 |     0 |     41600 |  5.09 |
+| Slice Registers         | 2254 |     0 |     41600 |  5.42 |
+|   Register as Flip Flop | 2246 |     0 |     41600 |  5.40 |
 |   Register as Latch     |    8 |     0 |     41600 |  0.02 |
 | F7 Muxes                |  236 |     0 |     16300 |  1.45 |
 | F8 Muxes                |   78 |     0 |      8150 |  0.96 |
@@ -56,8 +56,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 2     |          Yes |           - |          Set |
 | 1163  |          Yes |           - |        Reset |
-| 18    |          Yes |         Set |            - |
-| 942   |          Yes |       Reset |            - |
+| 28    |          Yes |         Set |            - |
+| 1061  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -116,7 +116,7 @@ Table of Contents
 +------------+------+-------+-----------+-------+
 |  Site Type | Used | Fixed | Available | Util% |
 +------------+------+-------+-----------+-------+
-| BUFGCTRL   |    4 |     0 |        32 | 12.50 |
+| BUFGCTRL   |    5 |     0 |        32 | 15.63 |
 | BUFIO      |    0 |     0 |        20 |  0.00 |
 | MMCME2_ADV |    0 |     0 |         5 |  0.00 |
 | PLLE2_ADV  |    0 |     0 |         5 |  0.00 |
@@ -150,23 +150,23 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     | 1697 |                 LUT |
-| LUT3     | 1296 |                 LUT |
+| LUT6     | 1785 |                 LUT |
+| LUT3     | 1340 |                 LUT |
 | FDCE     | 1155 |        Flop & Latch |
-| FDRE     |  942 |        Flop & Latch |
-| LUT2     |  812 |                 LUT |
-| LUT5     |  545 |                 LUT |
-| LUT4     |  421 |                 LUT |
-| CARRY4   |  371 |          CarryLogic |
+| FDRE     | 1061 |        Flop & Latch |
+| LUT2     |  850 |                 LUT |
+| LUT5     |  557 |                 LUT |
+| LUT4     |  483 |                 LUT |
+| CARRY4   |  431 |          CarryLogic |
 | MUXF7    |  236 |               MuxFx |
-| LUT1     |  122 |                 LUT |
+| LUT1     |  117 |                 LUT |
 | MUXF8    |   78 |               MuxFx |
 | OBUF     |   35 |                  IO |
+| FDSE     |   28 |        Flop & Latch |
 | DSP48E1  |   19 |    Block Arithmetic |
-| FDSE     |   18 |        Flop & Latch |
 | IBUF     |   11 |                  IO |
 | LDCE     |    8 |        Flop & Latch |
-| BUFG     |    4 |               Clock |
+| BUFG     |    5 |               Clock |
 | OBUFT    |    3 |                  IO |
 | FDPE     |    2 |        Flop & Latch |
 +----------+------+---------------------+
