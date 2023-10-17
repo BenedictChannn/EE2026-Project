@@ -41,11 +41,13 @@ module Top_Student (
     wire [15:0] pixel_data_D;
     wire [15:0] pixel_data_paint;
     wire [12:0] pixel_index;
-    wire CLK_6P25M;
+    wire CLK_6P25M, CLK_45K;
     wire [15:0] led_blink;
     
     // Generate 6.25 MHz clock
     clk6p25m clk625 (CLK, CLK_6P25M);
+    // Generate 45 KHz clock
+    clk45k clk45 (CLK, CLK_45K);
     
     always @ (posedge CLK) begin
         COUNT <= (COUNT == 25'b1001100010010110100000000) ? 0 : COUNT + 1;
@@ -64,6 +66,10 @@ module Top_Student (
             4'b0100: begin
                 pixel_data <= pixel_data_C;
                 led = 16'b0000000000000100;
+            end
+            4'b1000: begin
+                pixel_data <= pixel_data_D;
+                led = 16'b0000000000001000;
             end
             4'b0000: begin
                 pixel_data <= pixel_data_paint;
@@ -109,7 +115,8 @@ module Top_Student (
     Basic_Task_A A (.CLOCK(CLK), .centre(btnC), .up(btnU), .pixel_index(pixel_index), .oled_data(pixel_data_A));
     Basic_Task_B B (.CLK(CLK), .btnC(btnC), .btnR(btnR), .btnL(btnL), .pixel_index(pixel_index), .pixel_data(pixel_data_B));
     Basic_Task_C C (.CLOCK(CLK), .btnC(btnC), .pixel_index(pixel_index), .oled_data(pixel_data_C));
-
+    Basic_Task_D D (.clk(CLK_45K), .reset(btnC), .move_left(btnL), .move_right(btnR), .move_up(btnU), .move_down(btnD), .pixel_index(pixel_index), .colour_chooser(pixel_data_D));
+    
     MouseOledPaint_Setup paint (.CLK(CLK), .pixel_index(pixel_index), .PS2Clk(PS2Clk), 
     .PS2Data(PS2Data), .led(led_blink), .seg(seg_paint), .pixel_data(pixel_data_paint));
     

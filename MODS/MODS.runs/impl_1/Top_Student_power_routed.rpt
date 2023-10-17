@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Tue Oct 17 22:41:36 2023
+| Date             : Tue Oct 17 23:05:22 2023
 | Host             : MSI running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_Student_power_routed.rpt -pb Top_Student_power_summary_routed.pb -rpx Top_Student_power_routed.rpx
 | Design           : Top_Student
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.119        |
+| Total On-Chip Power (W)  | 0.121        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.046        |
+| Dynamic (W)              | 0.048        |
 | Device Static (W)        | 0.073        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.4         |
@@ -52,20 +52,20 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.006 |        3 |       --- |             --- |
-| Slice Logic    |     0.015 |     8448 |       --- |             --- |
-|   LUT as Logic |     0.013 |     4238 |     20800 |           20.38 |
-|   CARRY4       |     0.001 |      431 |      8150 |            5.29 |
+| Clocks         |     0.007 |        3 |       --- |             --- |
+| Slice Logic    |     0.016 |     8754 |       --- |             --- |
+|   LUT as Logic |     0.014 |     4423 |     20800 |           21.26 |
+|   CARRY4       |     0.001 |      455 |      8150 |            5.58 |
 |   F7/F8 Muxes  |    <0.001 |      341 |     32600 |            1.05 |
-|   Register     |    <0.001 |     2285 |     41600 |            5.49 |
-|   BUFG         |    <0.001 |        4 |        32 |           12.50 |
-|   Others       |     0.000 |      141 |       --- |             --- |
-| Signals        |     0.014 |     6385 |       --- |             --- |
+|   Register     |    <0.001 |     2327 |     41600 |            5.59 |
+|   BUFG         |    <0.001 |        5 |        32 |           15.63 |
+|   Others       |     0.000 |      145 |       --- |             --- |
+| Signals        |     0.015 |     6563 |       --- |             --- |
 | Block RAM      |     0.005 |     26.5 |        50 |           53.00 |
 | DSPs           |     0.002 |       19 |        90 |           21.11 |
-| I/O            |     0.003 |       47 |       106 |           44.34 |
+| I/O            |     0.003 |       48 |       106 |           45.28 |
 | Static Power   |     0.073 |          |           |                 |
-| Total          |     0.119 |          |           |                 |
+| Total          |     0.121 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.052 |       0.042 |      0.010 |
+| Vccint    |       1.000 |     0.054 |       0.044 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
 | Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -144,17 +144,19 @@ Table of Contents
 +----------------------------------------------------+-----------+
 | Name                                               | Power (W) |
 +----------------------------------------------------+-----------+
-| Top_Student                                        |     0.046 |
+| Top_Student                                        |     0.048 |
 |   A                                                |    <0.001 |
 |     btnC                                           |    <0.001 |
 |     btnU                                           |    <0.001 |
 |     clk6p25m                                       |    <0.001 |
 |   B                                                |     0.002 |
 |   C                                                |    <0.001 |
+|   D                                                |    <0.001 |
 |   PS2Clk_IOBUF_inst                                |     0.000 |
 |   PS2Data_IOBUF_inst                               |     0.000 |
+|   clk45                                            |    <0.001 |
 |   clk625                                           |    <0.001 |
-|   oled                                             |     0.008 |
+|   oled                                             |     0.009 |
 |   paint                                            |     0.029 |
 |     canvas                                         |     0.025 |
 |       ccd_inst_2                                   |    <0.001 |
@@ -246,7 +248,7 @@ Table of Contents
 |                     prim_noinit.ram                |    <0.001 |
 |         ct_inst                                    |    <0.001 |
 |         nn1                                        |     0.004 |
-|       ssd1                                         |    <0.001 |
+|       ssd1                                         |     0.000 |
 |       unit_6p25m                                   |    <0.001 |
 |     mouse                                          |     0.004 |
 |       Inst_Ps2Interface                            |     0.001 |
