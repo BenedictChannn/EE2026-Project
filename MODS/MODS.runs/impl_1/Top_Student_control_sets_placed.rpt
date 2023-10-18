@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Wed Oct 18 00:52:31 2023
+| Date         : Wed Oct 18 08:55:45 2023
 | Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_Student_control_sets_placed.rpt
 | Design       : Top_Student
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    80 |
-| Unused register locations in slices containing registers |   146 |
+| Number of unique control sets                            |    79 |
+| Unused register locations in slices containing registers |   136 |
 +----------------------------------------------------------+-------+
 
 
@@ -34,7 +34,7 @@ Table of Contents
 +--------+--------------+
 | Fanout | Control Sets |
 +--------+--------------+
-|      2 |            5 |
+|      2 |            4 |
 |      6 |            2 |
 |      8 |            8 |
 |     10 |            2 |
@@ -50,12 +50,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             956 |          223 |
-| No           | No                    | Yes                    |            2204 |          304 |
-| No           | Yes                   | No                     |             722 |          110 |
-| Yes          | No                    | No                     |             286 |           38 |
-| Yes          | No                    | Yes                    |             110 |           18 |
-| Yes          | Yes                   | No                     |             392 |           96 |
+| No           | No                    | No                     |             958 |          232 |
+| No           | No                    | Yes                    |            2204 |          297 |
+| No           | Yes                   | No                     |             722 |          106 |
+| Yes          | No                    | No                     |             286 |           40 |
+| Yes          | No                    | Yes                    |             110 |           19 |
+| Yes          | Yes                   | No                     |             392 |           85 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -65,86 +65,85 @@ Table of Contents
 +----------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------+----------------+
 |                 Clock Signal                 |                        Enable Signal                       |                      Set/Reset Signal                      | Slice Load Count | Bel Load Count |
 +----------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------+----------------+
-|  A/btnU/btn                                  |                                                            |                                                            |                1 |              2 |
+| ~CLK_6P25M_BUFG                              |                                                            |                                                            |                1 |              2 |
 |  clk20                                       |                                                            | C/row_end[5]_i_1_n_0                                       |                1 |              2 |
 |  CLK_IBUF_BUFG                               |                                                            | oled/SS[0]                                                 |                1 |              2 |
-|  clk                                         |                                                            | oled/oled_data_reg[15]_8                                   |                1 |              2 |
-| ~CLK_6P25M_BUFG                              |                                                            |                                                            |                1 |              2 |
+|  clk                                         |                                                            | oled/oled_data_reg[15]_3                                   |                1 |              2 |
 |  paint/mouse/state0                          |                                                            |                                                            |                2 |              6 |
 |  canvas/clk_2                                |                                                            | paint/canvas/nn_inst/nn_rst                                |                3 |              6 |
-|  CLK_IBUF_BUFG                               |                                                            | paint/mouse/Inst_Ps2Interface/data_inter0                  |                1 |              8 |
-|  paint/canvas/unit_6p25m/clk_6p25MHz         |                                                            | paint/canvas/mouse_press_y[5]_i_1_n_0                      |                1 |              8 |
-|  paint/canvas/ccd_inst_27/CLK                |                                                            |                                                            |                4 |              8 |
-|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/shift_frame                  | paint/mouse/Inst_Ps2Interface/reset_bit_count              |                2 |              8 |
+|  paint/canvas/unit_6p25m/clk_6p25MHz         |                                                            | paint/canvas/mouse_press_y[5]_i_1_n_0                      |                2 |              8 |
+|  paint/canvas/ccd_inst_27/CLK                |                                                            |                                                            |                3 |              8 |
+|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/shift_frame                  | paint/mouse/Inst_Ps2Interface/reset_bit_count              |                1 |              8 |
 |  CLK_IBUF_BUFG                               |                                                            | active                                                     |                1 |              8 |
-|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/FSM_sequential_state[1]_i_1_n_0   | paint/canvas/nn_inst/nn_algo_rst                           |                3 |              8 |
-|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/digit[3]_i_1_n_0                  | paint/canvas/nn_inst/nn_algo_rst                           |                2 |              8 |
+|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/digit[3]_i_1_n_0                  | paint/canvas/nn_inst/nn_algo_rst                           |                1 |              8 |
+|  CLK_IBUF_BUFG                               |                                                            | paint/mouse/Inst_Ps2Interface/data_inter0                  |                1 |              8 |
 |  CLK_IBUF_BUFG                               |                                                            | paint/mouse/Inst_Ps2Interface/clk_inter0                   |                1 |              8 |
-|  paint/canvas/colour_chooser_reg[15]_i_2_n_0 |                                                            |                                                            |                2 |             10 |
-|  clk20                                       |                                                            | C/row_end[6]_i_1_n_0                                       |                3 |             10 |
-|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/i[5]_i_1_n_0                      | paint/canvas/nn_inst/nn_algo_rst                           |                3 |             12 |
+|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/FSM_sequential_state[1]_i_1_n_0   | paint/canvas/nn_inst/nn_algo_rst                           |                2 |              8 |
+|  clk20                                       |                                                            | C/row_end[6]_i_1_n_0                                       |                1 |             10 |
+|  paint/canvas/colour_chooser_reg[15]_i_2_n_0 |                                                            |                                                            |                3 |             10 |
 |  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/right_down_reg               |                                                            |                1 |             12 |
-|  CLK_IBUF_BUFG                               |                                                            | led[10]_i_1_n_0                                            |                3 |             14 |
-|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/addr_inter0                       | paint/canvas/nn_inst/nn_algo_rst                           |                3 |             14 |
+|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/i[5]_i_1_n_0                      | paint/canvas/nn_inst/nn_algo_rst                           |                4 |             12 |
+|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/addr_inter0                       | paint/canvas/nn_inst/nn_algo_rst                           |                5 |             14 |
+|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/next_out_valid                    | paint/canvas/nn_inst/nn_algo_rst                           |                2 |             14 |
+|  CLK_IBUF_BUFG                               |                                                            | led[10]_i_1_n_0                                            |                2 |             14 |
 |  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/delay_63clk_count[6]_i_2_n_0 | paint/mouse/Inst_Ps2Interface/delay_63clk_count[6]_i_1_n_0 |                2 |             14 |
-|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/next_out_valid                    | paint/canvas/nn_inst/nn_algo_rst                           |                3 |             14 |
-|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/load_rx_data                 |                                                            |                1 |             16 |
-|  CLK_IBUF_BUFG                               | paint/mouse/tx_data0                                       |                                                            |                2 |             16 |
 |  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/x_inc_reg[0]                 |                                                            |                2 |             16 |
-|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/y_inc_reg[0]                 |                                                            |                2 |             16 |
-|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/frame[9]_i_1_n_0             |                                                            |                2 |             20 |
+|  CLK_IBUF_BUFG                               | paint/mouse/tx_data0                                       |                                                            |                2 |             16 |
+|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/load_rx_data                 |                                                            |                1 |             16 |
+|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/y_inc_reg[0]                 |                                                            |                3 |             16 |
 |  canvas/clk_2                                | paint/canvas/nn_inst/nn1/digit_valid                       | paint/canvas/nn_inst/nn_rst                                |                2 |             20 |
-|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/addr_img0                         | paint/canvas/nn_inst/nn_algo_rst                           |                5 |             20 |
-|  clk45/CLK_45K                               |                                                            | D/movement_counter[9]_i_1_n_0                              |                4 |             20 |
-|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/j[9]_i_1_n_0                      | paint/canvas/nn_inst/nn_algo_rst                           |                6 |             20 |
+|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/addr_img0                         | paint/canvas/nn_inst/nn_algo_rst                           |                3 |             20 |
+|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/frame[9]_i_1_n_0             |                                                            |                2 |             20 |
+|  clk45/CLK_45K                               |                                                            | D/movement_counter[9]_i_1_n_0                              |                5 |             20 |
+|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/j[9]_i_1_n_0                      | paint/canvas/nn_inst/nn_algo_rst                           |                4 |             20 |
 |  CLK_IBUF_BUFG                               |                                                            | clk45/clear                                                |                4 |             22 |
-|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/delay_20us_count[10]_i_2_n_0 | paint/mouse/Inst_Ps2Interface/delay_20us_count[10]_i_1_n_0 |                4 |             22 |
-|  canvas/clk_2                                | paint/canvas/nn_inst/imgw_valid_i_1_n_0                    | paint/canvas/nn_inst/nn_rst                                |                3 |             22 |
+|  canvas/clk_2                                | paint/canvas/nn_inst/imgw_valid_i_1_n_0                    | paint/canvas/nn_inst/nn_rst                                |                4 |             22 |
+|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/delay_20us_count[10]_i_2_n_0 | paint/mouse/Inst_Ps2Interface/delay_20us_count[10]_i_1_n_0 |                3 |             22 |
 |  CLK_IBUF_BUFG                               | paint/mouse/y_new_reg_n_0                                  |                                                            |                5 |             24 |
 |  CLK_IBUF_BUFG                               | paint/mouse/x_new_reg_n_0                                  |                                                            |                4 |             24 |
-|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/delay_100us_count[0]_i_2_n_0 | paint/mouse/Inst_Ps2Interface/clear                        |                4 |             28 |
 |  CLK_IBUF_BUFG                               |                                                            | paint/canvas/nn_inst/nn_rst_i_1_n_0                        |                7 |             28 |
-|  CLK_IBUF_BUFG                               |                                                            | paint/canvas/invY_reg                                      |               10 |             32 |
-|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/addr_const[15]_i_1_n_0            | paint/canvas/nn_inst/nn_algo_rst                           |               10 |             32 |
+|  CLK_IBUF_BUFG                               | paint/mouse/Inst_Ps2Interface/delay_100us_count[0]_i_2_n_0 | paint/mouse/Inst_Ps2Interface/clear                        |                4 |             28 |
+|  CLK_IBUF_BUFG                               |                                                            | paint/canvas/invY_reg                                      |                7 |             32 |
+|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/addr_const[15]_i_1_n_0            | paint/canvas/nn_inst/nn_algo_rst                           |                9 |             32 |
 | ~CLK_6P25M_BUFG                              |                                                            | oled/frame_counter[16]_i_1_n_0                             |                5 |             34 |
-|  paint/mouse/left                            |                                                            |                                                            |                9 |             36 |
-|  clk45/CLK_45K                               |                                                            |                                                            |               18 |             38 |
-|  CLK_IBUF_BUFG                               | seg[6]_i_1_n_0                                             |                                                            |                5 |             38 |
+|  paint/mouse/left                            |                                                            |                                                            |               10 |             36 |
+|  CLK_IBUF_BUFG                               | seg[6]_i_1_n_0                                             |                                                            |                6 |             38 |
+|  clk45/CLK_45K                               |                                                            |                                                            |               15 |             38 |
 | ~CLK_6P25M_BUFG                              | oled/delay[0]_i_1_n_0                                      |                                                            |                5 |             40 |
 |  paint/canvas/unit_6p25m/clk_6p25MHz         |                                                            |                                                            |               10 |             42 |
 |  CLK_IBUF_BUFG                               |                                                            | COUNT[24]_i_1_n_0                                          |                6 |             48 |
-|  CLK_IBUF_BUFG                               |                                                            | paint/mouse/reset_timeout_cnt                              |                6 |             48 |
+|  CLK_IBUF_BUFG                               |                                                            | paint/mouse/reset_timeout_cnt                              |                5 |             48 |
 |  CLK_IBUF_BUFG                               |                                                            | paint/mouse/reset_periodic_check_cnt                       |                7 |             52 |
-|  clk                                         |                                                            |                                                            |               14 |             60 |
 |  CLK_IBUF_BUFG                               |                                                            | C/clk200                                                   |                8 |             62 |
-| ~CLK_6P25M_BUFG                              | oled/state                                                 |                                                            |                9 |             64 |
-|  CLK_IBUF_BUFG                               |                                                            | A/clk6p25m/clear                                           |                8 |             64 |
-|  CLK_IBUF_BUFG                               |                                                            | B/bounce_counter[31]_i_1_n_0                               |                8 |             64 |
-|  CLK_IBUF_BUFG                               |                                                            | paint/canvas/unit_6p25m/clear                              |                8 |             64 |
 |  CLK_IBUF_BUFG                               |                                                            | paint/canvas/clock_mouse/clear                             |                8 |             64 |
 |  CLK_IBUF_BUFG                               | paint/canvas/nn_inst/nn_rst_i_1_n_0                        | paint/canvas/nn_inst/rst_counter                           |                8 |             64 |
+|  clk                                         |                                                            |                                                            |               12 |             64 |
+|  CLK_IBUF_BUFG                               |                                                            | paint/canvas/unit_6p25m/clear                              |                8 |             64 |
+|  CLK_IBUF_BUFG                               |                                                            | B/bounce_counter[31]_i_1_n_0                               |                8 |             64 |
+|  CLK_IBUF_BUFG                               |                                                            | A/clk6p25m/clear                                           |                8 |             64 |
+| ~CLK_6P25M_BUFG                              | oled/state                                                 |                                                            |                9 |             64 |
 |  canvas/clk_2                                |                                                            |                                                            |               25 |             66 |
 |  CLK_IBUF_BUFG                               | paint/canvas/nn_inst/ct_inst/nextDY                        | paint/canvas/invY_reg                                      |               13 |             68 |
-| ~CLK_6P25M_BUFG                              |                                                            | oled/spi_word[39]_i_1_n_0                                  |               18 |             90 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[225][0]                         |               15 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[1][2]                           |               15 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[1][0]                           |               17 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[65][0]                          |               18 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[129][0]                         |               20 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[1][1]                           |               18 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[129][2]                         |               19 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[65][2]                          |               19 |            128 |
+| ~CLK_6P25M_BUFG                              |                                                            | oled/spi_word[39]_i_1_n_0                                  |               16 |             90 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[1][2]                           |               16 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[225][0]                         |               19 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[1][1]                           |               15 |            128 |
 |  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[257][0]                         |               18 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[129][2]                         |               18 |            128 |
 |  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[161][1]                         |               19 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[193][1]                         |               14 |            128 |
-|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/val_out[63]_i_1_n_0               | paint/canvas/nn_inst/nn_algo_rst                           |               41 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[193][2]                         |               19 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[257][2]                         |               14 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[257][1]                         |               17 |            128 |
-|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[65][1]                          |               17 |            128 |
-|  clk20                                       |                                                            |                                                            |               37 |            176 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[193][1]                         |               17 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[193][2]                         |               17 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[1][0]                           |               18 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[129][0]                         |               16 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[257][2]                         |               15 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[65][0]                          |               18 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[257][1]                         |               15 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[65][1]                          |               16 |            128 |
+|  canvas/clk_2                                | paint/canvas/nn_inst/nn1/val_out[63]_i_1_n_0               | paint/canvas/nn_inst/nn_algo_rst                           |               37 |            128 |
+|  canvas/clockMouse                           |                                                            | paint/mouse/pixel_data_reg[65][2]                          |               18 |            128 |
+|  clk20                                       |                                                            |                                                            |               41 |            176 |
 |  canvas/clockMouse                           |                                                            | paint/mouse/right                                          |               32 |            246 |
-|  CLK_IBUF_BUFG                               |                                                            |                                                            |              100 |            510 |
+|  CLK_IBUF_BUFG                               |                                                            |                                                            |              110 |            510 |
 +----------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------+----------------+
 
 

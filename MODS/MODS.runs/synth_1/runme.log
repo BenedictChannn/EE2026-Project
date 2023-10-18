@@ -14,10 +14,10 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 6092 
+INFO: Helper process launched with PID 3708 
 WARNING: [Synth 8-2611] redeclaration of ansi port pixel_index is not allowed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/MouseOledPaint_Setup.v:36]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 398.680 ; gain = 112.512
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 398.320 ; gain = 111.387
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'Top_Student' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Top_Student.v:14]
 INFO: [Synth 8-6157] synthesizing module 'clk6p25m' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/clk6p25m.v:23]
@@ -29,8 +29,8 @@ INFO: [Synth 8-6157] synthesizing module 'clk_divider' [C:/Users/bened/OneDrive/
 INFO: [Synth 8-6155] done synthesizing module 'clk_divider' (3#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/clk_divider.v:3]
 INFO: [Synth 8-6157] synthesizing module 'debouncerA' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/debouncerA.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'debouncerA' (4#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/debouncerA.v:23]
-WARNING: [Synth 8-6090] variable 'timer' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Basic_Task_A.v:52]
-WARNING: [Synth 8-6090] variable 'timer' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Basic_Task_A.v:53]
+WARNING: [Synth 8-6090] variable 'timer' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Basic_Task_A.v:56]
+WARNING: [Synth 8-6090] variable 'timer' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Basic_Task_A.v:57]
 INFO: [Synth 8-6155] done synthesizing module 'Basic_Task_A' (5#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Basic_Task_A.v:14]
 INFO: [Synth 8-6157] synthesizing module 'Basic_Task_B' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Basic_Task_B.v:14]
 	Parameter BORDER_THICKNESS bound to: 3 - type: integer 
@@ -139,8 +139,8 @@ WARNING: [Synth 8-567] referenced signal 'pixel_data' should be on the sensitivi
 WARNING: [Synth 8-567] referenced signal 'row' should be on the sensitivity list [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/paint.v:146]
 WARNING: [Synth 8-567] referenced signal 'col' should be on the sensitivity list [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/paint.v:146]
 INFO: [Synth 8-6157] synthesizing module 'module_pack' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/module_pack.v:23]
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-31396-MSI/realtime/blk_mem_gen_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (11#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-31396-MSI/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-15556-MSI/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (11#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-15556-MSI/realtime/blk_mem_gen_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'CanvasTransfer' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/CanvasTransfer.v:23]
 	Parameter CANVAS_SIZE bound to: 3136 - type: integer 
 	Parameter IDLE bound to: 2'b10 
@@ -158,12 +158,12 @@ INFO: [Synth 8-226] default block is never used [C:/Users/bened/OneDrive/Documen
 WARNING: [Synth 8-6014] Unused sequential element offsetX_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/CanvasTransfer.v:91]
 WARNING: [Synth 8-6014] Unused sequential element offsetY_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/CanvasTransfer.v:92]
 INFO: [Synth 8-6155] done synthesizing module 'CanvasTransfer' (12#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/CanvasTransfer.v:23]
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_img' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-31396-MSI/realtime/blk_mem_gen_img_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_img' (13#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-31396-MSI/realtime/blk_mem_gen_img_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_const' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-31396-MSI/realtime/blk_mem_gen_const_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_const' (14#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-31396-MSI/realtime/blk_mem_gen_const_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_inter' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-31396-MSI/realtime/blk_mem_gen_inter_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_inter' (15#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-31396-MSI/realtime/blk_mem_gen_inter_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_img' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-15556-MSI/realtime/blk_mem_gen_img_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_img' (13#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-15556-MSI/realtime/blk_mem_gen_img_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_const' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-15556-MSI/realtime/blk_mem_gen_const_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_const' (14#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-15556-MSI/realtime/blk_mem_gen_const_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_inter' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-15556-MSI/realtime/blk_mem_gen_inter_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_inter' (15#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/.Xil/Vivado-15556-MSI/realtime/blk_mem_gen_inter_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'neural_net' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/neural_net.v:3]
 	Parameter S_IDLE bound to: 2'b00 
 	Parameter S_FIRST bound to: 2'b01 
@@ -288,7 +288,7 @@ WARNING: [Synth 8-3331] design paint has unconnected port led[11]
 WARNING: [Synth 8-3331] design Basic_Task_B has unconnected port btnC
 WARNING: [Synth 8-3331] design Top_Student has unconnected port JC[2]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 482.109 ; gain = 195.941
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 481.930 ; gain = 194.996
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -302,10 +302,10 @@ WARNING: [Synth 8-3295] tying undriven pin mouse:rst to constant 0 [C:/Users/ben
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 482.109 ; gain = 195.941
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 481.930 ; gain = 194.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 482.109 ; gain = 195.941
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 481.930 ; gain = 194.996
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -331,18 +331,18 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 831.922 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 830.723 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'paint/canvas/nn_inst/blk_mem_gen_0_inst' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'paint/canvas/nn_inst/blk_mem_gen_img_inst' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:19 . Memory (MB): peak = 833.488 ; gain = 547.320
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:22 . Memory (MB): peak = 832.289 ; gain = 545.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:19 . Memory (MB): peak = 833.488 ; gain = 547.320
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:22 . Memory (MB): peak = 832.289 ; gain = 545.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -352,7 +352,7 @@ Applied set_property DONT_TOUCH = true for paint/canvas/nn_inst/blk_mem_gen_0_in
 Applied set_property DONT_TOUCH = true for paint/canvas/nn_inst/blk_mem_gen_img_inst. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for paint/canvas/nn_inst/blk_mem_gen_const_inst. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:19 . Memory (MB): peak = 833.488 ; gain = 547.320
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:22 . Memory (MB): peak = 832.289 ; gain = 545.355
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5544] ROM "SLOW_CLK0" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5545] ROM "clk_output0" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -669,7 +669,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Oled_Display'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:28 . Memory (MB): peak = 833.488 ; gain = 547.320
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:31 . Memory (MB): peak = 832.289 ; gain = 545.355
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -723,7 +723,7 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 8     
 	                3 Bit    Registers := 366   
 	                2 Bit    Registers := 3     
-	                1 Bit    Registers := 69    
+	                1 Bit    Registers := 70    
 +---Muxes : 
 	   2 Input     64 Bit        Muxes := 5     
 	   4 Input     64 Bit        Muxes := 1     
@@ -775,7 +775,7 @@ Detailed RTL Component Info :
 	   5 Input      3 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 5     
 	   4 Input      2 Bit        Muxes := 3     
-	   2 Input      1 Bit        Muxes := 436   
+	   2 Input      1 Bit        Muxes := 437   
 	   6 Input      1 Bit        Muxes := 2     
 	   3 Input      1 Bit        Muxes := 9     
 	   5 Input      1 Bit        Muxes := 5     
@@ -846,12 +846,12 @@ Detailed RTL Component Info :
 +---Registers : 
 	               27 Bit    Registers := 1     
 	               16 Bit    Registers := 1     
-	                1 Bit    Registers := 2     
+	                1 Bit    Registers := 3     
 +---Muxes : 
 	   2 Input     27 Bit        Muxes := 4     
 	   3 Input     16 Bit        Muxes := 1     
 	   6 Input     16 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 3     
 Module Basic_Task_B 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -1134,8 +1134,8 @@ WARNING: [Synth 8-6014] Unused sequential element j_reg was removed.  [C:/Users/
 WARNING: [Synth 8-6014] Unused sequential element i_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/neural_net.v:69]
 WARNING: [Synth 8-6014] Unused sequential element i_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/neural_net.v:69]
 INFO: [Synth 8-5546] ROM "next_addr_inter" won't be mapped to RAM because it is too sparse
-DSP Debug: swapped A/B pins for adder 0000020BAF568560
-DSP Debug: swapped A/B pins for adder 0000020BAF55F380
+DSP Debug: swapped A/B pins for adder 000002D305D12960
+DSP Debug: swapped A/B pins for adder 000002D313E17B60
 DSP Report: Generating DSP next_val_out0, operation Mode is: A*B.
 DSP Report: operator next_val_out0 is absorbed into DSP next_val_out0.
 DSP Report: operator next_val_out0 is absorbed into DSP next_val_out0.
@@ -1400,7 +1400,7 @@ WARNING: [Synth 8-3332] Sequential element (LED_reg[2]_P) is unused and will be 
 WARNING: [Synth 8-3332] Sequential element (LED_reg[1]_P) is unused and will be removed from module module_pack.
 WARNING: [Synth 8-3332] Sequential element (LED_reg[0]_P) is unused and will be removed from module module_pack.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:50 ; elapsed = 00:01:12 . Memory (MB): peak = 833.488 ; gain = 547.320
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:01:17 . Memory (MB): peak = 832.289 ; gain = 545.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1454,13 +1454,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:01 ; elapsed = 00:01:32 . Memory (MB): peak = 889.457 ; gain = 603.289
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:00 ; elapsed = 00:01:36 . Memory (MB): peak = 884.891 ; gain = 597.957
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:04 ; elapsed = 00:01:35 . Memory (MB): peak = 930.516 ; gain = 644.348
+Finished Timing Optimization : Time (s): cpu = 00:01:02 ; elapsed = 00:01:39 . Memory (MB): peak = 924.930 ; gain = 637.996
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1488,7 +1488,7 @@ WARNING: [Synth 8-3332] Sequential element (paint/canvas/nn_inst/ct_inst/turtleX
 WARNING: [Synth 8-3332] Sequential element (paint/canvas/nn_inst/ct_inst/turtleY_reg[0]) is unused and will be removed from module Top_Student.
 INFO: [Synth 8-5844] Detected registers with asynchronous reset at DSP/BRAM block boundary. Consider using synchronous reset for optimal packing [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/CanvasTransfer.v:80]
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:08 ; elapsed = 00:01:42 . Memory (MB): peak = 1044.762 ; gain = 758.594
+Finished Technology Mapping : Time (s): cpu = 00:01:06 ; elapsed = 00:01:45 . Memory (MB): peak = 1038.285 ; gain = 751.352
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1514,7 +1514,7 @@ INFO: [Synth 8-5365] Flop paint/mouse/Inst_Ps2Interface/ps2_data_h_reg is being 
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:09 ; elapsed = 00:01:44 . Memory (MB): peak = 1044.762 ; gain = 758.594
+Finished IO Insertion : Time (s): cpu = 00:01:06 ; elapsed = 00:01:46 . Memory (MB): peak = 1038.285 ; gain = 751.352
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1527,7 +1527,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:09 ; elapsed = 00:01:44 . Memory (MB): peak = 1044.762 ; gain = 758.594
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:06 ; elapsed = 00:01:47 . Memory (MB): peak = 1038.285 ; gain = 751.352
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1539,25 +1539,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:10 ; elapsed = 00:01:45 . Memory (MB): peak = 1044.762 ; gain = 758.594
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:07 ; elapsed = 00:01:48 . Memory (MB): peak = 1038.285 ; gain = 751.352
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:10 ; elapsed = 00:01:45 . Memory (MB): peak = 1044.762 ; gain = 758.594
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:07 ; elapsed = 00:01:48 . Memory (MB): peak = 1038.285 ; gain = 751.352
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:10 ; elapsed = 00:01:45 . Memory (MB): peak = 1044.762 ; gain = 758.594
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:07 ; elapsed = 00:01:49 . Memory (MB): peak = 1038.285 ; gain = 751.352
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:10 ; elapsed = 00:01:45 . Memory (MB): peak = 1044.762 ; gain = 758.594
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:07 ; elapsed = 00:01:49 . Memory (MB): peak = 1038.285 ; gain = 751.352
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1590,17 +1590,17 @@ Report Cell Usage:
 |11    |DSP48E1_4         |     2|
 |12    |DSP48E1_5         |     1|
 |13    |LUT1              |    84|
-|14    |LUT2              |  1106|
+|14    |LUT2              |  1105|
 |15    |LUT3              |  1365|
-|16    |LUT4              |   536|
-|17    |LUT5              |   628|
+|16    |LUT4              |   537|
+|17    |LUT5              |   629|
 |18    |LUT6              |  1987|
 |19    |MUXF7             |   268|
 |20    |MUXF8             |    85|
 |21    |FDCE              |  1155|
 |22    |FDE_1             |    32|
 |23    |FDPE              |     2|
-|24    |FDRE              |  1088|
+|24    |FDRE              |  1089|
 |25    |FDSE              |    19|
 |26    |LD                |     8|
 |27    |IBUF              |    10|
@@ -1613,10 +1613,10 @@ Report Instance Areas:
 +------+------------------------+---------------------+------+
 |      |Instance                |Module               |Cells |
 +------+------------------------+---------------------+------+
-|1     |top                     |                     |  8953|
-|2     |  A                     |Basic_Task_A         |   221|
+|1     |top                     |                     |  8955|
+|2     |  A                     |Basic_Task_A         |   223|
 |3     |    btnC                |debouncerA           |     1|
-|4     |    btnU                |debouncerA_1         |     1|
+|4     |    btnU                |debouncerA_1         |     3|
 |5     |    clk6p25m            |clk_divider_2        |    51|
 |6     |  B                     |Basic_Task_B         |   337|
 |7     |  C                     |Basic_Task_C         |   422|
@@ -1638,11 +1638,11 @@ Report Instance Areas:
 |23    |      Inst_Ps2Interface |Ps2Interface         |   282|
 +------+------------------------+---------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:10 ; elapsed = 00:01:45 . Memory (MB): peak = 1044.762 ; gain = 758.594
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:07 ; elapsed = 00:01:49 . Memory (MB): peak = 1038.285 ; gain = 751.352
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 116 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:00 ; elapsed = 00:01:35 . Memory (MB): peak = 1044.762 ; gain = 407.215
-Synthesis Optimization Complete : Time (s): cpu = 00:01:10 ; elapsed = 00:01:45 . Memory (MB): peak = 1044.762 ; gain = 758.594
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:58 ; elapsed = 00:01:38 . Memory (MB): peak = 1038.285 ; gain = 400.992
+Synthesis Optimization Complete : Time (s): cpu = 00:01:07 ; elapsed = 00:01:49 . Memory (MB): peak = 1038.285 ; gain = 751.352
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 859 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -1657,9 +1657,9 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 399 Infos, 227 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:12 ; elapsed = 00:01:49 . Memory (MB): peak = 1044.762 ; gain = 770.090
+synth_design: Time (s): cpu = 00:01:09 ; elapsed = 00:01:54 . Memory (MB): peak = 1038.285 ; gain = 762.832
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/Top_Student.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_Student_utilization_synth.rpt -pb Top_Student_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.067 . Memory (MB): peak = 1044.762 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Wed Oct 18 00:50:49 2023...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.076 . Memory (MB): peak = 1038.285 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 18 08:54:00 2023...

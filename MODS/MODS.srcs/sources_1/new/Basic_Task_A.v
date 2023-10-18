@@ -36,17 +36,21 @@ module Basic_Task_A (
    reg [26:0] timer = 0;
    reg border = 0;
    reg box = 0;
+   reg btnuu = 0;
    
-    always @(posedge btnu) begin
-        if (border == 1) begin
-            box = ~box;
-        end
-    end
- 
     always @(posedge clk) begin
         if (active == 0) begin
             timer = 0;
             border = 0;
+            box = 0;
+            btnuu = 0;
+        end
+        if (btnu && border && btnuu == 0)begin
+            btnuu = 1;
+            box = ~box;
+        end
+        else if (btnu == 0 && border == 1 && btnuu == 1) begin
+            btnuu = 0;
         end
         if (border && timer <= 34_375_000) begin  
             if (timer < 34_375_000) timer <= timer + 1;
