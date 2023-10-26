@@ -41,7 +41,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .init_design.begin.rst
-EAStep vivado -log Brick_Breaker.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Brick_Breaker.tcl -notrace
+/bin/touch .write_bitstream.begin.rst
+EAStep vivado -log BrickBreaker_game.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source BrickBreaker_game.tcl -notrace
 
 

@@ -1,6 +1,6 @@
 
 *** Running vivado
-    with args -log Brick_Breaker.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Brick_Breaker.tcl
+    with args -log BrickBreaker_game.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source BrickBreaker_game.tcl
 
 
 ****** Vivado v2018.2 (64-bit)
@@ -8,17 +8,17 @@
   **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
     ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 
-source Brick_Breaker.tcl -notrace
-Command: synth_design -top Brick_Breaker -part xc7a35tcpg236-1
+source BrickBreaker_game.tcl -notrace
+Command: synth_design -top BrickBreaker_game -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 12464 
+INFO: Helper process launched with PID 20496 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 357.031 ; gain = 99.500
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 357.188 ; gain = 100.066
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'Brick_Breaker' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Brick_Breaker.v:23]
+INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_game' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:23]
 	Parameter SCREEN_WIDTH bound to: 96 - type: integer 
 	Parameter SCREEN_HEIGHT bound to: 64 - type: integer 
 	Parameter WHITE bound to: 16'b1111111111111111 
@@ -45,7 +45,7 @@ WARNING: [Synth 8-6014] Unused sequential element x_inter_reg was removed.  [C:/
 WARNING: [Synth 8-6014] Unused sequential element inc_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Mouse_Control.vhd:519]
 WARNING: [Synth 8-6014] Unused sequential element y_inter_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Mouse_Control.vhd:525]
 INFO: [Synth 8-256] done synthesizing module 'MouseCtl' (3#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Mouse_Control.vhd:212]
-WARNING: [Synth 8-350] instance 'mouse' of module 'MouseCtl' requires 16 connections, but only 10 given [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Brick_Breaker.v:238]
+WARNING: [Synth 8-350] instance 'mouse' of module 'MouseCtl' requires 16 connections, but only 10 given [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:238]
 INFO: [Synth 8-6157] synthesizing module 'Oled_Display' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:36]
 	Parameter Width bound to: 96 - type: integer 
 	Parameter Height bound to: 64 - type: integer 
@@ -101,11 +101,11 @@ INFO: [Synth 8-226] default block is never used [C:/Users/bened/OneDrive/Documen
 INFO: [Synth 8-226] default block is never used [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:198]
 WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:346]
 INFO: [Synth 8-6155] done synthesizing module 'Oled_Display' (4#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:36]
-WARNING: [Synth 8-350] instance 'oled' of module 'Oled_Display' requires 14 connections, but only 11 given [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Brick_Breaker.v:252]
-INFO: [Synth 8-6155] done synthesizing module 'Brick_Breaker' (5#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Brick_Breaker.v:23]
-WARNING: [Synth 8-3331] design Brick_Breaker has unconnected port JC[2]
+WARNING: [Synth 8-350] instance 'oled' of module 'Oled_Display' requires 14 connections, but only 11 given [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:252]
+INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_game' (5#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:23]
+WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port JC[2]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 417.637 ; gain = 160.105
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 417.336 ; gain = 160.215
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -114,15 +114,15 @@ Report Check Netlist:
 +------+------------------+-------+---------+-------+------------------+
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
-WARNING: [Synth 8-3295] tying undriven pin mouse:rst to constant 0 [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Brick_Breaker.v:238]
+WARNING: [Synth 8-3295] tying undriven pin mouse:rst to constant 0 [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:238]
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 417.637 ; gain = 160.105
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 417.336 ; gain = 160.215
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 417.637 ; gain = 160.105
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 417.336 ; gain = 160.215
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -131,29 +131,29 @@ Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc]
 Finished Parsing XDC File [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Brick_Breaker_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/Brick_Breaker_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/BrickBreaker_game_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/BrickBreaker_game_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 754.730 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 754.996 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 754.730 ; gain = 497.199
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:16 . Memory (MB): peak = 754.996 ; gain = 497.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 754.730 ; gain = 497.199
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:16 . Memory (MB): peak = 754.996 ; gain = 497.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 754.730 ; gain = 497.199
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:16 . Memory (MB): peak = 754.996 ; gain = 497.875
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5544] ROM "SLOW_CLK0" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Ps2Interface'
@@ -328,7 +328,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Oled_Display'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:17 . Memory (MB): peak = 754.730 ; gain = 497.199
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:18 . Memory (MB): peak = 754.996 ; gain = 497.875
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -398,7 +398,7 @@ Finished RTL Component Statistics
 Start RTL Hierarchical Component Statistics 
 ---------------------------------------------------------------------------------
 Hierarchical RTL Component report 
-Module Brick_Breaker 
+Module BrickBreaker_game 
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     32 Bit       Adders := 1     
@@ -499,7 +499,7 @@ INFO: [Synth 8-5545] ROM "periodic_check_tick" won't be mapped to RAM because ad
 INFO: [Synth 8-5546] ROM "timeout" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-3331] design Brick_Breaker has unconnected port JC[2]
+WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port JC[2]
 INFO: [Synth 8-3886] merging instance 'pixel_data_reg[0]' (FDR) to 'pixel_data_reg[15]'
 INFO: [Synth 8-3886] merging instance 'pixel_data_reg[1]' (FDR) to 'pixel_data_reg[15]'
 INFO: [Synth 8-3886] merging instance 'pixel_data_reg[2]' (FDR) to 'pixel_data_reg[15]'
@@ -537,55 +537,55 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (\mouse/x_
 INFO: [Synth 8-3886] merging instance 'pixel_data_reg[12]' (FDR) to 'pixel_data_reg[15]'
 INFO: [Synth 8-3886] merging instance 'pixel_data_reg[13]' (FDR) to 'pixel_data_reg[15]'
 INFO: [Synth 8-3886] merging instance 'pixel_data_reg[14]' (FDR) to 'pixel_data_reg[15]'
-WARNING: [Synth 8-3332] Sequential element (mouse/y_new_reg) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_overflow_reg) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[7]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[6]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[5]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[4]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[3]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[2]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[1]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[0]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_sign_reg) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[11]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[10]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[9]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[8]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[7]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[6]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[5]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[4]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[3]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[2]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[1]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[0]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[11]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[10]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[9]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[8]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[7]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[6]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[5]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[4]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[3]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[2]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[1]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[0]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/zpos_reg[3]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/zpos_reg[2]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/zpos_reg[1]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/zpos_reg[0]) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/left_down_reg) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/left_reg) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/middle_down_reg) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/middle_reg) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/right_down_reg) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/right_reg) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/new_event_reg) is unused and will be removed from module Brick_Breaker.
-WARNING: [Synth 8-3332] Sequential element (mouse/x_max_reg[11]) is unused and will be removed from module Brick_Breaker.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_new_reg) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_overflow_reg) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[7]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[6]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[5]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[4]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[3]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[2]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[1]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_inc_reg[0]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_sign_reg) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[11]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[10]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[9]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[8]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[7]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[6]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[5]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[4]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[3]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[2]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[1]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/y_pos_reg[0]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[11]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[10]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[9]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[8]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[7]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[6]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[5]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[4]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[3]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[2]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[1]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/ypos_reg[0]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/zpos_reg[3]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/zpos_reg[2]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/zpos_reg[1]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/zpos_reg[0]) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/left_down_reg) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/left_reg) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/middle_down_reg) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/middle_reg) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/right_down_reg) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/right_reg) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/new_event_reg) is unused and will be removed from module BrickBreaker_game.
+WARNING: [Synth 8-3332] Sequential element (mouse/x_max_reg[11]) is unused and will be removed from module BrickBreaker_game.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 754.730 ; gain = 497.199
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 754.996 ; gain = 497.875
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -597,13 +597,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:32 . Memory (MB): peak = 754.730 ; gain = 497.199
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:34 . Memory (MB): peak = 754.996 ; gain = 497.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:35 . Memory (MB): peak = 813.527 ; gain = 555.996
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:37 . Memory (MB): peak = 808.766 ; gain = 551.645
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -615,7 +615,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:36 . Memory (MB): peak = 822.594 ; gain = 565.062
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:38 . Memory (MB): peak = 817.844 ; gain = 560.723
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -641,7 +641,7 @@ INFO: [Synth 8-5365] Flop mouse/Inst_Ps2Interface/ps2_data_h_reg is being invert
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:17 ; elapsed = 00:00:36 . Memory (MB): peak = 822.594 ; gain = 565.062
+Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:39 . Memory (MB): peak = 817.844 ; gain = 560.723
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -654,7 +654,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:17 ; elapsed = 00:00:36 . Memory (MB): peak = 822.594 ; gain = 565.062
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:39 . Memory (MB): peak = 817.844 ; gain = 560.723
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -666,25 +666,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:17 ; elapsed = 00:00:36 . Memory (MB): peak = 822.594 ; gain = 565.062
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:39 . Memory (MB): peak = 817.844 ; gain = 560.723
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:36 . Memory (MB): peak = 822.594 ; gain = 565.062
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:39 . Memory (MB): peak = 817.844 ; gain = 560.723
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:17 ; elapsed = 00:00:36 . Memory (MB): peak = 822.594 ; gain = 565.062
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:39 . Memory (MB): peak = 817.844 ; gain = 560.723
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:17 ; elapsed = 00:00:36 . Memory (MB): peak = 822.594 ; gain = 565.062
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:39 . Memory (MB): peak = 817.844 ; gain = 560.723
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -728,11 +728,11 @@ Report Instance Areas:
 |5     |  oled                |Oled_Display |   481|
 +------+----------------------+-------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:17 ; elapsed = 00:00:36 . Memory (MB): peak = 822.594 ; gain = 565.062
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:39 . Memory (MB): peak = 817.844 ; gain = 560.723
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 48 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:29 . Memory (MB): peak = 822.594 ; gain = 227.969
-Synthesis Optimization Complete : Time (s): cpu = 00:00:17 ; elapsed = 00:00:37 . Memory (MB): peak = 822.594 ; gain = 565.062
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:31 . Memory (MB): peak = 817.844 ; gain = 223.062
+Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:39 . Memory (MB): peak = 817.844 ; gain = 560.723
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 98 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -746,9 +746,9 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 142 Infos, 57 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:39 . Memory (MB): peak = 822.594 ; gain = 577.930
+synth_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:42 . Memory (MB): peak = 817.844 ; gain = 573.316
 WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/Brick_Breaker.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file Brick_Breaker_utilization_synth.rpt -pb Brick_Breaker_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 822.594 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Oct 26 17:56:02 2023...
+INFO: [Common 17-1381] The checkpoint 'C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/BrickBreaker_game.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file BrickBreaker_game_utilization_synth.rpt -pb BrickBreaker_game_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 817.844 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 26 21:41:06 2023...

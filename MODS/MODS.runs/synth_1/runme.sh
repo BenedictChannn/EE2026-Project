@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log Brick_Breaker.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Brick_Breaker.tcl
+EAStep vivado -log BrickBreaker_game.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source BrickBreaker_game.tcl

@@ -23,9 +23,9 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 // pre-commands:
-ISETouchFile( "init_design", "begin" );
+ISETouchFile( "write_bitstream", "begin" );
 ISEStep( "vivado",
-         "-log Brick_Breaker.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Brick_Breaker.tcl -notrace" );
+         "-log BrickBreaker_game.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source BrickBreaker_game.tcl -notrace" );
 
 
 
