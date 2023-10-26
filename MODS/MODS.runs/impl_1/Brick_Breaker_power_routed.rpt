@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Thu Oct 26 16:34:04 2023
+| Date             : Thu Oct 26 17:57:13 2023
 | Host             : MSI running 64-bit major release  (build 9200)
 | Command          : report_power -file Brick_Breaker_power_routed.rpt -pb Brick_Breaker_power_summary_routed.pb -rpx Brick_Breaker_power_routed.rpx
 | Design           : Brick_Breaker
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.078        |
+| Total On-Chip Power (W)  | 0.080        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.006        |
+| Dynamic (W)              | 0.008        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.6         |
@@ -53,17 +53,17 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |     0.002 |     1074 |       --- |             --- |
-|   LUT as Logic |     0.001 |      495 |     20800 |            2.38 |
+| Slice Logic    |     0.002 |     1096 |       --- |             --- |
+|   LUT as Logic |     0.002 |      526 |     20800 |            2.53 |
 |   CARRY4       |    <0.001 |       62 |      8150 |            0.76 |
 |   Register     |    <0.001 |      365 |     41600 |            0.88 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   F7/F8 Muxes  |    <0.001 |        2 |     32600 |           <0.01 |
+|   F7/F8 Muxes  |    <0.001 |        1 |     32600 |           <0.01 |
 |   Others       |     0.000 |       11 |       --- |             --- |
-| Signals        |     0.001 |      754 |       --- |             --- |
-| I/O            |     0.001 |       11 |       106 |           10.38 |
+| Signals        |     0.001 |      789 |       --- |             --- |
+| I/O            |     0.003 |       11 |       106 |           10.38 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.078 |          |           |                 |
+| Total          |     0.080 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.014 |       0.005 |      0.010 |
+| Vccint    |       1.000 |     0.015 |       0.005 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
-| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
+| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -142,13 +142,13 @@ Table of Contents
 +-----------------------+-----------+
 | Name                  | Power (W) |
 +-----------------------+-----------+
-| Brick_Breaker         |     0.006 |
+| Brick_Breaker         |     0.008 |
 |   PS2Clk_IOBUF_inst   |     0.000 |
 |   PS2Data_IOBUF_inst  |     0.000 |
 |   clk625              |    <0.001 |
 |   mouse               |     0.003 |
-|     Inst_Ps2Interface |     0.001 |
-|   oled                |     0.001 |
+|     Inst_Ps2Interface |    <0.001 |
+|   oled                |     0.002 |
 +-----------------------+-----------+
 
 
