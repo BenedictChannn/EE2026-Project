@@ -21,10 +21,14 @@
 
 
 module BrickBreaker_game(
-    input CLK, 
+    input CLK, btnU, btnD,
     output [7:0] JC,
     inout PS2Clk, PS2Data
     );
+    
+    // Debouncing
+    parameter BOUNCE_TIME = 32'd15000000;
+    reg [31:0] bounce_counter = 32'd0;
     
     // OLED
     parameter SCREEN_WIDTH = 96;
@@ -40,7 +44,7 @@ module BrickBreaker_game(
     parameter BOARD_WIDTH = 16;
     parameter BOARD_HEIGHT = 3;
     parameter BOARD_COLOUR = WHITE;
-    reg [11:0] board_position = 12'd32;
+    reg [11:0] board_x_pos = 12'd32;
     
     // Brick
     parameter BRICK_WIDTH = 5;
@@ -50,7 +54,7 @@ module BrickBreaker_game(
     wire [12:0] pixel_index;
     reg [15:0] pixel_data;
     
-    wire [11:0] mouse_x_pos, mouse_y_pos;
+    //wire [11:0] mouse_x_pos, mouse_y_pos;
     wire [6:0] col, row;
     
     assign col = pixel_index % SCREEN_WIDTH;
@@ -203,11 +207,11 @@ module BrickBreaker_game(
     wire brick_130 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
     
     always @ (posedge CLK) begin
-        if ((mouse_x_pos > BOARD_WIDTH / 2) && (mouse_x_pos < (SCREEN_HEIGHT - BOARD_WIDTH / 2))) begin
-            board_position <= mouse_x_pos;
-        end
+//        if ((mouse_x_pos > BOARD_WIDTH / 2) && (mouse_x_pos < (SCREEN_HEIGHT - BOARD_WIDTH / 2))) begin
+//            board_x_pos <= mouse_x_pos;
+//        end
         
-        if ((row > (board_position -  BOARD_WIDTH / 2) && row <= (board_position + BOARD_WIDTH / 2)) && (col > 87 && col <= 87 + BOARD_HEIGHT)) begin
+        if ((row > (board_x_pos -  BOARD_WIDTH / 2) && row <= (board_x_pos + BOARD_WIDTH / 2)) && (col > 87 && col <= 87 + BOARD_HEIGHT)) begin
             pixel_data <= BOARD_COLOUR;
         end else begin
             pixel_data <= BLACK;
@@ -231,22 +235,35 @@ module BrickBreaker_game(
         end
     end
     
+    always @ (posedge CLK) begin
+        if (bounce_counter > 0) begin
+            bounce_counter <= bounce_counter - 1;
+        end else if (bounce_counter == 0) begin
+            bounce_counter <= BOUNCE_TIME;
+            if (btnU) begin
+                board_x_pos <= (board_x_pos - 5 < BOARD_WIDTH / 2) ? BOARD_WIDTH / 2 : board_x_pos - 5;
+            end else if (btnD) begin
+                board_x_pos <= (board_x_pos + 5 > SCREEN_HEIGHT - BOARD_WIDTH / 2 ) ? SCREEN_HEIGHT - BOARD_WIDTH / 2 : board_x_pos + 5;
+            end
+        end
+    end
     
     
     
-    // Instantiate mouse 
-    MouseCtl mouse(
-        .clk(CLK),
-        .xpos(mouse_x_pos), 
-        .ypos(mouse_y_pos), 
-        .ps2_clk(PS2Clk), 
-        .ps2_data(PS2Data),
-        .value(12'b0),
-        .setx(0), 
-        .sety(0), 
-        .setmax_x(SCREEN_WIDTH - 1), 
-        .setmax_y(SCREEN_HEIGHT - 1)
-    );
+    
+//    // Instantiate mouse 
+//    MouseCtl mouse(
+//        .clk(CLK),
+//        .xpos(mouse_x_pos), 
+//        .ypos(mouse_y_pos), 
+//        .ps2_clk(PS2Clk), 
+//        .ps2_data(PS2Data),
+//        .value(12'b0),
+//        .setx(0), 
+//        .sety(0), 
+//        .setmax_x(SCREEN_HEIGHT - 1), 
+//        .setmax_y(SCREEN_WIDTH - 1)
+//    );
         
     // Instantiate Oled display to display either green or red depending on sw4
     Oled_Display oled (
