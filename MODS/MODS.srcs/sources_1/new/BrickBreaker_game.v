@@ -50,6 +50,7 @@ module BrickBreaker_game(
     parameter BOARD_HEIGHT = 3;
     parameter BOARD_COLOUR = WHITE;
     reg [11:0] board_x_pos = 12'd32;
+    reg [11:0] board_y_pos = 12'd87;
     
     // Brick
     parameter BRICK_WIDTH = 5;
@@ -252,15 +253,11 @@ module BrickBreaker_game(
             endcase
             
             
-            if ((row > (board_x_pos -  BOARD_WIDTH / 2) && row <= (board_x_pos + BOARD_WIDTH / 2)) && (col > 87 && col <= 87 + BOARD_HEIGHT)) begin
+            if ((row > (board_x_pos -  BOARD_WIDTH / 2) && row <= (board_x_pos + BOARD_WIDTH / 2)) && (col > board_y_pos && col <= board_y_pos + BOARD_HEIGHT)) begin
                 pixel_data <= BOARD_COLOUR;
             end else if (row > ball_x_pos - BALL_RADIUS && row <= ball_x_pos + BALL_RADIUS && col > ball_y_pos - BALL_RADIUS && col <= ball_y_pos + BALL_RADIUS) begin
                 pixel_data <= BALL_COLOUR;
-            end else begin
-                pixel_data <= BLACK;
-            end
-            
-            if (brick_1 || brick_2 || brick_3 || brick_4 || brick_5 || brick_6 || brick_7 || brick_8 || brick_9 || brick_10 
+            end else if (brick_1 || brick_2 || brick_3 || brick_4 || brick_5 || brick_6 || brick_7 || brick_8 || brick_9 || brick_10 
             || brick_11 || brick_12 || brick_13 || brick_14 || brick_15 || brick_16 || brick_17 || brick_18 || brick_19 || brick_20
             || brick_21 || brick_22 || brick_23 || brick_24 || brick_25 || brick_26 || brick_27 || brick_28 || brick_29 || brick_30
             || brick_31 || brick_32 || brick_33 || brick_34 || brick_35 || brick_36 || brick_37 || brick_38 || brick_39 || brick_40
@@ -275,10 +272,14 @@ module BrickBreaker_game(
             || brick_121 || brick_122 || brick_123 || brick_124 || brick_125 || brick_126 || brick_127 || brick_128 || brick_129 || brick_130)
             begin
                 pixel_data <= BRICK_COLOUR;
-            end 
+            end else begin
+                pixel_data <= BLACK;
+            end
             
             if (ball_y_pos >= BOTTOM) begin
                 game_over <= 1'b1;
+            end else if (ball_x_pos >= board_x_pos - BOARD_WIDTH / 2 && ball_x_pos <= board_x_pos + BOARD_WIDTH / 2 && ball_y_pos >= board_y_pos && ball_y_pos <= board_y_pos + BOARD_HEIGHT) begin
+                current_state <= BOUNCE_UP;
             end
         end else begin
             pixel_data <= screen_data;
