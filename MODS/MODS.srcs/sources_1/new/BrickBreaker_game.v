@@ -55,7 +55,7 @@ module BrickBreaker_game(
     wire [12:0] pixel_index;
     reg [15:0] pixel_data;
     wire [15:0] screen_data;
-    //reg [15:0] game_data;
+    wire [15:0] over_data;
     
     //wire [11:0] mouse_x_pos, mouse_y_pos;
     wire [6:0] col, row;
@@ -65,7 +65,7 @@ module BrickBreaker_game(
     
     clk6p25m clk625 (CLK, CLK_6P25M);
     
-    /////////////////////////////////////////////////////// Brick ///////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////// Brick /////////////////////////////////////////////////////////////
     wire brick_1 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
     wire brick_2 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
     wire brick_3 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
@@ -208,6 +208,7 @@ module BrickBreaker_game(
     wire brick_128 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
     wire brick_129 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
     wire brick_130 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    ////////////////////////////////////////////////////////////// Brick //////////////////////////////////////////////////////////////
     
     always @ (posedge CLK) begin
         if (unlock) begin   
@@ -234,7 +235,7 @@ module BrickBreaker_game(
                 pixel_data <= BRICK_COLOUR;
             end
         end else begin
-            pixel_data <= screen_data;
+            pixel_data <= over_data;
         end
     end
     
@@ -293,6 +294,10 @@ module BrickBreaker_game(
         .pmoden(JC[7])
     );
     
-    BrickBreaker_display loadScreen (pixel_index, screen_data);
+    // Oled data for welcome screen
+    // BrickBreaker_display loadScreen (pixel_index, screen_data);
+    
+    // Oled data for game over screen
+    BrickBreaker_gameOver gameOverScreen (pixel_index, over_data);
 endmodule
 
