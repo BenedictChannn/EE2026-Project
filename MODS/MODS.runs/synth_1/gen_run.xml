@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1698473439">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1698483529">
   <File Type="PA-TCL" Name="BrickBreaker_game.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="BrickBreaker_game_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="BrickBreaker_game_reports.tcl"/>
