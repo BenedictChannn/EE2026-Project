@@ -21,7 +21,7 @@
 
 
 module BrickBreaker_game(
-    input CLK, btnU, btnD,
+    input CLK, btnU, btnD, btnC,
     output [7:0] JC,
     inout PS2Clk, PS2Data
     );
@@ -33,6 +33,7 @@ module BrickBreaker_game(
     // OLED
     parameter SCREEN_WIDTH = 96;
     parameter SCREEN_HEIGHT = 64;
+    reg unlock = 1'b0;
     
     // Colours
     parameter WHITE = 16'hFFFF;
@@ -53,6 +54,8 @@ module BrickBreaker_game(
     
     wire [12:0] pixel_index;
     reg [15:0] pixel_data;
+    wire [15:0] screen_data;
+    //reg [15:0] game_data;
     
     //wire [11:0] mouse_x_pos, mouse_y_pos;
     wire [6:0] col, row;
@@ -207,44 +210,54 @@ module BrickBreaker_game(
     wire brick_130 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
     
     always @ (posedge CLK) begin
-//        if ((mouse_x_pos > BOARD_WIDTH / 2) && (mouse_x_pos < (SCREEN_HEIGHT - BOARD_WIDTH / 2))) begin
-//            board_x_pos <= mouse_x_pos;
-//        end
-        
-        if ((row > (board_x_pos -  BOARD_WIDTH / 2) && row <= (board_x_pos + BOARD_WIDTH / 2)) && (col > 87 && col <= 87 + BOARD_HEIGHT)) begin
-            pixel_data <= BOARD_COLOUR;
+        if (unlock) begin   
+            if ((row > (board_x_pos -  BOARD_WIDTH / 2) && row <= (board_x_pos + BOARD_WIDTH / 2)) && (col > 87 && col <= 87 + BOARD_HEIGHT)) begin
+                pixel_data <= BOARD_COLOUR;
+            end else begin
+                pixel_data <= BLACK;
+            end
+            
+            if (brick_1 || brick_2 || brick_3 || brick_4 || brick_5 || brick_6 || brick_7 || brick_8 || brick_9 || brick_10 
+            || brick_11 || brick_12 || brick_13 || brick_14 || brick_15 || brick_16 || brick_17 || brick_18 || brick_19 || brick_20
+            || brick_21 || brick_22 || brick_23 || brick_24 || brick_25 || brick_26 || brick_27 || brick_28 || brick_29 || brick_30
+            || brick_31 || brick_32 || brick_33 || brick_34 || brick_35 || brick_36 || brick_37 || brick_38 || brick_39 || brick_40
+            || brick_41 || brick_42 || brick_43 || brick_44 || brick_45 || brick_46 || brick_47 || brick_48 || brick_49 || brick_50
+            || brick_51 || brick_52 || brick_53 || brick_54 || brick_55 || brick_56 || brick_57 || brick_58 || brick_59 || brick_60
+            || brick_61 || brick_62 || brick_63 || brick_64 || brick_65 || brick_66 || brick_67 || brick_68 || brick_69 || brick_70
+            || brick_71 || brick_72 || brick_73 || brick_74 || brick_75 || brick_76 || brick_77 || brick_78 || brick_79 || brick_80
+            || brick_81 || brick_82 || brick_83 || brick_84 || brick_85 || brick_86 || brick_87 || brick_88 || brick_89 || brick_90
+            || brick_91 || brick_92 || brick_93 || brick_94 || brick_95 || brick_96 || brick_97 || brick_98 || brick_99 || brick_100
+            || brick_101 || brick_102 || brick_103 || brick_104 || brick_105 || brick_106 || brick_107 || brick_108 || brick_109 || brick_110
+            || brick_111 || brick_112 || brick_113 || brick_114 || brick_115 || brick_116 || brick_117 || brick_118 || brick_119 || brick_120
+            || brick_121 || brick_122 || brick_123 || brick_124 || brick_125 || brick_126 || brick_127 || brick_128 || brick_129 || brick_130)
+            begin
+                pixel_data <= BRICK_COLOUR;
+            end
         end else begin
-            pixel_data <= BLACK;
-        end
-        
-        if (brick_1 || brick_2 || brick_3 || brick_4 || brick_5 || brick_6 || brick_7 || brick_8 || brick_9 || brick_10 
-        || brick_11 || brick_12 || brick_13 || brick_14 || brick_15 || brick_16 || brick_17 || brick_18 || brick_19 || brick_20
-        || brick_21 || brick_22 || brick_23 || brick_24 || brick_25 || brick_26 || brick_27 || brick_28 || brick_29 || brick_30
-        || brick_31 || brick_32 || brick_33 || brick_34 || brick_35 || brick_36 || brick_37 || brick_38 || brick_39 || brick_40
-        || brick_41 || brick_42 || brick_43 || brick_44 || brick_45 || brick_46 || brick_47 || brick_48 || brick_49 || brick_50
-        || brick_51 || brick_52 || brick_53 || brick_54 || brick_55 || brick_56 || brick_57 || brick_58 || brick_59 || brick_60
-        || brick_61 || brick_62 || brick_63 || brick_64 || brick_65 || brick_66 || brick_67 || brick_68 || brick_69 || brick_70
-        || brick_71 || brick_72 || brick_73 || brick_74 || brick_75 || brick_76 || brick_77 || brick_78 || brick_79 || brick_80
-        || brick_81 || brick_82 || brick_83 || brick_84 || brick_85 || brick_86 || brick_87 || brick_88 || brick_89 || brick_90
-        || brick_91 || brick_92 || brick_93 || brick_94 || brick_95 || brick_96 || brick_97 || brick_98 || brick_99 || brick_100
-        || brick_101 || brick_102 || brick_103 || brick_104 || brick_105 || brick_106 || brick_107 || brick_108 || brick_109 || brick_110
-        || brick_111 || brick_112 || brick_113 || brick_114 || brick_115 || brick_116 || brick_117 || brick_118 || brick_119 || brick_120
-        || brick_121 || brick_122 || brick_123 || brick_124 || brick_125 || brick_126 || brick_127 || brick_128 || brick_129 || brick_130)
-        begin
-            pixel_data <= BRICK_COLOUR;
+            pixel_data <= screen_data;
         end
     end
     
+    // Control board movement
     always @ (posedge CLK) begin
-        if (bounce_counter > 0) begin
-            bounce_counter <= bounce_counter - 1;
-        end else if (bounce_counter == 0) begin
-            bounce_counter <= BOUNCE_TIME;
-            if (btnU) begin
-                board_x_pos <= (board_x_pos - 5 < BOARD_WIDTH / 2) ? BOARD_WIDTH / 2 : board_x_pos - 5;
-            end else if (btnD) begin
-                board_x_pos <= (board_x_pos + 5 > SCREEN_HEIGHT - BOARD_WIDTH / 2 ) ? SCREEN_HEIGHT - BOARD_WIDTH / 2 : board_x_pos + 5;
+        if (unlock) begin
+            if (bounce_counter > 0) begin
+                bounce_counter <= bounce_counter - 1;
+            end else if (bounce_counter == 0) begin
+                bounce_counter <= BOUNCE_TIME;
+                if (btnU) begin
+                    board_x_pos <= (board_x_pos - 5 < BOARD_WIDTH / 2) ? BOARD_WIDTH / 2 : board_x_pos - 5;
+                end else if (btnD) begin
+                    board_x_pos <= (board_x_pos + 5 > SCREEN_HEIGHT - BOARD_WIDTH / 2 ) ? SCREEN_HEIGHT - BOARD_WIDTH / 2 : board_x_pos + 5;
+                end
             end
+        end
+    end
+    
+    // Unlock to go the game 
+    always @ (posedge CLK) begin
+        if (btnC) begin
+            unlock <= 1'b1;
         end
     end
     
@@ -279,5 +292,7 @@ module BrickBreaker_game(
         .vccen(JC[6]), 
         .pmoden(JC[7])
     );
+    
+    BrickBreaker_display loadScreen (pixel_index, screen_data);
 endmodule
 
