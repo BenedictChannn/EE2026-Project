@@ -275,14 +275,32 @@ module BrickBreaker_game(
             end else begin
                 pixel_data <= BLACK;
             end
-            
+           
+        end else begin
+            pixel_data <= screen_data;
+        end
+    end
+    
+    
+    integer i;
+    reg [3:0] brick_col, brick_row;
+    always @ (posedge CLK) begin
+        if (current_state == BOUNCE_UP) begin
+            for (i = 0; i < N_BRICKS; i = i + 1) begin
+                brick_col = i % 10;
+                brick_row = i / 10;
+                if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
+                    brick_state[i] <= 1'b0;
+                    current_state <= BOUNCE_DOWN;
+                end
+            end
+        end else if (current_state == BOUNCE_DOWN) begin
             if (ball_y_pos >= BOTTOM) begin
                 game_over <= 1'b1;
             end else if (ball_x_pos >= board_x_pos - BOARD_WIDTH / 2 && ball_x_pos <= board_x_pos + BOARD_WIDTH / 2 && ball_y_pos >= board_y_pos && ball_y_pos <= board_y_pos + BOARD_HEIGHT) begin
                 current_state <= BOUNCE_UP;
             end
-        end else begin
-            pixel_data <= screen_data;
         end
     end
     

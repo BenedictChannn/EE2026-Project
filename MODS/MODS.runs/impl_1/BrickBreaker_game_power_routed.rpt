@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Sun Oct 29 01:34:02 2023
+| Date             : Sun Oct 29 02:15:35 2023
 | Host             : MSI running 64-bit major release  (build 9200)
 | Command          : report_power -file BrickBreaker_game_power_routed.rpt -pb BrickBreaker_game_power_summary_routed.pb -rpx BrickBreaker_game_power_routed.rpx
 | Design           : BrickBreaker_game
@@ -52,15 +52,15 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.001 |        3 |       --- |             --- |
-| Slice Logic    |     0.011 |     4077 |       --- |             --- |
-|   LUT as Logic |     0.010 |     2747 |     20800 |           13.21 |
-|   F7/F8 Muxes  |    <0.001 |      841 |     32600 |            2.58 |
+| Clocks         |     0.002 |        3 |       --- |             --- |
+| Slice Logic    |     0.010 |     4149 |       --- |             --- |
+|   LUT as Logic |     0.009 |     2813 |     20800 |           13.52 |
+|   F7/F8 Muxes  |    <0.001 |      834 |     32600 |            2.56 |
 |   CARRY4       |    <0.001 |       80 |      8150 |            0.98 |
-|   Register     |    <0.001 |      228 |     41600 |            0.55 |
+|   Register     |    <0.001 |      238 |     41600 |            0.57 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |        7 |       --- |             --- |
-| Signals        |     0.008 |     2148 |       --- |             --- |
+| Signals        |     0.008 |     2226 |       --- |             --- |
 | I/O            |     0.002 |       13 |       106 |           12.26 |
 | Static Power   |     0.072 |          |           |                 |
 | Total          |     0.094 |          |           |                 |
@@ -145,7 +145,7 @@ Table of Contents
 | BrickBreaker_game |     0.022 |
 |   clk625          |    <0.001 |
 |   loadScreen      |     0.004 |
-|   oled            |     0.013 |
+|   oled            |     0.012 |
 +-------------------+-----------+
 
 
