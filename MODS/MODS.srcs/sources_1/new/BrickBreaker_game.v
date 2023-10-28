@@ -30,10 +30,14 @@ module BrickBreaker_game(
     parameter BOUNCE_TIME = 32'd15000000;
     reg [31:0] bounce_counter = 32'd0;
     
+    // Boundaries
+    parameter BOTTOM = 95;
+    
     // OLED
     parameter SCREEN_WIDTH = 96;
     parameter SCREEN_HEIGHT = 64;
     reg unlock = 1'b0;
+    reg game_over = 1'b0;
     
     // Colours
     parameter WHITE = 16'hFFFF;
@@ -51,11 +55,21 @@ module BrickBreaker_game(
     parameter BRICK_WIDTH = 5;
     parameter BRICK_HEIGHT = 5;
     parameter BRICK_COLOUR = GREEN;
-    reg [129:0] brick_state = {130{1'b1}};
+    parameter N_BRICKS = 130;
+    reg [129:0] brick_state = {N_BRICKS{1'b1}};
     
     // Ball movement
     reg [11:0] ball_x_pos = 12'd32;
-    reg [11:0] ball_y_pos = 12'd35;
+    reg [11:0] ball_y_pos = 12'd65;
+    reg [1:0] current_state = BOUNCE_DOWN;
+    reg [1:0] next_state;
+    reg [31:0] ball_move_counter = 32'd0;
+    parameter BALL_MOVE_DELAY = 32'd3000000;
+    parameter BALL_COLOUR = RED;
+    parameter BALL_RADIUS = 1;
+    parameter BOUNCE_UP = 1;
+    parameter BOUNCE_DOWN = 2;
+    
     parameter DELTA_Y = 3;
     
     wire [12:0] pixel_index;
@@ -217,9 +231,31 @@ module BrickBreaker_game(
     ////////////////////////////////////////////////////////////// Brick //////////////////////////////////////////////////////////////
     
     always @ (posedge CLK) begin
-        if (unlock) begin   
+        if (game_over) begin
+            pixel_data <= over_data;
+        end else if (unlock) begin   
+            case(current_state)
+                BOUNCE_UP: 
+                    if (ball_move_counter == BALL_MOVE_DELAY) begin
+                        ball_y_pos <= ball_y_pos - 1;
+                        ball_move_counter <= 0;
+                    end else  begin
+                        ball_move_counter <= ball_move_counter + 1;
+                    end
+                BOUNCE_DOWN: 
+                    if (ball_move_counter == BALL_MOVE_DELAY) begin
+                        ball_y_pos <= ball_y_pos + 1;
+                        ball_move_counter <= 0;
+                    end else  begin
+                        ball_move_counter <= ball_move_counter + 1;
+                    end                 
+            endcase
+            
+            
             if ((row > (board_x_pos -  BOARD_WIDTH / 2) && row <= (board_x_pos + BOARD_WIDTH / 2)) && (col > 87 && col <= 87 + BOARD_HEIGHT)) begin
                 pixel_data <= BOARD_COLOUR;
+            end else if (row > ball_x_pos - BALL_RADIUS && row <= ball_x_pos + BALL_RADIUS && col > ball_y_pos - BALL_RADIUS && col <= ball_y_pos + BALL_RADIUS) begin
+                pixel_data <= BALL_COLOUR;
             end else begin
                 pixel_data <= BLACK;
             end
@@ -239,6 +275,10 @@ module BrickBreaker_game(
             || brick_121 || brick_122 || brick_123 || brick_124 || brick_125 || brick_126 || brick_127 || brick_128 || brick_129 || brick_130)
             begin
                 pixel_data <= BRICK_COLOUR;
+            end 
+            
+            if (ball_y_pos >= BOTTOM) begin
+                game_over <= 1'b1;
             end
         end else begin
             pixel_data <= screen_data;
