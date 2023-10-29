@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1698516740">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1698600412">
   <File Type="BITSTR-BMM" Name="BrickBreaker_game_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="BrickBreaker_game_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="BrickBreaker_game_timing_summary_init.rpt"/>
