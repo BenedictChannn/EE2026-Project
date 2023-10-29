@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Mon Oct 30 01:26:56 2023
-# Process ID: 22024
+# Start of session at: Mon Oct 30 01:55:12 2023
+# Process ID: 25188
 # Current directory: C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1
 # Command line: vivado.exe -log BrickBreaker_game.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source BrickBreaker_game.tcl
 # Log file: C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/BrickBreaker_game.vds
@@ -15,10 +15,10 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 24972 
+INFO: Helper process launched with PID 11668 
 WARNING: [Synth 8-2611] redeclaration of ansi port pixel_index is not allowed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/MouseOledPaint_Setup.v:36]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 398.668 ; gain = 112.363
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 398.680 ; gain = 112.438
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_game' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:23]
 	Parameter BOUNDARY_TOP bound to: 0 - type: integer 
@@ -50,7 +50,7 @@ INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_game' [C:/Users/bened/One
 	Parameter BOUNCE_UP_RIGHT bound to: 6 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'clk6p25m' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/clk6p25m.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'clk6p25m' (1#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/clk6p25m.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:245]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:246]
 INFO: [Synth 8-6157] synthesizing module 'Oled_Display' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:36]
 	Parameter Width bound to: 96 - type: integer 
 	Parameter Height bound to: 64 - type: integer 
@@ -106,19 +106,19 @@ INFO: [Synth 8-226] default block is never used [C:/Users/bened/OneDrive/Documen
 INFO: [Synth 8-226] default block is never used [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:198]
 WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:346]
 INFO: [Synth 8-6155] done synthesizing module 'Oled_Display' (2#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:36]
-WARNING: [Synth 8-350] instance 'oled' of module 'Oled_Display' requires 14 connections, but only 11 given [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:443]
+WARNING: [Synth 8-350] instance 'oled' of module 'Oled_Display' requires 14 connections, but only 11 given [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:460]
 INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_display' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_display.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_display' (3#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_display.v:23]
 INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_gameOver' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_gameOver.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_gameOver' (4#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_gameOver.v:23]
-WARNING: [Synth 8-6014] Unused sequential element brick_col_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:332]
-WARNING: [Synth 8-6014] Unused sequential element brick_row_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:333]
+WARNING: [Synth 8-6014] Unused sequential element brick_col_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:333]
+WARNING: [Synth 8-6014] Unused sequential element brick_row_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:334]
 INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_game' (5#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:23]
 WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port JC[2]
 WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port PS2Clk
 WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port PS2Data
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 489.852 ; gain = 203.547
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 490.418 ; gain = 204.176
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -131,10 +131,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 489.852 ; gain = 203.547
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 490.418 ; gain = 204.176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 489.852 ; gain = 203.547
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 490.418 ; gain = 204.176
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -152,30 +152,30 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 808.652 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 814.770 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 808.652 ; gain = 522.348
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:19 . Memory (MB): peak = 814.770 ; gain = 528.527
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 808.652 ; gain = 522.348
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:19 . Memory (MB): peak = 814.770 ; gain = 528.527
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 808.652 ; gain = 522.348
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:19 . Memory (MB): peak = 814.770 ; gain = 528.527
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5544] ROM "SLOW_CLK0" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Oled_Display'
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "fsm_next_state0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:237]
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:237]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:238]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:238]
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'BrickBreaker_game'
 INFO: [Synth 8-5545] ROM "ball_y_pos" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ball_move_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -185,6 +185,7 @@ INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because ad
 INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5545] ROM "ball_y_pos" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ball_move_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "bounce_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -193,8 +194,9 @@ INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because ad
 INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "board_x_pos0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "board_x_pos0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "board_x_curr0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "board_x_curr0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -235,15 +237,17 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                 iSTATE4 |                               00 |                             0011
-                 iSTATE2 |                               01 |                             0100
-                 iSTATE3 |                               10 |                             0101
-                 iSTATE1 |                               11 |                             0110
+                 iSTATE0 |                              000 |                             0001
+                  iSTATE |                              001 |                             0010
+                 iSTATE4 |                              010 |                             0011
+                 iSTATE2 |                              011 |                             0100
+                 iSTATE3 |                              100 |                             0101
+                 iSTATE1 |                              101 |                             0110
 *
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'BrickBreaker_game'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 808.652 ; gain = 522.348
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:33 . Memory (MB): peak = 814.770 ; gain = 528.527
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -259,6 +263,7 @@ Detailed RTL Component Info :
 	   2 Input     32 Bit       Adders := 4     
 	   2 Input     17 Bit       Adders := 1     
 	   2 Input     13 Bit       Adders := 5     
+	   3 Input     13 Bit       Adders := 1     
 	   2 Input     12 Bit       Adders := 1     
 	   2 Input      6 Bit       Adders := 1     
 	   2 Input      3 Bit       Adders := 1     
@@ -267,13 +272,13 @@ Detailed RTL Component Info :
 	               32 Bit    Registers := 1     
 	               17 Bit    Registers := 1     
 	               16 Bit    Registers := 1     
-	               12 Bit    Registers := 1     
+	               12 Bit    Registers := 2     
 	                6 Bit    Registers := 1     
 	                3 Bit    Registers := 1     
 	                1 Bit    Registers := 3     
 +---Muxes : 
-	   2 Input    130 Bit        Muxes := 5     
-	   4 Input    130 Bit        Muxes := 1     
+	   2 Input    130 Bit        Muxes := 4     
+	   4 Input    130 Bit        Muxes := 2     
 	   2 Input     40 Bit        Muxes := 3     
 	  32 Input     32 Bit        Muxes := 1     
 	   2 Input     32 Bit        Muxes := 3     
@@ -289,15 +294,14 @@ Detailed RTL Component Info :
 	   2 Input      5 Bit        Muxes := 2     
 	  32 Input      5 Bit        Muxes := 1     
 	   2 Input      4 Bit        Muxes := 1     
-	   2 Input      3 Bit        Muxes := 1     
-	   5 Input      2 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 1     
-	   2 Input      2 Bit        Muxes := 6     
+	   2 Input      3 Bit        Muxes := 9     
+	   6 Input      3 Bit        Muxes := 1     
+	   7 Input      2 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 11    
 	 131 Input      1 Bit        Muxes := 1     
-	   3 Input      1 Bit        Muxes := 1     
-	   5 Input      1 Bit        Muxes := 1     
-	   4 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 2     
+	   8 Input      1 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -310,15 +314,16 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input     32 Bit       Adders := 4     
 	   2 Input     13 Bit       Adders := 5     
+	   3 Input     13 Bit       Adders := 1     
 	   2 Input     12 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 1     
 	               16 Bit    Registers := 1     
-	               12 Bit    Registers := 1     
+	               12 Bit    Registers := 2     
 	                1 Bit    Registers := 2     
 +---Muxes : 
-	   2 Input    130 Bit        Muxes := 5     
-	   4 Input    130 Bit        Muxes := 1     
+	   2 Input    130 Bit        Muxes := 4     
+	   4 Input    130 Bit        Muxes := 2     
 	   2 Input     32 Bit        Muxes := 1     
 	   2 Input     16 Bit        Muxes := 1     
 	   5 Input     16 Bit        Muxes := 1     
@@ -327,14 +332,14 @@ Detailed RTL Component Info :
 	   4 Input      6 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 3     
 	   2 Input      4 Bit        Muxes := 1     
-	   5 Input      2 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 1     
-	   2 Input      2 Bit        Muxes := 6     
+	   6 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 8     
+	   7 Input      2 Bit        Muxes := 1     
 	 131 Input      1 Bit        Muxes := 1     
-	   3 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 8     
-	   5 Input      1 Bit        Muxes := 1     
-	   4 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 4     
 Module clk6p25m 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -389,7 +394,7 @@ WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port JC[2]
 WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port PS2Clk
 WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port PS2Data
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:01:21 . Memory (MB): peak = 919.066 ; gain = 632.762
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:02:10 . Memory (MB): peak = 922.598 ; gain = 636.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -401,6 +406,7 @@ ROM:
 +----------------------+------------+---------------+----------------+
 |BrickBreaker_display  | data       | 8192x16       | LUT            | 
 |BrickBreaker_gameOver | data       | 8192x16       | LUT            | 
+|BrickBreaker_display  | data       | 8192x16       | LUT            | 
 +----------------------+------------+---------------+----------------+
 
 ---------------------------------------------------------------------------------
@@ -416,13 +422,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:42 ; elapsed = 00:01:31 . Memory (MB): peak = 919.066 ; gain = 632.762
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:02:26 . Memory (MB): peak = 922.598 ; gain = 636.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:49 ; elapsed = 00:01:50 . Memory (MB): peak = 958.293 ; gain = 671.988
+Finished Timing Optimization : Time (s): cpu = 00:00:54 ; elapsed = 00:02:46 . Memory (MB): peak = 969.469 ; gain = 683.227
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -434,7 +440,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:51 ; elapsed = 00:01:56 . Memory (MB): peak = 1006.461 ; gain = 720.156
+Finished Technology Mapping : Time (s): cpu = 00:00:58 ; elapsed = 00:02:51 . Memory (MB): peak = 1019.641 ; gain = 733.398
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -458,7 +464,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:51 ; elapsed = 00:01:57 . Memory (MB): peak = 1006.461 ; gain = 720.156
+Finished IO Insertion : Time (s): cpu = 00:00:58 ; elapsed = 00:02:52 . Memory (MB): peak = 1019.641 ; gain = 733.398
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -471,7 +477,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:51 ; elapsed = 00:01:57 . Memory (MB): peak = 1006.461 ; gain = 720.156
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:58 ; elapsed = 00:02:52 . Memory (MB): peak = 1019.641 ; gain = 733.398
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -483,25 +489,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:51 ; elapsed = 00:01:57 . Memory (MB): peak = 1006.461 ; gain = 720.156
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:58 ; elapsed = 00:02:52 . Memory (MB): peak = 1019.641 ; gain = 733.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:51 ; elapsed = 00:01:57 . Memory (MB): peak = 1006.461 ; gain = 720.156
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:58 ; elapsed = 00:02:52 . Memory (MB): peak = 1019.641 ; gain = 733.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:51 ; elapsed = 00:01:57 . Memory (MB): peak = 1006.461 ; gain = 720.156
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:58 ; elapsed = 00:02:52 . Memory (MB): peak = 1019.641 ; gain = 733.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:01:57 . Memory (MB): peak = 1006.461 ; gain = 720.156
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:58 ; elapsed = 00:02:52 . Memory (MB): peak = 1019.641 ; gain = 733.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -518,17 +524,17 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     2|
-|2     |CARRY4 |    98|
+|2     |CARRY4 |   102|
 |3     |LUT1   |    59|
-|4     |LUT2   |   260|
-|5     |LUT3   |   142|
-|6     |LUT4   |   280|
-|7     |LUT5   |   344|
-|8     |LUT6   |  2261|
-|9     |MUXF7  |   622|
+|4     |LUT2   |   275|
+|5     |LUT3   |   137|
+|6     |LUT4   |   276|
+|7     |LUT5   |   341|
+|8     |LUT6   |  2268|
+|9     |MUXF7  |   637|
 |10    |MUXF8  |   193|
 |11    |FDE_1  |    32|
-|12    |FDRE   |   336|
+|12    |FDRE   |   349|
 |13    |FDSE   |     1|
 |14    |IBUF   |     4|
 |15    |OBUF   |     7|
@@ -539,19 +545,19 @@ Report Instance Areas:
 +------+-------------+---------------------+------+
 |      |Instance     |Module               |Cells |
 +------+-------------+---------------------+------+
-|1     |top          |                     |  4642|
+|1     |top          |                     |  4684|
 |2     |  clk625     |clk6p25m             |     9|
-|3     |  loadScreen |BrickBreaker_display |  1488|
-|4     |  oled       |Oled_Display         |  2193|
+|3     |  loadScreen |BrickBreaker_display |  1493|
+|4     |  oled       |Oled_Display         |  2203|
 +------+-------------+---------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:01:57 . Memory (MB): peak = 1006.461 ; gain = 720.156
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:58 ; elapsed = 00:02:52 . Memory (MB): peak = 1019.641 ; gain = 733.398
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:47 ; elapsed = 00:01:49 . Memory (MB): peak = 1006.461 ; gain = 401.355
-Synthesis Optimization Complete : Time (s): cpu = 00:00:52 ; elapsed = 00:01:57 . Memory (MB): peak = 1006.461 ; gain = 720.156
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:52 ; elapsed = 00:02:44 . Memory (MB): peak = 1019.641 ; gain = 409.047
+Synthesis Optimization Complete : Time (s): cpu = 00:00:58 ; elapsed = 00:02:53 . Memory (MB): peak = 1019.641 ; gain = 733.398
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 949 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 968 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -560,11 +566,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   FDE_1 => FDRE (inverted pins: C): 32 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-57 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
+59 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:02:00 . Memory (MB): peak = 1006.461 ; gain = 731.668
+synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:02:56 . Memory (MB): peak = 1019.641 ; gain = 744.875
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/BrickBreaker_game.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file BrickBreaker_game_utilization_synth.rpt -pb BrickBreaker_game_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1006.461 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Mon Oct 30 01:29:04 2023...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 1019.641 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 30 01:58:16 2023...
