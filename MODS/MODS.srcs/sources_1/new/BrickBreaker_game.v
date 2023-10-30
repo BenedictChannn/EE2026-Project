@@ -37,6 +37,7 @@ module BrickBreaker_game(
     parameter SCREEN_HEIGHT = 64;
     reg unlock = 1'b0;
     reg game_over = 1'b0;
+    reg win_game = 1'b0;
     
     // Colours
     parameter WHITE = 16'hFFFF;
@@ -80,13 +81,14 @@ module BrickBreaker_game(
     reg [31:0] ball_start_counter = 32'd0;
     
     // Reset
-    parameter RESET_COUNT = 32'd300000000;
+    parameter RESET_COUNT = 32'd200000000;
     reg [31:0] reset_counter = 32'd0;
     
     wire [12:0] pixel_index;
     reg [15:0] pixel_data;
     wire [15:0] screen_data;
     wire [15:0] over_data;
+    wire [15:0] win_data;
 
     wire [6:0] col, row;
     
@@ -246,6 +248,8 @@ module BrickBreaker_game(
     always @ (posedge CLK) begin
         if (game_over) begin
             pixel_data <= over_data;
+        end else if (win_game) begin
+            pixel_data <= win_data;
         end else if (unlock) begin   
             case(current_state)
                 BOUNCE_STOP:
@@ -486,6 +490,10 @@ module BrickBreaker_game(
                     end
                 end
             end
+            
+            if (brick_state == {N_BRICKS{1'b0}}) begin
+                win_game <= 1'b1;
+            end
         // Reset when unlock is false
         end else begin
             brick_state <= {N_BRICKS{1'b1}};
@@ -498,6 +506,16 @@ module BrickBreaker_game(
                 game_over <= 1'b0;
                 unlock <= 1'b0;
                 
+                reset_counter <= 32'd0;
+            end else begin
+                reset_counter <= reset_counter + 1;
+            end
+        end else if (win_game) begin
+            if (reset_counter == RESET_COUNT) begin
+                // Reset states
+                win_game <= 1'b0;
+                unlock <= 1'b0;
+                     
                 reset_counter <= 32'd0;
             end else begin
                 reset_counter <= reset_counter + 1;
@@ -553,4 +571,6 @@ module BrickBreaker_game(
     
     // Oled data for game over screen
     BrickBreaker_gameOver gameOverScreen (pixel_index, over_data);
+    
+    BrickBreaker_winScreen winScreen (pixel_index, win_data);
 endmodule
