@@ -64,8 +64,7 @@ module BrickBreaker_game(
     // Ball movement
     reg [11:0] ball_x_pos = 12'd32;
     reg [11:0] ball_y_pos = 12'd65;
-    reg [3:0] current_state = BOUNCE_UP;
-    reg [1:0] next_state;
+    reg [3:0] current_state = BOUNCE_DOWN;
     reg [31:0] ball_move_counter = 32'd0;
     parameter BALL_MOVE_DELAY = 32'd3000000;
     parameter BALL_COLOUR = RED;
@@ -77,12 +76,15 @@ module BrickBreaker_game(
     parameter BOUNCE_DOWN_RIGHT = 5;
     parameter BOUNCE_UP_RIGHT = 6;
     
+    // Reset
+    parameter RESET_COUNT = 32'd300000000;
+    reg [31:0] reset_counter = 32'd0;
+    
     wire [12:0] pixel_index;
     reg [15:0] pixel_data;
     wire [15:0] screen_data;
     wire [15:0] over_data;
-    
-    //wire [11:0] mouse_x_pos, mouse_y_pos;
+
     wire [6:0] col, row;
     
     assign col = pixel_index % SCREEN_WIDTH;
@@ -236,7 +238,6 @@ module BrickBreaker_game(
     ////////////////////////////////////////////////////////////// Brick //////////////////////////////////////////////////////////////
     
     wire paddle_collision = ball_x_pos >= board_x_curr - BOARD_WIDTH / 2 && ball_x_pos <= board_x_curr + BOARD_WIDTH / 2 && ball_y_pos >= board_y_pos && ball_y_pos <= board_y_pos + BOARD_HEIGHT;
-    
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     always @ (posedge CLK) begin
@@ -316,12 +317,11 @@ module BrickBreaker_game(
                 pixel_data <= BLACK;
             end
         // Before game starts, display welcome screen
+        // Reset when unlock is false
         end else if (!unlock && !game_over) begin
             pixel_data <= screen_data;
-            // Game starts once btnC is pressed
-            if (btnC) begin
-                unlock <= 1'b1;
-            end
+            ball_x_pos <= 12'd32;
+            ball_y_pos <= 12'd65;
         end
     end
     
@@ -329,92 +329,114 @@ module BrickBreaker_game(
     integer i;
     reg [3:0] brick_col, brick_row;
     always @ (posedge CLK) begin
-        if (current_state == BOUNCE_UP) begin
-            if (ball_y_pos <= BOUNDARY_TOP) begin
-                current_state <= BOUNCE_DOWN;
-            end else begin
-                for (i = 0; i < N_BRICKS; i = i + 1) begin
-                    brick_col = i % 10;
-                    brick_row = i / 10;
-                    if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
-                    && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                        brick_state[i] <= 1'b0;
-                        current_state <= BOUNCE_DOWN;
-                    end
-                end
-            end
-        end else if (current_state == BOUNCE_DOWN) begin
-            if (ball_y_pos >= BOUNDARY_BOTTOM) begin
-                game_over <= 1'b1;
-            end else if (paddle_collision) begin
-                if (board_x_curr - board_x_prev > 0) begin
-                    current_state <= BOUNCE_UP_LEFT;
-                end else if (board_x_curr - board_x_prev < 0) begin
-                    current_state <= BOUNCE_UP_RIGHT;
+        if (unlock) begin
+            if (current_state == BOUNCE_UP) begin
+                if (ball_y_pos <= BOUNDARY_TOP) begin
+                    current_state <= BOUNCE_DOWN;
                 end else begin
-                    current_state <= BOUNCE_UP;
-                end
-            end
-        end else if (current_state == BOUNCE_UP_LEFT) begin
-            if (ball_x_pos >= BOUNDARY_LEFT && ball_y_pos <= BOUNDARY_TOP) begin
-                current_state <= BOUNCE_DOWN_RIGHT;
-            end else if (ball_x_pos >= BOUNDARY_LEFT) begin
-                current_state <= BOUNCE_UP_RIGHT;
-            end else if (ball_y_pos <= BOUNDARY_TOP) begin
-                current_state <= BOUNCE_DOWN_LEFT;
-            end else begin
-                for (i = 0; i < N_BRICKS; i = i + 1) begin
-                    brick_col = i % 10;
-                    brick_row = i / 10;
-                    if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
-                    && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                        brick_state[i] <= 1'b0;
-                        current_state <= BOUNCE_DOWN_LEFT;
+                    for (i = 0; i < N_BRICKS; i = i + 1) begin
+                        brick_col = i % 10;
+                        brick_row = i / 10;
+                        if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                        && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
+                            brick_state[i] <= 1'b0;
+                            current_state <= BOUNCE_DOWN;
+                        end
                     end
                 end
-            end
-        end else if (current_state == BOUNCE_DOWN_LEFT) begin
-            if (ball_y_pos >= BOUNDARY_BOTTOM) begin
-                game_over = 1'b1;
-            end else if (ball_x_pos >= BOUNDARY_LEFT) begin
-                current_state <= BOUNCE_DOWN_RIGHT;
-            end else if (paddle_collision) begin
-                if (board_x_curr - board_x_prev > 0) begin
-                    current_state <= BOUNCE_UP;
-                end else if (board_x_curr - board_x_prev <= 0) begin
-                    current_state <= BOUNCE_UP_LEFT;
+            end else if (current_state == BOUNCE_DOWN) begin
+                if (ball_y_pos >= BOUNDARY_BOTTOM) begin
+                    game_over <= 1'b1;
+                end else if (paddle_collision) begin
+                    if (board_x_curr - board_x_prev > 0) begin
+                        current_state <= BOUNCE_UP_LEFT;
+                    end else if (board_x_curr - board_x_prev < 0) begin
+                        current_state <= BOUNCE_UP_RIGHT;
+                    end else begin
+                        current_state <= BOUNCE_UP;
+                    end
                 end
-            end
-        end else if (current_state == BOUNCE_DOWN_RIGHT) begin
-            if (ball_y_pos >= BOUNDARY_BOTTOM) begin
-                game_over = 1'b1;
-            end else if (ball_x_pos <= BOUNDARY_RIGHT) begin
-                current_state <= BOUNCE_DOWN_LEFT;
-            end else if (paddle_collision) begin
-                if (board_x_curr - board_x_prev >= 0) begin
+            end else if (current_state == BOUNCE_UP_LEFT) begin
+                if (ball_x_pos >= BOUNDARY_LEFT && ball_y_pos <= BOUNDARY_TOP) begin
+                    current_state <= BOUNCE_DOWN_RIGHT;
+                end else if (ball_x_pos >= BOUNDARY_LEFT) begin
                     current_state <= BOUNCE_UP_RIGHT;
-                end else if (board_x_curr - board_x_prev < 0) begin
-                    current_state <= BOUNCE_UP;
+                end else if (ball_y_pos <= BOUNDARY_TOP) begin
+                    current_state <= BOUNCE_DOWN_LEFT;
+                end else begin
+                    for (i = 0; i < N_BRICKS; i = i + 1) begin
+                        brick_col = i % 10;
+                        brick_row = i / 10;
+                        if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                        && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
+                            brick_state[i] <= 1'b0;
+                            current_state <= BOUNCE_DOWN_LEFT;
+                        end
+                    end
                 end
-            end
-        end else if (current_state == BOUNCE_UP_RIGHT) begin
-            if (ball_x_pos <= BOUNDARY_RIGHT && ball_y_pos <= BOUNDARY_TOP) begin
-                current_state <= BOUNCE_DOWN_LEFT;
-            end else if (ball_x_pos <= BOUNDARY_RIGHT) begin
-                current_state <= BOUNCE_UP_LEFT;
-            end else if (ball_y_pos <= BOUNDARY_TOP) begin
-                current_state <= BOUNCE_DOWN_RIGHT;
-            end else begin
-                for (i = 0; i < N_BRICKS; i = i + 1) begin
-                    brick_col = i % 10;
-                    brick_row = i / 10;
-                    if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
-                    && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                        brick_state[i] <= 1'b0;
-                        current_state <= BOUNCE_DOWN_RIGHT;
+            end else if (current_state == BOUNCE_DOWN_LEFT) begin
+                if (ball_y_pos >= BOUNDARY_BOTTOM) begin
+                    game_over = 1'b1;
+                end else if (ball_x_pos >= BOUNDARY_LEFT) begin
+                    current_state <= BOUNCE_DOWN_RIGHT;
+                end else if (paddle_collision) begin
+                    if (board_x_curr - board_x_prev > 0) begin
+                        current_state <= BOUNCE_UP;
+                    end else if (board_x_curr - board_x_prev <= 0) begin
+                        current_state <= BOUNCE_UP_LEFT;
+                    end
+                end
+            end else if (current_state == BOUNCE_DOWN_RIGHT) begin
+                if (ball_y_pos >= BOUNDARY_BOTTOM) begin
+                    game_over = 1'b1;
+                end else if (ball_x_pos <= BOUNDARY_RIGHT) begin
+                    current_state <= BOUNCE_DOWN_LEFT;
+                end else if (paddle_collision) begin
+                    if (board_x_curr - board_x_prev >= 0) begin
+                        current_state <= BOUNCE_UP_RIGHT;
+                    end else if (board_x_curr - board_x_prev < 0) begin
+                        current_state <= BOUNCE_UP;
+                    end
+                end
+            end else if (current_state == BOUNCE_UP_RIGHT) begin
+                if (ball_x_pos <= BOUNDARY_RIGHT && ball_y_pos <= BOUNDARY_TOP) begin
+                    current_state <= BOUNCE_DOWN_LEFT;
+                end else if (ball_x_pos <= BOUNDARY_RIGHT) begin
+                    current_state <= BOUNCE_UP_LEFT;
+                end else if (ball_y_pos <= BOUNDARY_TOP) begin
+                    current_state <= BOUNCE_DOWN_RIGHT;
+                end else begin
+                    for (i = 0; i < N_BRICKS; i = i + 1) begin
+                        brick_col = i % 10;
+                        brick_row = i / 10;
+                        if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                        && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
+                            brick_state[i] <= 1'b0;
+                            current_state <= BOUNCE_DOWN_RIGHT;
+                        end
                     end
                 end
             end
+        // Reset when unlock is false
+        end else begin
+            brick_state <= {N_BRICKS{1'b1}};
+            current_state <= BOUNCE_DOWN;
+        end
+        
+        if (game_over) begin
+            if (reset_counter == RESET_COUNT) begin
+                // Reset states
+                game_over <= 1'b0;
+                unlock <= 1'b0;
+                
+                reset_counter <= 32'd0;
+            end else begin
+                reset_counter <= reset_counter + 1;
+            end
+        end
+        
+        if (btnC && !game_over) begin
+            unlock <= 1'b1;
         end
     end
     
@@ -435,6 +457,10 @@ module BrickBreaker_game(
                     board_x_prev <= board_x_curr;
                 end                
             end
+        // Reset when unlock is false
+        end else begin
+            board_x_curr <= 12'd32;
+            board_x_prev <= 12'd32;
         end
     end
         
