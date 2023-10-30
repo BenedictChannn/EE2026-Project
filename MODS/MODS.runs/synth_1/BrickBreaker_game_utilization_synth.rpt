@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Mon Oct 30 01:58:16 2023
+| Date         : Mon Oct 30 21:47:30 2023
 | Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_utilization -file BrickBreaker_game_utilization_synth.rpt -pb BrickBreaker_game_utilization_synth.pb
 | Design       : BrickBreaker_game
@@ -30,8 +30,8 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             | 3127 |     0 |     20800 | 15.03 |
-|   LUT as Logic          | 3127 |     0 |     20800 | 15.03 |
+| Slice LUTs*             | 3159 |     0 |     20800 | 15.19 |
+|   LUT as Logic          | 3159 |     0 |     20800 | 15.19 |
 |   LUT as Memory         |    0 |     0 |      9600 |  0.00 |
 | Slice Registers         |  382 |     0 |     41600 |  0.92 |
 |   Register as Flip Flop |  382 |     0 |     41600 |  0.92 |
@@ -149,14 +149,14 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     | 2268 |                 LUT |
+| LUT6     | 2296 |                 LUT |
 | MUXF7    |  637 |               MuxFx |
 | FDRE     |  381 |        Flop & Latch |
-| LUT5     |  341 |                 LUT |
-| LUT4     |  276 |                 LUT |
-| LUT2     |  275 |                 LUT |
+| LUT5     |  348 |                 LUT |
+| LUT2     |  283 |                 LUT |
+| LUT4     |  273 |                 LUT |
 | MUXF8    |  193 |               MuxFx |
-| LUT3     |  137 |                 LUT |
+| LUT3     |  144 |                 LUT |
 | CARRY4   |  102 |          CarryLogic |
 | LUT1     |   59 |                 LUT |
 | OBUF     |    7 |                  IO |

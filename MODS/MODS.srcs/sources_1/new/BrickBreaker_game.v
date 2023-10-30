@@ -315,9 +315,13 @@ module BrickBreaker_game(
             end else begin
                 pixel_data <= BLACK;
             end
-           
-        end else begin
+        // Before game starts, display welcome screen
+        end else if (!unlock && !game_over) begin
             pixel_data <= screen_data;
+            // Game starts once btnC is pressed
+            if (btnC) begin
+                unlock <= 1'b1;
+            end
         end
     end
     
@@ -427,34 +431,12 @@ module BrickBreaker_game(
                 end else if (btnD) begin
                     board_x_prev <= board_x_curr;
                     board_x_curr <= (board_x_curr + 5 > SCREEN_HEIGHT - BOARD_WIDTH / 2 ) ? SCREEN_HEIGHT - BOARD_WIDTH / 2 : board_x_curr + 5;
-                end
+                end else begin
+                    board_x_prev <= board_x_curr;
+                end                
             end
         end
     end
-    
-    // Unlock to go the game 
-    always @ (posedge CLK) begin
-        if (btnC) begin
-            unlock <= 1'b1;
-        end
-    end
-    
-    
-    
-    
-//    // Instantiate mouse 
-//    MouseCtl mouse(
-//        .clk(CLK),
-//        .xpos(mouse_x_pos), 
-//        .ypos(mouse_y_pos), 
-//        .ps2_clk(PS2Clk), 
-//        .ps2_data(PS2Data),
-//        .value(12'b0),
-//        .setx(0), 
-//        .sety(0), 
-//        .setmax_x(SCREEN_HEIGHT - 1), 
-//        .setmax_y(SCREEN_WIDTH - 1)
-//    );
         
     // Instantiate Oled display to display either green or red depending on sw4
     Oled_Display oled (
@@ -477,4 +459,3 @@ module BrickBreaker_game(
     // Oled data for game over screen
     BrickBreaker_gameOver gameOverScreen (pixel_index, over_data);
 endmodule
-
