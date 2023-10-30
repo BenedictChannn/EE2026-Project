@@ -64,17 +64,20 @@ module BrickBreaker_game(
     // Ball movement
     reg [11:0] ball_x_pos = 12'd32;
     reg [11:0] ball_y_pos = 12'd65;
-    reg [3:0] current_state = BOUNCE_DOWN;
+    reg [3:0] current_state = BOUNCE_STOP;
     reg [31:0] ball_move_counter = 32'd0;
     parameter BALL_MOVE_DELAY = 32'd3000000;
     parameter BALL_COLOUR = RED;
     parameter BALL_RADIUS = 1;
+    parameter BOUNCE_STOP = 0;
     parameter BOUNCE_UP = 1;
     parameter BOUNCE_DOWN = 2;
     parameter BOUNCE_UP_LEFT = 3;
     parameter BOUNCE_DOWN_LEFT = 4;
     parameter BOUNCE_DOWN_RIGHT = 5;
     parameter BOUNCE_UP_RIGHT = 6;
+    parameter BALL_START_DELAY = 32'd300000000;
+    reg [31:0] ball_start_counter = 32'd0;
     
     // Reset
     parameter RESET_COUNT = 32'd300000000;
@@ -245,6 +248,15 @@ module BrickBreaker_game(
             pixel_data <= over_data;
         end else if (unlock) begin   
             case(current_state)
+                BOUNCE_STOP:
+                    // Do nothing
+                    if (ball_move_counter == BALL_MOVE_DELAY) begin
+                        ball_y_pos <= ball_y_pos;
+                        ball_x_pos <= ball_x_pos;
+                        ball_move_counter <= 0;
+                    end else begin
+                        ball_move_counter <= ball_move_counter + 1;
+                    end  
                 BOUNCE_UP: 
                     if (ball_move_counter == BALL_MOVE_DELAY) begin
                         ball_y_pos <= ball_y_pos - 1;
@@ -330,7 +342,14 @@ module BrickBreaker_game(
     reg [3:0] brick_col, brick_row;
     always @ (posedge CLK) begin
         if (unlock) begin
-            if (current_state == BOUNCE_UP) begin
+            if (current_state == BOUNCE_STOP) begin
+                if (ball_start_counter == BALL_START_DELAY) begin
+                    current_state <= BOUNCE_DOWN;
+                    ball_start_counter <= 32'd0;
+                end else begin
+                    ball_start_counter <= ball_start_counter + 1;
+                end
+            end else if (current_state == BOUNCE_UP) begin
                 if (ball_y_pos <= BOUNDARY_TOP) begin
                     current_state <= BOUNCE_DOWN;
                 end else begin
@@ -420,7 +439,7 @@ module BrickBreaker_game(
         // Reset when unlock is false
         end else begin
             brick_state <= {N_BRICKS{1'b1}};
-            current_state <= BOUNCE_DOWN;
+            current_state <= BOUNCE_STOP;
         end
         
         if (game_over) begin
