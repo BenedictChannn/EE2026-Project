@@ -8,7 +8,7 @@ from PIL import Image
 # Every other color +1 (Cap at 255)
 
 # CHANGE THE IMAGE NAME AND FILE EXTENSION
-image_name = "game_over"
+image_name = "win_screen"
 extension = ".jpg"
 
 # Change this to desired dimension to scale to

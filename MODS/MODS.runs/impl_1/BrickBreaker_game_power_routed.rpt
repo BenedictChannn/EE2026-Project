@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Tue Oct 31 00:41:48 2023
+| Date             : Tue Oct 31 01:29:49 2023
 | Host             : MSI running 64-bit major release  (build 9200)
 | Command          : report_power -file BrickBreaker_game_power_routed.rpt -pb BrickBreaker_game_power_summary_routed.pb -rpx BrickBreaker_game_power_routed.rpx
 | Design           : BrickBreaker_game
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.095        |
+| Total On-Chip Power (W)  | 0.100        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.023        |
+| Dynamic (W)              | 0.028        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.5         |
@@ -52,18 +52,18 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.003 |        3 |       --- |             --- |
-| Slice Logic    |     0.010 |     4763 |       --- |             --- |
-|   LUT as Logic |     0.010 |     3117 |     20800 |           14.99 |
-|   F7/F8 Muxes  |    <0.001 |      822 |     32600 |            2.52 |
-|   CARRY4       |    <0.001 |      121 |      8150 |            1.48 |
+| Clocks         |     0.005 |        3 |       --- |             --- |
+| Slice Logic    |     0.011 |     6595 |       --- |             --- |
+|   LUT as Logic |     0.011 |     4581 |     20800 |           22.02 |
+|   F7/F8 Muxes  |    <0.001 |      823 |     32600 |            2.52 |
+|   CARRY4       |    <0.001 |      127 |      8150 |            1.56 |
 |   Register     |    <0.001 |      446 |     41600 |            1.07 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |        7 |       --- |             --- |
-| Signals        |     0.008 |     2714 |       --- |             --- |
+| Signals        |     0.010 |     4539 |       --- |             --- |
 | I/O            |     0.002 |       12 |       106 |           11.32 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.095 |          |           |                 |
+| Total          |     0.100 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,7 +73,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.031 |       0.022 |      0.010 |
+| Vccint    |       1.000 |     0.036 |       0.026 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -142,7 +142,7 @@ Table of Contents
 +-------------------+-----------+
 | Name              | Power (W) |
 +-------------------+-----------+
-| BrickBreaker_game |     0.023 |
+| BrickBreaker_game |     0.028 |
 |   clk625          |    <0.001 |
 |   loadScreen      |     0.004 |
 |   oled            |     0.012 |
