@@ -22,6 +22,8 @@
 
 module BrickBreaker_game(
     input CLK, btnU, btnD, btnC,
+    output reg [6:0] seg, 
+    output reg [3:0]an,
     output [7:0] JC,
     inout PS2Clk, PS2Data
     );
@@ -80,8 +82,13 @@ module BrickBreaker_game(
     parameter BALL_START_DELAY = 32'd300000000;
     reg [31:0] ball_start_counter = 32'd0;
     
+    // Countdown for start of game
+    reg [6:0] seg_3 = 7'b0110000;
+    reg [6:0] seg_2 = 7'b0100100;
+    reg [6:0] seg_1 = 7'b1111001;
+    
     // Reset
-    parameter RESET_COUNT = 32'd200000000;
+    parameter RESET_COUNT = 32'd500000000;
     reg [31:0] reset_counter = 32'd0;
     
     wire [12:0] pixel_index;
@@ -349,9 +356,25 @@ module BrickBreaker_game(
             if (current_state == BOUNCE_STOP) begin
                 if (ball_start_counter == BALL_START_DELAY) begin
                     current_state <= BOUNCE_DOWN;
+                    // Turn 7 seg off once ball drop
+                    seg <= 7'b1111111;
+                    an <= 4'b1111;
                     ball_start_counter <= 32'd0;
                 end else begin
                     ball_start_counter <= ball_start_counter + 1;
+                    if (ball_start_counter == 0) begin
+                        // Countdown set to '3'
+                        seg <= seg_3;
+                        an <= 4'b1110;
+                    end else if (ball_start_counter == 32'd100000000) begin
+                        // countdown set to "2"
+                        seg <= seg_2;
+                        an <= 4'b1110;
+                    end else if (ball_start_counter == 32'd200000000) begin
+                        // countdown set to "1"
+                        seg <= seg_1;
+                        an <= 4'b1110;
+                    end
                 end
             end else if (current_state == BOUNCE_UP) begin
                 if (ball_y_pos <= BOUNDARY_TOP) begin
