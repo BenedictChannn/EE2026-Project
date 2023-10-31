@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Tue Oct 31 23:13:23 2023
+| Date         : Wed Nov  1 00:46:17 2023
 | Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file BrickBreaker_game_control_sets_placed.rpt
 | Design       : BrickBreaker_game
@@ -24,7 +24,7 @@ Table of Contents
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
 | Number of unique control sets                            |    16 |
-| Unused register locations in slices containing registers |    32 |
+| Unused register locations in slices containing registers |    36 |
 +----------------------------------------------------------+-------+
 
 
@@ -34,8 +34,7 @@ Table of Contents
 +--------+--------------+
 | Fanout | Control Sets |
 +--------+--------------+
-|      2 |            1 |
-|      4 |            1 |
+|      2 |            2 |
 |     12 |            1 |
 |    16+ |           13 |
 +--------+--------------+
@@ -47,10 +46,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             324 |          137 |
+| No           | No                    | No                     |             322 |          142 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             126 |           22 |
-| Yes          | No                    | No                     |             180 |           23 |
+| No           | Yes                   | No                     |             124 |           23 |
+| Yes          | No                    | No                     |             180 |           22 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |             282 |           48 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -59,25 +58,25 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+-----------------+-----------------------------------+--------------------------------+------------------+----------------+
-|   Clock Signal  |           Enable Signal           |        Set/Reset Signal        | Slice Load Count | Bel Load Count |
-+-----------------+-----------------------------------+--------------------------------+------------------+----------------+
-|  CLK_IBUF_BUFG  | an[0]_i_2_n_0                     | an[0]_i_1_n_0                  |                1 |              2 |
-| ~CLK_6P25M_BUFG |                                   |                                |                2 |              4 |
-|  CLK_IBUF_BUFG  | seg[6]_i_1_n_0                    |                                |                2 |             12 |
-|  CLK_IBUF_BUFG  | board_x_curr[11]_i_2_n_0          | board_x_curr[11]_i_1_n_0       |                3 |             18 |
-|  CLK_IBUF_BUFG  | ball_x_pos[0]_i_1_n_0             | ball_y_pos[0]_i_1_n_0          |                7 |             24 |
-|  CLK_IBUF_BUFG  | ball_y_pos[0]_i_2_n_0             | ball_y_pos[0]_i_1_n_0          |                8 |             24 |
-|  CLK_IBUF_BUFG  | board_x_prev                      | board_x_prev[11]_i_1_n_0       |                3 |             24 |
-| ~CLK_6P25M_BUFG |                                   | oled/frame_counter[16]_i_1_n_0 |                5 |             36 |
-| ~CLK_6P25M_BUFG | oled/delay[0]_i_1_n_0             |                                |                5 |             40 |
-|  CLK_IBUF_BUFG  | reset_counter[31]_i_2_n_0         | reset_counter[31]_i_1_n_0      |                8 |             62 |
-| ~CLK_6P25M_BUFG | oled/FSM_onehot_state[31]_i_1_n_0 |                                |                8 |             64 |
-|  CLK_IBUF_BUFG  | ball_move_counter[31]_i_2_n_0     | ball_move_counter[31]_i_1_n_0  |                9 |             64 |
-|  CLK_IBUF_BUFG  | ball_start_counter[31]_i_2_n_0    | ball_start_counter[31]_i_1_n_0 |                9 |             64 |
-|  CLK_IBUF_BUFG  | unlock_reg_n_0                    |                                |                8 |             64 |
-| ~CLK_6P25M_BUFG |                                   | oled/spi_word[39]_i_1_n_0      |               17 |             90 |
-|  CLK_IBUF_BUFG  |                                   |                                |              135 |            320 |
-+-----------------+-----------------------------------+--------------------------------+------------------+----------------+
++-----------------+--------------------------------+--------------------------------+------------------+----------------+
+|   Clock Signal  |          Enable Signal         |        Set/Reset Signal        | Slice Load Count | Bel Load Count |
++-----------------+--------------------------------+--------------------------------+------------------+----------------+
+| ~CLK_6P25M_BUFG |                                |                                |                1 |              2 |
+|  CLK_IBUF_BUFG  | an[0]_i_2_n_0                  | an[0]_i_1_n_0                  |                1 |              2 |
+|  CLK_IBUF_BUFG  | seg[6]_i_1_n_0                 |                                |                2 |             12 |
+|  CLK_IBUF_BUFG  | board_x_curr[11]_i_2_n_0       | board_x_curr[11]_i_1_n_0       |                4 |             18 |
+|  CLK_IBUF_BUFG  | ball_x_pos[0]_i_1_n_0          | ball_y_pos[0]_i_1_n_0          |                7 |             24 |
+|  CLK_IBUF_BUFG  | ball_y_pos[0]_i_2_n_0          | ball_y_pos[0]_i_1_n_0          |                7 |             24 |
+|  CLK_IBUF_BUFG  | board_x_prev                   | board_x_prev[11]_i_1_n_0       |                3 |             24 |
+| ~CLK_6P25M_BUFG |                                | oled/frame_counter[16]_i_1_n_0 |                5 |             34 |
+| ~CLK_6P25M_BUFG | oled/delay[0]_i_1_n_0          |                                |                5 |             40 |
+|  CLK_IBUF_BUFG  | reset_counter[31]_i_2_n_0      | reset_counter[31]_i_1_n_0      |                8 |             62 |
+| ~CLK_6P25M_BUFG | oled/state                     |                                |                7 |             64 |
+|  CLK_IBUF_BUFG  | ball_move_counter[31]_i_2_n_0  | ball_move_counter[31]_i_1_n_0  |                9 |             64 |
+|  CLK_IBUF_BUFG  | ball_start_counter[31]_i_2_n_0 | ball_start_counter[31]_i_1_n_0 |                9 |             64 |
+|  CLK_IBUF_BUFG  | unlock_reg_n_0                 |                                |                8 |             64 |
+| ~CLK_6P25M_BUFG |                                | oled/spi_word[39]_i_1_n_0      |               18 |             90 |
+|  CLK_IBUF_BUFG  |                                |                                |              141 |            320 |
++-----------------+--------------------------------+--------------------------------+------------------+----------------+
 
 

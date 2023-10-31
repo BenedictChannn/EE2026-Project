@@ -55,6 +55,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_gameOver.v
   C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v
   C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_winScreen.v
+  C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_level1.v
 }
 read_vhdl -library xil_defaultlib {
   C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Mouse_Control.vhd

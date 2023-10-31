@@ -63,6 +63,7 @@ module BrickBreaker_game(
     parameter BRICK_COLOUR = GREEN;
     parameter N_BRICKS = 130;
     reg [129:0] brick_state = {N_BRICKS{1'b1}};
+    wire [129:0] brick_state_1;
     
     // Ball movement
     reg [11:0] ball_x_pos = 12'd32;
@@ -519,7 +520,7 @@ module BrickBreaker_game(
             end
         // Reset when unlock is false
         end else begin
-            brick_state <= {N_BRICKS{1'b1}};
+            brick_state <= brick_state_1;
             current_state <= BOUNCE_STOP;
         end
         
@@ -595,5 +596,8 @@ module BrickBreaker_game(
     // Oled data for game over screen
     BrickBreaker_gameOver gameOverScreen (pixel_index, over_data);
     
+    // Oled data for win screen
     BrickBreaker_winScreen winScreen (pixel_index, win_data);
+    
+    BrickBreaker_level1 brick_setting_1 (brick_state_1);
 endmodule
