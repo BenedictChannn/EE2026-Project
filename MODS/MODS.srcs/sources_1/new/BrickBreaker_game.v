@@ -385,7 +385,8 @@ module BrickBreaker_game(
                     for (i = 0; i < N_BRICKS; i = i + 1) begin
                         brick_col = i % 10;
                         brick_row = i / 10;
-                        if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                        if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
+                        || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
                             brick_state[i] <= 1'b0;
                             current_state <= BOUNCE_DOWN;
@@ -407,7 +408,8 @@ module BrickBreaker_game(
                     for (i = 0; i < N_BRICKS; i = i + 1) begin
                         brick_col = i % 10;
                         brick_row = i / 10;
-                        if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                        if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                        || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1)
                         && ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
                             brick_state[i] <= 1'b0;
                             current_state <= BOUNCE_UP;
@@ -425,12 +427,14 @@ module BrickBreaker_game(
                     for (i = 0; i < N_BRICKS; i = i + 1) begin
                         brick_col = i % 10;
                         brick_row = i / 10;
-                        if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                        if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1<= (brick_row + 1) * BRICK_HEIGHT - 1
+                        || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
                             brick_state[i] <= 1'b0;
                             current_state <= BOUNCE_DOWN_LEFT;
                         end else if (brick_state[i] && (ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
-                        && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
+                        && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
+                        || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
                             brick_state[i] <= 1'b0;
                             current_state <= BOUNCE_UP_RIGHT;
                         end
@@ -453,12 +457,14 @@ module BrickBreaker_game(
                     for (i = 0; i < N_BRICKS; i = i + 1) begin
                         brick_col = i % 10;
                         brick_row = i / 10;
-                        if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                        if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
+                        || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 ) 
                         && ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
                             brick_state[i] <= 1'b0;
                             current_state <= BOUNCE_UP_LEFT;
                         end else if (brick_state[i] && (ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
-                        && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
+                        && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
+                        || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
                             brick_state[i] <= 1'b0;
                             current_state <= BOUNCE_DOWN_RIGHT;
                         end
@@ -481,12 +487,14 @@ module BrickBreaker_game(
                     for (i = 0; i < N_BRICKS; i = i + 1) begin
                         brick_col = i % 10;
                         brick_row = i / 10;
-                        if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                        if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
+                        || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
                             brick_state[i] <= 1'b0;
                             current_state <= BOUNCE_UP_RIGHT;
                         end else if (brick_state[i] && (ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
-                        && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
+                        && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
+                        || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
                             brick_state[i] <= 1'b0;
                             current_state <= BOUNCE_DOWN_LEFT;
                         end
@@ -503,12 +511,14 @@ module BrickBreaker_game(
                     for (i = 0; i < N_BRICKS; i = i + 1) begin
                         brick_col = i % 10;
                         brick_row = i / 10;
-                        if (brick_state[i] && (ball_x_pos >= brick_row * BRICK_HEIGHT && ball_x_pos <= (brick_row + 1) * BRICK_HEIGHT - 1 
+                        if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
+                        || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
                             brick_state[i] <= 1'b0;
                             current_state <= BOUNCE_DOWN_RIGHT;
                         end else if (brick_state[i] && (ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
-                        && ball_y_pos >= brick_col * BRICK_WIDTH && ball_y_pos <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
+                        && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
+                        || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
                             brick_state[i] <= 1'b0;
                             current_state <= BOUNCE_UP_LEFT;
                         end
