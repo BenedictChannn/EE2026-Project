@@ -21,7 +21,7 @@
 
 
 module BrickBreaker_level1(
-    output [129:0] brick_state
+    output [259:0] brick_state
     );
     parameter N_BRICKS = 130;
     
@@ -37,9 +37,9 @@ module BrickBreaker_level1(
         || i == 57 || i == 67 || i == 77 || i == 87
         || i == 48 || i == 58 || i == 68 || i == 78
         || i == 39 || i == 49|| i == 59 || i == 69) begin
-            assign brick_state[i] = 1'b0;
+            assign brick_state[i * 2 + 1: i * 2] = 2'b00;
         end else begin
-            assign brick_state[i] = 1'b1;
+            assign brick_state[i * 2 + 1: i * 2] = 2'b11;
         end
     end
 endmodule

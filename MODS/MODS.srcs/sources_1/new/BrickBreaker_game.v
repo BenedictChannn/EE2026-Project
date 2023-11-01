@@ -45,7 +45,9 @@ module BrickBreaker_game(
     parameter WHITE = 16'hFFFF;
     parameter BLACK = 16'h0000;
     parameter RED = 16'hF800;
+    parameter BLUE = 16'h001F;
     parameter GREEN = 16'h07E0;
+    parameter YELLOW = 16'hFFE0;
     
     // Board
     parameter BOARD_WIDTH = 16;
@@ -60,11 +62,14 @@ module BrickBreaker_game(
     // Brick
     parameter BRICK_WIDTH = 5;
     parameter BRICK_HEIGHT = 5;
-    parameter BRICK_COLOUR = GREEN;
+    parameter BRICK_COLOUR_3 = BLUE;
+    parameter BRICK_COLOUR_2 = GREEN;
+    parameter BRICK_COLOUR_1 = YELLOW;
     parameter N_BRICKS = 130;
     // To keep track whether brick has been destroyed already
-    reg [129:0] brick_state = {N_BRICKS{1'b1}};
-    wire [129:0] brick_state_1;
+    reg [1:0] brick_state [129:0];
+    wire [259:0] brick_state_1;
+    reg game_win_state;
     
     // Ball movement
     reg [11:0] ball_x_pos = 12'd32;
@@ -107,148 +112,148 @@ module BrickBreaker_game(
     clk6p25m clk625 (CLK, CLK_6P25M);
     
     ///////////////////////////////////////////////////////////// Brick /////////////////////////////////////////////////////////////
-    wire brick_1 = brick_state[0] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
-    wire brick_2 = brick_state[1] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
-    wire brick_3 = brick_state[2] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
-    wire brick_4 = brick_state[3] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
-    wire brick_5 = brick_state[4] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
-    wire brick_6 = brick_state[5] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
-    wire brick_7 = brick_state[6] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
-    wire brick_8 = brick_state[7] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
-    wire brick_9 = brick_state[8] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
-    wire brick_10 = brick_state[9] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
+    wire brick_1 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
+    wire brick_2 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
+    wire brick_3 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
+    wire brick_4 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
+    wire brick_5 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
+    wire brick_6 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
+    wire brick_7 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
+    wire brick_8 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
+    wire brick_9 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
+    wire brick_10 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 0 * BRICK_HEIGHT && row < 1 * BRICK_HEIGHT - 1);
     
-    wire brick_11 = brick_state[10] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT  - 1);
-    wire brick_12 = brick_state[11] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
-    wire brick_13 = brick_state[12] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
-    wire brick_14 = brick_state[13] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
-    wire brick_15 = brick_state[14] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
-    wire brick_16 = brick_state[15] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
-    wire brick_17 = brick_state[16] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
-    wire brick_18 = brick_state[17] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
-    wire brick_19 = brick_state[18] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
-    wire brick_20 = brick_state[19] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
+    wire brick_11 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT  - 1);
+    wire brick_12 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
+    wire brick_13 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
+    wire brick_14 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
+    wire brick_15 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
+    wire brick_16 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
+    wire brick_17 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
+    wire brick_18 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
+    wire brick_19 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
+    wire brick_20 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 1 * BRICK_HEIGHT && row < 2 * BRICK_HEIGHT - 1);
     
-    wire brick_21 = brick_state[20] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
-    wire brick_22 = brick_state[21] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
-    wire brick_23 = brick_state[22] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
-    wire brick_24 = brick_state[23] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
-    wire brick_25 = brick_state[24] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
-    wire brick_26 = brick_state[25] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
-    wire brick_27 = brick_state[26] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
-    wire brick_28 = brick_state[27] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
-    wire brick_29 = brick_state[28] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
-    wire brick_30 = brick_state[29] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
+    wire brick_21 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
+    wire brick_22 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
+    wire brick_23 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
+    wire brick_24 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
+    wire brick_25 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
+    wire brick_26 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
+    wire brick_27 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
+    wire brick_28 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
+    wire brick_29 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
+    wire brick_30 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 2 * BRICK_HEIGHT && row < 3 * BRICK_HEIGHT - 1);
     
-    wire brick_31 = brick_state[30] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
-    wire brick_32 = brick_state[31] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
-    wire brick_33 = brick_state[32] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
-    wire brick_34 = brick_state[33] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
-    wire brick_35 = brick_state[34] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
-    wire brick_36 = brick_state[35] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
-    wire brick_37 = brick_state[36] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
-    wire brick_38 = brick_state[37] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
-    wire brick_39 = brick_state[38] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
-    wire brick_40 = brick_state[39] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
+    wire brick_31 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
+    wire brick_32 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
+    wire brick_33 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
+    wire brick_34 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
+    wire brick_35 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
+    wire brick_36 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
+    wire brick_37 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
+    wire brick_38 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
+    wire brick_39 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
+    wire brick_40 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 3 * BRICK_HEIGHT && row < 4 * BRICK_HEIGHT - 1);
     
-    wire brick_41 = brick_state[40] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
-    wire brick_42 = brick_state[41] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
-    wire brick_43 = brick_state[42] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
-    wire brick_44 = brick_state[43] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
-    wire brick_45 = brick_state[44] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
-    wire brick_46 = brick_state[45] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
-    wire brick_47 = brick_state[46] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
-    wire brick_48 = brick_state[47] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
-    wire brick_49 = brick_state[48] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
-    wire brick_50 = brick_state[49] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
+    wire brick_41 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
+    wire brick_42 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
+    wire brick_43 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
+    wire brick_44 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
+    wire brick_45 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
+    wire brick_46 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
+    wire brick_47 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
+    wire brick_48 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
+    wire brick_49 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
+    wire brick_50 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 4 * BRICK_HEIGHT && row < 5 * BRICK_HEIGHT - 1);
 
-    wire brick_51 = brick_state[50] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
-    wire brick_52 = brick_state[51] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
-    wire brick_53 = brick_state[52] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
-    wire brick_54 = brick_state[53] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
-    wire brick_55 = brick_state[54] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
-    wire brick_56 = brick_state[55] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
-    wire brick_57 = brick_state[56] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
-    wire brick_58 = brick_state[57] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
-    wire brick_59 = brick_state[58] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
-    wire brick_60 = brick_state[59] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
+    wire brick_51 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
+    wire brick_52 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
+    wire brick_53 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
+    wire brick_54 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
+    wire brick_55 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
+    wire brick_56 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
+    wire brick_57 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
+    wire brick_58 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
+    wire brick_59 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
+    wire brick_60 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 5 * BRICK_HEIGHT && row < 6 * BRICK_HEIGHT - 1);
 
-    wire brick_61 = brick_state[60] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
-    wire brick_62 = brick_state[61] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
-    wire brick_63 = brick_state[62] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
-    wire brick_64 = brick_state[63] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
-    wire brick_65 = brick_state[64] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
-    wire brick_66 = brick_state[65] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
-    wire brick_67 = brick_state[66] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
-    wire brick_68 = brick_state[67] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
-    wire brick_69 = brick_state[68] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
-    wire brick_70 = brick_state[69] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
+    wire brick_61 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
+    wire brick_62 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
+    wire brick_63 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
+    wire brick_64 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
+    wire brick_65 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
+    wire brick_66 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
+    wire brick_67 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
+    wire brick_68 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
+    wire brick_69 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
+    wire brick_70 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 6 * BRICK_HEIGHT && row < 7 * BRICK_HEIGHT - 1);
 
-    wire brick_71 = brick_state[70] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
-    wire brick_72 = brick_state[71] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
-    wire brick_73 = brick_state[72] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
-    wire brick_74 = brick_state[73] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
-    wire brick_75 = brick_state[74] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
-    wire brick_76 = brick_state[75] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
-    wire brick_77 = brick_state[76] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
-    wire brick_78 = brick_state[77] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
-    wire brick_79 = brick_state[78] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
-    wire brick_80 = brick_state[79] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
+    wire brick_71 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
+    wire brick_72 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
+    wire brick_73 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
+    wire brick_74 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
+    wire brick_75 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
+    wire brick_76 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
+    wire brick_77 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
+    wire brick_78 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
+    wire brick_79 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
+    wire brick_80 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 7 * BRICK_HEIGHT && row < 8 * BRICK_HEIGHT - 1);
 
-    wire brick_81 = brick_state[80] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
-    wire brick_82 = brick_state[81] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
-    wire brick_83 = brick_state[82] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
-    wire brick_84 = brick_state[83] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
-    wire brick_85 = brick_state[84] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
-    wire brick_86 = brick_state[85] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
-    wire brick_87 = brick_state[86] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
-    wire brick_88 = brick_state[87] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
-    wire brick_89 = brick_state[88] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
-    wire brick_90 = brick_state[89] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
+    wire brick_81 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
+    wire brick_82 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
+    wire brick_83 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
+    wire brick_84 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
+    wire brick_85 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
+    wire brick_86 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
+    wire brick_87 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
+    wire brick_88 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
+    wire brick_89 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
+    wire brick_90 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 8 * BRICK_HEIGHT && row < 9 * BRICK_HEIGHT - 1);
 
-    wire brick_91 = brick_state[90] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
-    wire brick_92 = brick_state[91] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
-    wire brick_93 = brick_state[92] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
-    wire brick_94 = brick_state[93] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
-    wire brick_95 = brick_state[94] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
-    wire brick_96 = brick_state[95] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
-    wire brick_97 = brick_state[96] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
-    wire brick_98 = brick_state[97] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
-    wire brick_99 = brick_state[98] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
-    wire brick_100 = brick_state[99] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
+    wire brick_91 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
+    wire brick_92 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
+    wire brick_93 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
+    wire brick_94 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
+    wire brick_95 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
+    wire brick_96 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
+    wire brick_97 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
+    wire brick_98 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
+    wire brick_99 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
+    wire brick_100 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 9 * BRICK_HEIGHT && row < 10 * BRICK_HEIGHT - 1);
 
-    wire brick_101 = brick_state[100] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
-    wire brick_102 = brick_state[101] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
-    wire brick_103 = brick_state[102] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
-    wire brick_104 = brick_state[103] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
-    wire brick_105 = brick_state[104] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
-    wire brick_106 = brick_state[105] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
-    wire brick_107 = brick_state[106] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
-    wire brick_108 = brick_state[107] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
-    wire brick_109 = brick_state[108] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
-    wire brick_110 = brick_state[109] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
+    wire brick_101 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
+    wire brick_102 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
+    wire brick_103 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
+    wire brick_104 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
+    wire brick_105 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
+    wire brick_106 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
+    wire brick_107 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
+    wire brick_108 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
+    wire brick_109 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
+    wire brick_110 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 10 * BRICK_HEIGHT && row < 11 * BRICK_HEIGHT - 1);
 
-    wire brick_111 = brick_state[110] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
-    wire brick_112 = brick_state[111] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
-    wire brick_113 = brick_state[112] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
-    wire brick_114 = brick_state[113] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
-    wire brick_115 = brick_state[114] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
-    wire brick_116 = brick_state[115] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
-    wire brick_117 = brick_state[116] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
-    wire brick_118 = brick_state[117] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
-    wire brick_119 = brick_state[118] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
-    wire brick_120 = brick_state[119] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
+    wire brick_111 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
+    wire brick_112 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
+    wire brick_113 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
+    wire brick_114 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
+    wire brick_115 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
+    wire brick_116 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
+    wire brick_117 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
+    wire brick_118 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
+    wire brick_119 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
+    wire brick_120 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 11 * BRICK_HEIGHT && row < 12 * BRICK_HEIGHT - 1);
 
-    wire brick_121 = brick_state[120] && (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
-    wire brick_122 = brick_state[121] && (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
-    wire brick_123 = brick_state[122] && (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
-    wire brick_124 = brick_state[123] && (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
-    wire brick_125 = brick_state[124] && (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
-    wire brick_126 = brick_state[125] && (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
-    wire brick_127 = brick_state[126] && (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
-    wire brick_128 = brick_state[127] && (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
-    wire brick_129 = brick_state[128] && (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
-    wire brick_130 = brick_state[129] && (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    wire brick_121 = (col >= 0 * BRICK_WIDTH && col < 1 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    wire brick_122 = (col >= 1 * BRICK_WIDTH && col < 2 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    wire brick_123 = (col >= 2 * BRICK_WIDTH && col < 3 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    wire brick_124 = (col >= 3 * BRICK_WIDTH && col < 4 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    wire brick_125 = (col >= 4 * BRICK_WIDTH && col < 5 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    wire brick_126 = (col >= 5 * BRICK_WIDTH && col < 6 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    wire brick_127 = (col >= 6 * BRICK_WIDTH && col < 7 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    wire brick_128 = (col >= 7 * BRICK_WIDTH && col < 8 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    wire brick_129 = (col >= 8 * BRICK_WIDTH && col < 9 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
+    wire brick_130 = (col >= 9 * BRICK_WIDTH && col < 10 * BRICK_WIDTH - 1 && row >= 12 * BRICK_HEIGHT && row < 13 * BRICK_HEIGHT - 1);
     ////////////////////////////////////////////////////////////// Brick //////////////////////////////////////////////////////////////
     
     wire paddle_collision = ball_x_pos >= board_x_curr - BOARD_WIDTH / 2 && ball_x_pos <= board_x_curr + BOARD_WIDTH / 2 && ball_y_pos >= board_y_pos && ball_y_pos <= board_y_pos + BOARD_HEIGHT;
@@ -323,21 +328,51 @@ module BrickBreaker_game(
                 pixel_data <= BOARD_COLOUR;
             end else if (row > ball_x_pos - BALL_RADIUS && row <= ball_x_pos + BALL_RADIUS && col > ball_y_pos - BALL_RADIUS && col <= ball_y_pos + BALL_RADIUS) begin
                 pixel_data <= BALL_COLOUR;
-            end else if (brick_1 || brick_2 || brick_3 || brick_4 || brick_5 || brick_6 || brick_7 || brick_8 || brick_9 || brick_10 
-            || brick_11 || brick_12 || brick_13 || brick_14 || brick_15 || brick_16 || brick_17 || brick_18 || brick_19 || brick_20
-            || brick_21 || brick_22 || brick_23 || brick_24 || brick_25 || brick_26 || brick_27 || brick_28 || brick_29 || brick_30
-            || brick_31 || brick_32 || brick_33 || brick_34 || brick_35 || brick_36 || brick_37 || brick_38 || brick_39 || brick_40
-            || brick_41 || brick_42 || brick_43 || brick_44 || brick_45 || brick_46 || brick_47 || brick_48 || brick_49 || brick_50
-            || brick_51 || brick_52 || brick_53 || brick_54 || brick_55 || brick_56 || brick_57 || brick_58 || brick_59 || brick_60
-            || brick_61 || brick_62 || brick_63 || brick_64 || brick_65 || brick_66 || brick_67 || brick_68 || brick_69 || brick_70
-            || brick_71 || brick_72 || brick_73 || brick_74 || brick_75 || brick_76 || brick_77 || brick_78 || brick_79 || brick_80
-            || brick_81 || brick_82 || brick_83 || brick_84 || brick_85 || brick_86 || brick_87 || brick_88 || brick_89 || brick_90
-            || brick_91 || brick_92 || brick_93 || brick_94 || brick_95 || brick_96 || brick_97 || brick_98 || brick_99 || brick_100
-            || brick_101 || brick_102 || brick_103 || brick_104 || brick_105 || brick_106 || brick_107 || brick_108 || brick_109 || brick_110
-            || brick_111 || brick_112 || brick_113 || brick_114 || brick_115 || brick_116 || brick_117 || brick_118 || brick_119 || brick_120
-            || brick_121 || brick_122 || brick_123 || brick_124 || brick_125 || brick_126 || brick_127 || brick_128 || brick_129 || brick_130)
+            end else if (brick_1 && brick_state[0] == 2'b11 || brick_2 && brick_state[1] == 2'b11 || brick_3 && brick_state[2] == 2'b11 || brick_4 && brick_state[3] == 2'b11 || brick_5 && brick_state[4] == 2'b11 || brick_6 && brick_state[5] == 2'b11 || brick_7 && brick_state[6] == 2'b11 || brick_8 && brick_state[7] == 2'b11 || brick_9 && brick_state[8] == 2'b11 || brick_10 && brick_state[9] == 2'b11 
+            || brick_11 && brick_state[10] == 2'b11 || brick_12 && brick_state[11] == 2'b11 || brick_13 && brick_state[12] == 2'b11 || brick_14 && brick_state[13] == 2'b11 || brick_15 && brick_state[14] == 2'b11 || brick_16 && brick_state[15] == 2'b11 || brick_17 && brick_state[16] == 2'b11 || brick_18 && brick_state[17] == 2'b11 || brick_19 && brick_state[18] == 2'b11 || brick_20 && brick_state[19] == 2'b11
+            || brick_21 && brick_state[20] == 2'b11 || brick_22 && brick_state[21] == 2'b11 || brick_23 && brick_state[22] == 2'b11 || brick_24 && brick_state[23] == 2'b11 || brick_25 && brick_state[24] == 2'b11 || brick_26 && brick_state[25] == 2'b11 || brick_27 && brick_state[26] == 2'b11 || brick_28 && brick_state[27] == 2'b11 || brick_29 && brick_state[28] == 2'b11 || brick_30 && brick_state[29] == 2'b11
+            || brick_31 && brick_state[30] == 2'b11 || brick_32 && brick_state[31] == 2'b11 || brick_33 && brick_state[32] == 2'b11 || brick_34 && brick_state[33] == 2'b11 || brick_35 && brick_state[34] == 2'b11 || brick_36 && brick_state[35] == 2'b11 || brick_37 && brick_state[36] == 2'b11 || brick_38 && brick_state[37] == 2'b11 || brick_39 && brick_state[38] == 2'b11 || brick_40 && brick_state[39] == 2'b11 
+            || brick_41 && brick_state[40] == 2'b11 || brick_42 && brick_state[41] == 2'b11 || brick_43 && brick_state[42] == 2'b11 || brick_44 && brick_state[43] == 2'b11 || brick_45 && brick_state[44] == 2'b11 || brick_46 && brick_state[45] == 2'b11 || brick_47 && brick_state[46] == 2'b11 || brick_48 && brick_state[47] == 2'b11 || brick_49 && brick_state[48] == 2'b11 || brick_50 && brick_state[4999] == 2'b11 
+            || brick_51 && brick_state[50] == 2'b11 || brick_52 && brick_state[51] == 2'b11 || brick_53 && brick_state[52] == 2'b11 || brick_54 && brick_state[53] == 2'b11 || brick_55 && brick_state[54] == 2'b11 || brick_56 && brick_state[55] == 2'b11 || brick_57 && brick_state[56] == 2'b11 || brick_58 && brick_state[57] == 2'b11 || brick_59 && brick_state[58] == 2'b11 || brick_60 && brick_state[59] == 2'b11 
+            || brick_61 && brick_state[60] == 2'b11 || brick_62 && brick_state[61] == 2'b11 || brick_63 && brick_state[62] == 2'b11 || brick_64 && brick_state[63] == 2'b11 || brick_65 && brick_state[64] == 2'b11 || brick_66 && brick_state[65] == 2'b11 || brick_67 && brick_state[66] == 2'b11 || brick_68 && brick_state[67] == 2'b11 || brick_69 && brick_state[68] == 2'b11 || brick_70 && brick_state[69] == 2'b11 
+            || brick_71 && brick_state[70] == 2'b11 || brick_72 && brick_state[71] == 2'b11 || brick_73 && brick_state[72] == 2'b11 || brick_74 && brick_state[73] == 2'b11 || brick_75 && brick_state[74] == 2'b11 || brick_76 && brick_state[75] == 2'b11 || brick_77 && brick_state[76] == 2'b11 || brick_78 && brick_state[77] == 2'b11 || brick_79 && brick_state[78] == 2'b11 || brick_80 && brick_state[79] == 2'b11 
+            || brick_81 && brick_state[80] == 2'b11 || brick_82 && brick_state[81] == 2'b11 || brick_83 && brick_state[82] == 2'b11 || brick_84 && brick_state[83] == 2'b11 || brick_85 && brick_state[84] == 2'b11 || brick_86 && brick_state[85] == 2'b11 || brick_87 && brick_state[86] == 2'b11 || brick_88 && brick_state[87] == 2'b11 || brick_89 && brick_state[88] == 2'b11 || brick_90 && brick_state[89] == 2'b11 
+            || brick_91 && brick_state[90] == 2'b11 || brick_92 && brick_state[91] == 2'b11 || brick_93 && brick_state[92] == 2'b11 || brick_94 && brick_state[93] == 2'b11 || brick_95 && brick_state[94] == 2'b11 || brick_96 && brick_state[95] == 2'b11 || brick_97 && brick_state[96] == 2'b11 || brick_98 && brick_state[97] == 2'b11 || brick_99 && brick_state[98] == 2'b11 || brick_100 && brick_state[99] == 2'b11 
+            || brick_101 && brick_state[100] == 2'b11 || brick_102 && brick_state[101] == 2'b11 || brick_103 && brick_state[102] == 2'b11 || brick_104 && brick_state[103] == 2'b11 || brick_105 && brick_state[104] == 2'b11 || brick_106 && brick_state[105] == 2'b11 || brick_107 && brick_state[106] == 2'b11 || brick_108 && brick_state[107] == 2'b11 || brick_109 && brick_state[108] == 2'b11 || brick_110 && brick_state[109] == 2'b11 
+            || brick_111 && brick_state[110] == 2'b11 || brick_112 && brick_state[111] == 2'b11 || brick_113 && brick_state[112] == 2'b11 || brick_114 && brick_state[113] == 2'b11 || brick_115 && brick_state[114] == 2'b11 || brick_116 && brick_state[115] == 2'b11 || brick_117 && brick_state[116] == 2'b11 || brick_118 && brick_state[117] == 2'b11 || brick_119 && brick_state[118] == 2'b11 || brick_120 && brick_state[119] == 2'b11 
+            || brick_121 && brick_state[120] == 2'b11 || brick_122 && brick_state[121] == 2'b11 || brick_123 && brick_state[122] == 2'b11 || brick_124 && brick_state[123] == 2'b11 || brick_125 && brick_state[124] == 2'b11 || brick_126 && brick_state[125] == 2'b11 || brick_127 && brick_state[126] == 2'b11 || brick_128 && brick_state[127] == 2'b11 || brick_129 && brick_state[128] == 2'b11 || brick_130 && brick_state[129] == 2'b11 )
             begin
-                pixel_data <= BRICK_COLOUR;
+                pixel_data <= BRICK_COLOUR_3;
+            end else if (brick_1 && brick_state[0] == 2'b10 || brick_2 && brick_state[1] == 2'b10 || brick_3 && brick_state[2] == 2'b10 || brick_4 && brick_state[3] == 2'b10 || brick_5 && brick_state[4] == 2'b10 || brick_6 && brick_state[5] == 2'b10 || brick_7 && brick_state[6] == 2'b10 || brick_8 && brick_state[7] == 2'b10 || brick_9 && brick_state[8] == 2'b10 || brick_10 && brick_state[9] == 2'b10 
+            || brick_11 && brick_state[10] == 2'b10 || brick_12 && brick_state[11] == 2'b10 || brick_13 && brick_state[12] == 2'b10 || brick_14 && brick_state[13] == 2'b10 || brick_15 && brick_state[14] == 2'b10 || brick_16 && brick_state[15] == 2'b10 || brick_17 && brick_state[16] == 2'b10 || brick_18 && brick_state[17] == 2'b10 || brick_19 && brick_state[18] == 2'b10 || brick_20 && brick_state[19] == 2'b10
+            || brick_21 && brick_state[20] == 2'b10 || brick_22 && brick_state[21] == 2'b10 || brick_23 && brick_state[22] == 2'b10 || brick_24 && brick_state[23] == 2'b10 || brick_25 && brick_state[24] == 2'b10 || brick_26 && brick_state[25] == 2'b10 || brick_27 && brick_state[26] == 2'b10 || brick_28 && brick_state[27] == 2'b10 || brick_29 && brick_state[28] == 2'b10 || brick_30 && brick_state[29] == 2'b10
+            || brick_31 && brick_state[30] == 2'b10 || brick_32 && brick_state[31] == 2'b10 || brick_33 && brick_state[32] == 2'b10 || brick_34 && brick_state[33] == 2'b10 || brick_35 && brick_state[34] == 2'b10 || brick_36 && brick_state[35] == 2'b10 || brick_37 && brick_state[36] == 2'b10 || brick_38 && brick_state[37] == 2'b10 || brick_39 && brick_state[38] == 2'b10 || brick_40 && brick_state[39] == 2'b10 
+            || brick_41 && brick_state[40] == 2'b10 || brick_42 && brick_state[41] == 2'b10 || brick_43 && brick_state[42] == 2'b10 || brick_44 && brick_state[43] == 2'b10 || brick_45 && brick_state[44] == 2'b10 || brick_46 && brick_state[45] == 2'b10 || brick_47 && brick_state[46] == 2'b10 || brick_48 && brick_state[47] == 2'b10 || brick_49 && brick_state[48] == 2'b10 || brick_50 && brick_state[4999] == 2'b10 
+            || brick_51 && brick_state[50] == 2'b10 || brick_52 && brick_state[51] == 2'b10 || brick_53 && brick_state[52] == 2'b10 || brick_54 && brick_state[53] == 2'b10 || brick_55 && brick_state[54] == 2'b10 || brick_56 && brick_state[55] == 2'b10 || brick_57 && brick_state[56] == 2'b10 || brick_58 && brick_state[57] == 2'b10 || brick_59 && brick_state[58] == 2'b10 || brick_60 && brick_state[59] == 2'b10 
+            || brick_61 && brick_state[60] == 2'b10 || brick_62 && brick_state[61] == 2'b10 || brick_63 && brick_state[62] == 2'b10 || brick_64 && brick_state[63] == 2'b10 || brick_65 && brick_state[64] == 2'b10 || brick_66 && brick_state[65] == 2'b10 || brick_67 && brick_state[66] == 2'b10 || brick_68 && brick_state[67] == 2'b10 || brick_69 && brick_state[68] == 2'b10 || brick_70 && brick_state[69] == 2'b10 
+            || brick_71 && brick_state[70] == 2'b10 || brick_72 && brick_state[71] == 2'b10 || brick_73 && brick_state[72] == 2'b10 || brick_74 && brick_state[73] == 2'b10 || brick_75 && brick_state[74] == 2'b10 || brick_76 && brick_state[75] == 2'b10 || brick_77 && brick_state[76] == 2'b10 || brick_78 && brick_state[77] == 2'b10 || brick_79 && brick_state[78] == 2'b10 || brick_80 && brick_state[79] == 2'b10 
+            || brick_81 && brick_state[80] == 2'b10 || brick_82 && brick_state[81] == 2'b10 || brick_83 && brick_state[82] == 2'b10 || brick_84 && brick_state[83] == 2'b10 || brick_85 && brick_state[84] == 2'b10 || brick_86 && brick_state[85] == 2'b10 || brick_87 && brick_state[86] == 2'b10 || brick_88 && brick_state[87] == 2'b10 || brick_89 && brick_state[88] == 2'b10 || brick_90 && brick_state[89] == 2'b10 
+            || brick_91 && brick_state[90] == 2'b10 || brick_92 && brick_state[91] == 2'b10 || brick_93 && brick_state[92] == 2'b10 || brick_94 && brick_state[93] == 2'b10 || brick_95 && brick_state[94] == 2'b10 || brick_96 && brick_state[95] == 2'b10 || brick_97 && brick_state[96] == 2'b10 || brick_98 && brick_state[97] == 2'b10 || brick_99 && brick_state[98] == 2'b10 || brick_100 && brick_state[99] == 2'b10 
+            || brick_101 && brick_state[100] == 2'b10 || brick_102 && brick_state[101] == 2'b10 || brick_103 && brick_state[102] == 2'b10 || brick_104 && brick_state[103] == 2'b10 || brick_105 && brick_state[104] == 2'b10 || brick_106 && brick_state[105] == 2'b10 || brick_107 && brick_state[106] == 2'b10 || brick_108 && brick_state[107] == 2'b10 || brick_109 && brick_state[108] == 2'b10 || brick_110 && brick_state[109] == 2'b10 
+            || brick_111 && brick_state[110] == 2'b10 || brick_112 && brick_state[111] == 2'b10 || brick_113 && brick_state[112] == 2'b10 || brick_114 && brick_state[113] == 2'b10 || brick_115 && brick_state[114] == 2'b10 || brick_116 && brick_state[115] == 2'b10 || brick_117 && brick_state[116] == 2'b10 || brick_118 && brick_state[117] == 2'b10 || brick_119 && brick_state[118] == 2'b10 || brick_120 && brick_state[119] == 2'b10 
+            || brick_121 && brick_state[120] == 2'b10 || brick_122 && brick_state[121] == 2'b10 || brick_123 && brick_state[122] == 2'b10 || brick_124 && brick_state[123] == 2'b10 || brick_125 && brick_state[124] == 2'b10 || brick_126 && brick_state[125] == 2'b10 || brick_127 && brick_state[126] == 2'b10 || brick_128 && brick_state[127] == 2'b10 || brick_129 && brick_state[128] == 2'b10 || brick_130 && brick_state[129] == 2'b10 )
+            begin
+                pixel_data <= BRICK_COLOUR_2;
+            end else if (brick_1 && brick_state[0] == 2'b01 || brick_2 && brick_state[1] == 2'b01 || brick_3 && brick_state[2] == 2'b01 || brick_4 && brick_state[3] == 2'b01 || brick_5 && brick_state[4] == 2'b01 || brick_6 && brick_state[5] == 2'b01 || brick_7 && brick_state[6] == 2'b01 || brick_8 && brick_state[7] == 2'b01 || brick_9 && brick_state[8] == 2'b01 || brick_10 && brick_state[9] == 2'b01 
+            || brick_11 && brick_state[10] == 2'b01 || brick_12 && brick_state[11] == 2'b01 || brick_13 && brick_state[12] == 2'b01 || brick_14 && brick_state[13] == 2'b01 || brick_15 && brick_state[14] == 2'b01 || brick_16 && brick_state[15] == 2'b01 || brick_17 && brick_state[16] == 2'b01 || brick_18 && brick_state[17] == 2'b01 || brick_19 && brick_state[18] == 2'b01 || brick_20 && brick_state[19] == 2'b01
+            || brick_21 && brick_state[20] == 2'b01 || brick_22 && brick_state[21] == 2'b01 || brick_23 && brick_state[22] == 2'b01 || brick_24 && brick_state[23] == 2'b01 || brick_25 && brick_state[24] == 2'b01 || brick_26 && brick_state[25] == 2'b01 || brick_27 && brick_state[26] == 2'b01 || brick_28 && brick_state[27] == 2'b01 || brick_29 && brick_state[28] == 2'b01 || brick_30 && brick_state[29] == 2'b01
+            || brick_31 && brick_state[30] == 2'b01 || brick_32 && brick_state[31] == 2'b01 || brick_33 && brick_state[32] == 2'b01 || brick_34 && brick_state[33] == 2'b01 || brick_35 && brick_state[34] == 2'b01 || brick_36 && brick_state[35] == 2'b01 || brick_37 && brick_state[36] == 2'b01 || brick_38 && brick_state[37] == 2'b01 || brick_39 && brick_state[38] == 2'b01 || brick_40 && brick_state[39] == 2'b01 
+            || brick_41 && brick_state[40] == 2'b01 || brick_42 && brick_state[41] == 2'b01 || brick_43 && brick_state[42] == 2'b01 || brick_44 && brick_state[43] == 2'b01 || brick_45 && brick_state[44] == 2'b01 || brick_46 && brick_state[45] == 2'b01 || brick_47 && brick_state[46] == 2'b01 || brick_48 && brick_state[47] == 2'b01 || brick_49 && brick_state[48] == 2'b01 || brick_50 && brick_state[4999] == 2'b01 
+            || brick_51 && brick_state[50] == 2'b01 || brick_52 && brick_state[51] == 2'b01 || brick_53 && brick_state[52] == 2'b01 || brick_54 && brick_state[53] == 2'b01 || brick_55 && brick_state[54] == 2'b01 || brick_56 && brick_state[55] == 2'b01 || brick_57 && brick_state[56] == 2'b01 || brick_58 && brick_state[57] == 2'b01 || brick_59 && brick_state[58] == 2'b01 || brick_60 && brick_state[59] == 2'b01 
+            || brick_61 && brick_state[60] == 2'b01 || brick_62 && brick_state[61] == 2'b01 || brick_63 && brick_state[62] == 2'b01 || brick_64 && brick_state[63] == 2'b01 || brick_65 && brick_state[64] == 2'b01 || brick_66 && brick_state[65] == 2'b01 || brick_67 && brick_state[66] == 2'b01 || brick_68 && brick_state[67] == 2'b01 || brick_69 && brick_state[68] == 2'b01 || brick_70 && brick_state[69] == 2'b01 
+            || brick_71 && brick_state[70] == 2'b01 || brick_72 && brick_state[71] == 2'b01 || brick_73 && brick_state[72] == 2'b01 || brick_74 && brick_state[73] == 2'b01 || brick_75 && brick_state[74] == 2'b01 || brick_76 && brick_state[75] == 2'b01 || brick_77 && brick_state[76] == 2'b01 || brick_78 && brick_state[77] == 2'b01 || brick_79 && brick_state[78] == 2'b01 || brick_80 && brick_state[79] == 2'b01 
+            || brick_81 && brick_state[80] == 2'b01 || brick_82 && brick_state[81] == 2'b01 || brick_83 && brick_state[82] == 2'b01 || brick_84 && brick_state[83] == 2'b01 || brick_85 && brick_state[84] == 2'b01 || brick_86 && brick_state[85] == 2'b01 || brick_87 && brick_state[86] == 2'b01 || brick_88 && brick_state[87] == 2'b01 || brick_89 && brick_state[88] == 2'b01 || brick_90 && brick_state[89] == 2'b01 
+            || brick_91 && brick_state[90] == 2'b01 || brick_92 && brick_state[91] == 2'b01 || brick_93 && brick_state[92] == 2'b01 || brick_94 && brick_state[93] == 2'b01 || brick_95 && brick_state[94] == 2'b01 || brick_96 && brick_state[95] == 2'b01 || brick_97 && brick_state[96] == 2'b01 || brick_98 && brick_state[97] == 2'b01 || brick_99 && brick_state[98] == 2'b01 || brick_100 && brick_state[99] == 2'b01 
+            || brick_101 && brick_state[100] == 2'b01 || brick_102 && brick_state[101] == 2'b01 || brick_103 && brick_state[102] == 2'b01 || brick_104 && brick_state[103] == 2'b01 || brick_105 && brick_state[104] == 2'b01 || brick_106 && brick_state[105] == 2'b01 || brick_107 && brick_state[106] == 2'b01 || brick_108 && brick_state[107] == 2'b01 || brick_109 && brick_state[108] == 2'b01 || brick_110 && brick_state[109] == 2'b01 
+            || brick_111 && brick_state[110] == 2'b01 || brick_112 && brick_state[111] == 2'b01 || brick_113 && brick_state[112] == 2'b01 || brick_114 && brick_state[113] == 2'b01 || brick_115 && brick_state[114] == 2'b01 || brick_116 && brick_state[115] == 2'b01 || brick_117 && brick_state[116] == 2'b01 || brick_118 && brick_state[117] == 2'b01 || brick_119 && brick_state[118] == 2'b01 || brick_120 && brick_state[119] == 2'b01 
+            || brick_121 && brick_state[120] == 2'b01 || brick_122 && brick_state[121] == 2'b01 || brick_123 && brick_state[122] == 2'b01 || brick_124 && brick_state[123] == 2'b01 || brick_125 && brick_state[124] == 2'b01 || brick_126 && brick_state[125] == 2'b01 || brick_127 && brick_state[126] == 2'b01 || brick_128 && brick_state[127] == 2'b01 || brick_129 && brick_state[128] == 2'b01 || brick_130 && brick_state[129] == 2'b01 )
+            begin
+                pixel_data <= BRICK_COLOUR_1;
             end else begin
                 pixel_data <= BLACK;
             end
@@ -351,7 +386,7 @@ module BrickBreaker_game(
     end
     
     // Bouncing logic
-    integer i;
+    integer i, j, k;
     reg [3:0] brick_col, brick_row;
     always @ (posedge CLK) begin
         if (unlock) begin
@@ -388,7 +423,7 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= 1'b0;
+                            brick_state[i] <= brick_state[i] - 1;
                             current_state <= BOUNCE_DOWN;
                         end
                     end
@@ -411,7 +446,7 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1)
                         && ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= 1'b0;
+                            brick_state[i] <= brick_state[i] - 1;
                             current_state <= BOUNCE_UP;
                         end
                     end
@@ -430,12 +465,12 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1<= (brick_row + 1) * BRICK_HEIGHT - 1
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= 1'b0;
+                            brick_state[i] <= brick_state[i] - 1;
                             current_state <= BOUNCE_DOWN_LEFT;
                         end else if (brick_state[i] && (ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
                         && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
                         || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
-                            brick_state[i] <= 1'b0;
+                            brick_state[i] <= brick_state[i] - 1;
                             current_state <= BOUNCE_UP_RIGHT;
                         end
                     end
@@ -460,12 +495,12 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 ) 
                         && ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= 1'b0;
+                            brick_state[i] <= brick_state[i] - 1;
                             current_state <= BOUNCE_UP_LEFT;
                         end else if (brick_state[i] && (ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
                         && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
                         || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
-                            brick_state[i] <= 1'b0;
+                            brick_state[i] <= brick_state[i] - 1;
                             current_state <= BOUNCE_DOWN_RIGHT;
                         end
                     end
@@ -490,12 +525,12 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= 1'b0;
+                            brick_state[i] <= brick_state[i] - 1;
                             current_state <= BOUNCE_UP_RIGHT;
                         end else if (brick_state[i] && (ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
                         && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
                         || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
-                            brick_state[i] <= 1'b0;
+                            brick_state[i] <= brick_state[i] - 1;
                             current_state <= BOUNCE_DOWN_LEFT;
                         end
                     end
@@ -514,24 +549,167 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= 1'b0;
+                            brick_state[i] <= brick_state[i] - 1;
                             current_state <= BOUNCE_DOWN_RIGHT;
                         end else if (brick_state[i] && (ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
                         && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
                         || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
-                            brick_state[i] <= 1'b0;
+                            brick_state[i] <= brick_state[i] - 1;
                             current_state <= BOUNCE_UP_LEFT;
                         end
                     end
                 end
             end
-            
-            if (brick_state == {N_BRICKS{1'b0}}) begin
+        
+            if (!brick_state[0] && !brick_state[1] && !brick_state[2] && !brick_state[3] && !brick_state[4] && !brick_state[5] && !brick_state[6] && !brick_state[7] && !brick_state[8] && !brick_state[9]
+            && !brick_state[10] && !brick_state[11] && !brick_state[12] && !brick_state[13] && !brick_state[14] && !brick_state[15] && !brick_state[16] && !brick_state[17] && !brick_state[18] && !brick_state[19]
+            && !brick_state[20] && !brick_state[21] && !brick_state[22] && !brick_state[23] && !brick_state[24] && !brick_state[25] && !brick_state[26] && !brick_state[27] && !brick_state[28] && !brick_state[29]
+            && !brick_state[30] && !brick_state[31] && !brick_state[32] && !brick_state[33] && !brick_state[34] && !brick_state[35] && !brick_state[36] && !brick_state[37] && !brick_state[38] && !brick_state[39]
+            && !brick_state[40] && !brick_state[41] && !brick_state[42] && !brick_state[43] && !brick_state[44] && !brick_state[45] && !brick_state[46] && !brick_state[47] && !brick_state[48] && !brick_state[49]
+            && !brick_state[50] && !brick_state[51] && !brick_state[52] && !brick_state[53] && !brick_state[54] && !brick_state[55] && !brick_state[56] && !brick_state[57] && !brick_state[58] && !brick_state[59]
+            && !brick_state[60] && !brick_state[61] && !brick_state[62] && !brick_state[63] && !brick_state[64] && !brick_state[65] && !brick_state[66] && !brick_state[67] && !brick_state[68] && !brick_state[69]
+            && !brick_state[70] && !brick_state[71] && !brick_state[72] && !brick_state[73] && !brick_state[74] && !brick_state[75] && !brick_state[76] && !brick_state[77] && !brick_state[78] && !brick_state[19]
+            && !brick_state[80] && !brick_state[81] && !brick_state[82] && !brick_state[83] && !brick_state[84] && !brick_state[85] && !brick_state[86] && !brick_state[87] && !brick_state[88] && !brick_state[19]
+            && !brick_state[90] && !brick_state[91] && !brick_state[92] && !brick_state[93] && !brick_state[94] && !brick_state[95] && !brick_state[96] && !brick_state[97] && !brick_state[98] && !brick_state[19]
+            && !brick_state[100] && !brick_state[101] && !brick_state[102] && !brick_state[103] && !brick_state[104] && !brick_state[105] && !brick_state[106] && !brick_state[107] && !brick_state[108] && !brick_state[19]
+            && !brick_state[110] && !brick_state[111] && !brick_state[112] && !brick_state[113] && !brick_state[114] && !brick_state[115] && !brick_state[116] && !brick_state[117] && !brick_state[118] && !brick_state[19]
+            && !brick_state[120] && !brick_state[121] && !brick_state[122] && !brick_state[123] && !brick_state[124] && !brick_state[125] && !brick_state[126] && !brick_state[127] && !brick_state[128] && !brick_state[19]) begin
                 win_game <= 1'b1;
             end
         // Reset when unlock is false
         end else begin
-            brick_state <= brick_state_1;
+            for (k = 0; k < N_BRICKS; k = k + 1) begin
+                brick_state[0] <= brick_state_1[1:0];
+                brick_state[1] <= brick_state_1[3:2];
+                brick_state[2] <= brick_state_1[5:4];
+                brick_state[3] <= brick_state_1[7:6];
+                brick_state[4] <= brick_state_1[9:8];
+                brick_state[5] <= brick_state_1[11:10];
+                brick_state[6] <= brick_state_1[13:12];
+                brick_state[7] <= brick_state_1[15:14];
+                brick_state[8] <= brick_state_1[17:16];
+                brick_state[9] <= brick_state_1[19:18];
+                brick_state[10] <= brick_state_1[21:20];
+                brick_state[11] <= brick_state_1[23:22];
+                brick_state[12] <= brick_state_1[25:24];
+                brick_state[13] <= brick_state_1[27:26];
+                brick_state[14] <= brick_state_1[29:28];
+                brick_state[15] <= brick_state_1[31:30];
+                brick_state[16] <= brick_state_1[33:32];
+                brick_state[17] <= brick_state_1[35:34];
+                brick_state[18] <= brick_state_1[37:36];
+                brick_state[19] <= brick_state_1[39:38];          
+                brick_state[20] <= brick_state_1[41:40];
+                brick_state[21] <= brick_state_1[43:42];
+                brick_state[22] <= brick_state_1[45:44];
+                brick_state[23] <= brick_state_1[47:46];
+                brick_state[24] <= brick_state_1[49:48];
+                brick_state[25] <= brick_state_1[51:50];
+                brick_state[26] <= brick_state_1[53:52];
+                brick_state[27] <= brick_state_1[55:54];
+                brick_state[28] <= brick_state_1[57:56];
+                brick_state[29] <= brick_state_1[59:58];
+                brick_state[30] <= brick_state_1[61:60];
+                brick_state[31] <= brick_state_1[63:62];
+                brick_state[32] <= brick_state_1[65:64];
+                brick_state[33] <= brick_state_1[67:66];
+                brick_state[34] <= brick_state_1[69:68];
+                brick_state[35] <= brick_state_1[71:70];
+                brick_state[36] <= brick_state_1[73:72];
+                brick_state[37] <= brick_state_1[75:74];
+                brick_state[38] <= brick_state_1[77:76];
+                brick_state[39] <= brick_state_1[79:78];
+                brick_state[40] <= brick_state_1[81:80];
+                brick_state[41] <= brick_state_1[83:82];
+                brick_state[42] <= brick_state_1[85:84];
+                brick_state[43] <= brick_state_1[87:86];
+                brick_state[44] <= brick_state_1[89:88];
+                brick_state[45] <= brick_state_1[91:90];
+                brick_state[46] <= brick_state_1[93:92];
+                brick_state[47] <= brick_state_1[95:94];
+                brick_state[48] <= brick_state_1[97:96];
+                brick_state[49] <= brick_state_1[99:98];
+                brick_state[50] <= brick_state_1[101:100];
+                brick_state[51] <= brick_state_1[103:102];
+                brick_state[52] <= brick_state_1[105:104];
+                brick_state[53] <= brick_state_1[107:106];
+                brick_state[54] <= brick_state_1[109:108];
+                brick_state[55] <= brick_state_1[111:110];
+                brick_state[56] <= brick_state_1[113:112];
+                brick_state[57] <= brick_state_1[115:114];
+                brick_state[58] <= brick_state_1[117:116];
+                brick_state[59] <= brick_state_1[119:118];
+                brick_state[60] <= brick_state_1[121:120];
+                brick_state[61] <= brick_state_1[123:122];
+                brick_state[62] <= brick_state_1[125:124];
+                brick_state[63] <= brick_state_1[127:126];
+                brick_state[64] <= brick_state_1[129:128];
+                brick_state[65] <= brick_state_1[131:130];
+                brick_state[66] <= brick_state_1[133:132];
+                brick_state[67] <= brick_state_1[135:134];
+                brick_state[68] <= brick_state_1[137:136];
+                brick_state[69] <= brick_state_1[139:138];
+                brick_state[70] <= brick_state_1[141:140];
+                brick_state[71] <= brick_state_1[143:142];
+                brick_state[72] <= brick_state_1[145:144];
+                brick_state[73] <= brick_state_1[147:146];
+                brick_state[74] <= brick_state_1[149:148];
+                brick_state[75] <= brick_state_1[151:150];
+                brick_state[76] <= brick_state_1[153:152];
+                brick_state[77] <= brick_state_1[155:154];
+                brick_state[78] <= brick_state_1[157:156];
+                brick_state[79] <= brick_state_1[159:158];
+                brick_state[80] <= brick_state_1[161:160];
+                brick_state[81] <= brick_state_1[163:162];
+                brick_state[82] <= brick_state_1[165:164];
+                brick_state[83] <= brick_state_1[167:166];
+                brick_state[84] <= brick_state_1[169:168];
+                brick_state[85] <= brick_state_1[171:170];
+                brick_state[86] <= brick_state_1[173:172];
+                brick_state[87] <= brick_state_1[175:174];
+                brick_state[88] <= brick_state_1[177:176];
+                brick_state[89] <= brick_state_1[179:178];
+                brick_state[90] <= brick_state_1[181:180];
+                brick_state[91] <= brick_state_1[183:182];
+                brick_state[92] <= brick_state_1[185:184];
+                brick_state[93] <= brick_state_1[187:186];
+                brick_state[94] <= brick_state_1[189:188];
+                brick_state[95] <= brick_state_1[191:190];
+                brick_state[96] <= brick_state_1[193:192];
+                brick_state[97] <= brick_state_1[195:194];
+                brick_state[98] <= brick_state_1[197:196];
+                brick_state[99] <= brick_state_1[199:198];
+                brick_state[100] <= brick_state_1[201:200];
+                brick_state[101] <= brick_state_1[203:202];
+                brick_state[102] <= brick_state_1[205:204];
+                brick_state[103] <= brick_state_1[207:206];
+                brick_state[104] <= brick_state_1[209:208];
+                brick_state[105] <= brick_state_1[211:210];
+                brick_state[106] <= brick_state_1[213:212];
+                brick_state[107] <= brick_state_1[215:214];
+                brick_state[108] <= brick_state_1[217:216];
+                brick_state[109] <= brick_state_1[219:218];
+                brick_state[110] <= brick_state_1[221:220];
+                brick_state[111] <= brick_state_1[223:222];
+                brick_state[112] <= brick_state_1[225:224];
+                brick_state[113] <= brick_state_1[227:226];
+                brick_state[114] <= brick_state_1[229:228];
+                brick_state[115] <= brick_state_1[231:230];
+                brick_state[116] <= brick_state_1[233:232];
+                brick_state[117] <= brick_state_1[235:234];
+                brick_state[118] <= brick_state_1[237:236];
+                brick_state[119] <= brick_state_1[239:238];
+                brick_state[120] <= brick_state_1[241:240];
+                brick_state[121] <= brick_state_1[243:242];
+                brick_state[122] <= brick_state_1[245:244];
+                brick_state[123] <= brick_state_1[247:246];
+                brick_state[124] <= brick_state_1[249:248];
+                brick_state[125] <= brick_state_1[251:250];
+                brick_state[126] <= brick_state_1[253:252];
+                brick_state[127] <= brick_state_1[255:254];
+                brick_state[128] <= brick_state_1[257:256];
+                brick_state[129] <= brick_state_1[259:258];
+            end
             current_state <= BOUNCE_STOP;
         end
         
@@ -610,5 +788,5 @@ module BrickBreaker_game(
     // Oled data for win screen
     BrickBreaker_winScreen winScreen (pixel_index, win_data);
     
-    BrickBreaker_level1 brick_setting_1 (brick_state_1);
+    BrickBreaker_level1 brick_setting_1 (.brick_state(brick_state_1));
 endmodule
