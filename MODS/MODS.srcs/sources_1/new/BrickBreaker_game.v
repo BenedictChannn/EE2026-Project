@@ -62,6 +62,7 @@ module BrickBreaker_game(
     parameter BRICK_HEIGHT = 5;
     parameter BRICK_COLOUR = GREEN;
     parameter N_BRICKS = 130;
+    // To keep track whether brick has been destroyed already
     reg [129:0] brick_state = {N_BRICKS{1'b1}};
     wire [129:0] brick_state_1;
     
@@ -70,7 +71,7 @@ module BrickBreaker_game(
     reg [11:0] ball_y_pos = 12'd65;
     reg [3:0] current_state = BOUNCE_STOP;
     reg [31:0] ball_move_counter = 32'd0;
-    parameter BALL_MOVE_DELAY = 32'd3000000;
+    parameter BALL_MOVE_DELAY = 32'd1750000;
     parameter BALL_COLOUR = RED;
     parameter BALL_RADIUS = 1;
     parameter BOUNCE_STOP = 0;
