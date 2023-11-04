@@ -69,6 +69,8 @@ module BrickBreaker_game(
     // To keep track whether brick has been destroyed already
     reg [1:0] brick_state [129:0];
     wire [259:0] brick_state_1;
+    wire [259:0] brick_state_2;
+    reg [259:0] brick_state_chosen;
     reg game_win_state;
     
     // Ball movement
@@ -334,7 +336,7 @@ module BrickBreaker_game(
             || brick_11 && brick_state[10] == 2'b11 || brick_12 && brick_state[11] == 2'b11 || brick_13 && brick_state[12] == 2'b11 || brick_14 && brick_state[13] == 2'b11 || brick_15 && brick_state[14] == 2'b11 || brick_16 && brick_state[15] == 2'b11 || brick_17 && brick_state[16] == 2'b11 || brick_18 && brick_state[17] == 2'b11 || brick_19 && brick_state[18] == 2'b11 || brick_20 && brick_state[19] == 2'b11
             || brick_21 && brick_state[20] == 2'b11 || brick_22 && brick_state[21] == 2'b11 || brick_23 && brick_state[22] == 2'b11 || brick_24 && brick_state[23] == 2'b11 || brick_25 && brick_state[24] == 2'b11 || brick_26 && brick_state[25] == 2'b11 || brick_27 && brick_state[26] == 2'b11 || brick_28 && brick_state[27] == 2'b11 || brick_29 && brick_state[28] == 2'b11 || brick_30 && brick_state[29] == 2'b11
             || brick_31 && brick_state[30] == 2'b11 || brick_32 && brick_state[31] == 2'b11 || brick_33 && brick_state[32] == 2'b11 || brick_34 && brick_state[33] == 2'b11 || brick_35 && brick_state[34] == 2'b11 || brick_36 && brick_state[35] == 2'b11 || brick_37 && brick_state[36] == 2'b11 || brick_38 && brick_state[37] == 2'b11 || brick_39 && brick_state[38] == 2'b11 || brick_40 && brick_state[39] == 2'b11 
-            || brick_41 && brick_state[40] == 2'b11 || brick_42 && brick_state[41] == 2'b11 || brick_43 && brick_state[42] == 2'b11 || brick_44 && brick_state[43] == 2'b11 || brick_45 && brick_state[44] == 2'b11 || brick_46 && brick_state[45] == 2'b11 || brick_47 && brick_state[46] == 2'b11 || brick_48 && brick_state[47] == 2'b11 || brick_49 && brick_state[48] == 2'b11 || brick_50 && brick_state[4999] == 2'b11 
+            || brick_41 && brick_state[40] == 2'b11 || brick_42 && brick_state[41] == 2'b11 || brick_43 && brick_state[42] == 2'b11 || brick_44 && brick_state[43] == 2'b11 || brick_45 && brick_state[44] == 2'b11 || brick_46 && brick_state[45] == 2'b11 || brick_47 && brick_state[46] == 2'b11 || brick_48 && brick_state[47] == 2'b11 || brick_49 && brick_state[48] == 2'b11 || brick_50 && brick_state[49] == 2'b11 
             || brick_51 && brick_state[50] == 2'b11 || brick_52 && brick_state[51] == 2'b11 || brick_53 && brick_state[52] == 2'b11 || brick_54 && brick_state[53] == 2'b11 || brick_55 && brick_state[54] == 2'b11 || brick_56 && brick_state[55] == 2'b11 || brick_57 && brick_state[56] == 2'b11 || brick_58 && brick_state[57] == 2'b11 || brick_59 && brick_state[58] == 2'b11 || brick_60 && brick_state[59] == 2'b11 
             || brick_61 && brick_state[60] == 2'b11 || brick_62 && brick_state[61] == 2'b11 || brick_63 && brick_state[62] == 2'b11 || brick_64 && brick_state[63] == 2'b11 || brick_65 && brick_state[64] == 2'b11 || brick_66 && brick_state[65] == 2'b11 || brick_67 && brick_state[66] == 2'b11 || brick_68 && brick_state[67] == 2'b11 || brick_69 && brick_state[68] == 2'b11 || brick_70 && brick_state[69] == 2'b11 
             || brick_71 && brick_state[70] == 2'b11 || brick_72 && brick_state[71] == 2'b11 || brick_73 && brick_state[72] == 2'b11 || brick_74 && brick_state[73] == 2'b11 || brick_75 && brick_state[74] == 2'b11 || brick_76 && brick_state[75] == 2'b11 || brick_77 && brick_state[76] == 2'b11 || brick_78 && brick_state[77] == 2'b11 || brick_79 && brick_state[78] == 2'b11 || brick_80 && brick_state[79] == 2'b11 
@@ -349,7 +351,7 @@ module BrickBreaker_game(
             || brick_11 && brick_state[10] == 2'b10 || brick_12 && brick_state[11] == 2'b10 || brick_13 && brick_state[12] == 2'b10 || brick_14 && brick_state[13] == 2'b10 || brick_15 && brick_state[14] == 2'b10 || brick_16 && brick_state[15] == 2'b10 || brick_17 && brick_state[16] == 2'b10 || brick_18 && brick_state[17] == 2'b10 || brick_19 && brick_state[18] == 2'b10 || brick_20 && brick_state[19] == 2'b10
             || brick_21 && brick_state[20] == 2'b10 || brick_22 && brick_state[21] == 2'b10 || brick_23 && brick_state[22] == 2'b10 || brick_24 && brick_state[23] == 2'b10 || brick_25 && brick_state[24] == 2'b10 || brick_26 && brick_state[25] == 2'b10 || brick_27 && brick_state[26] == 2'b10 || brick_28 && brick_state[27] == 2'b10 || brick_29 && brick_state[28] == 2'b10 || brick_30 && brick_state[29] == 2'b10
             || brick_31 && brick_state[30] == 2'b10 || brick_32 && brick_state[31] == 2'b10 || brick_33 && brick_state[32] == 2'b10 || brick_34 && brick_state[33] == 2'b10 || brick_35 && brick_state[34] == 2'b10 || brick_36 && brick_state[35] == 2'b10 || brick_37 && brick_state[36] == 2'b10 || brick_38 && brick_state[37] == 2'b10 || brick_39 && brick_state[38] == 2'b10 || brick_40 && brick_state[39] == 2'b10 
-            || brick_41 && brick_state[40] == 2'b10 || brick_42 && brick_state[41] == 2'b10 || brick_43 && brick_state[42] == 2'b10 || brick_44 && brick_state[43] == 2'b10 || brick_45 && brick_state[44] == 2'b10 || brick_46 && brick_state[45] == 2'b10 || brick_47 && brick_state[46] == 2'b10 || brick_48 && brick_state[47] == 2'b10 || brick_49 && brick_state[48] == 2'b10 || brick_50 && brick_state[4999] == 2'b10 
+            || brick_41 && brick_state[40] == 2'b10 || brick_42 && brick_state[41] == 2'b10 || brick_43 && brick_state[42] == 2'b10 || brick_44 && brick_state[43] == 2'b10 || brick_45 && brick_state[44] == 2'b10 || brick_46 && brick_state[45] == 2'b10 || brick_47 && brick_state[46] == 2'b10 || brick_48 && brick_state[47] == 2'b10 || brick_49 && brick_state[48] == 2'b10 || brick_50 && brick_state[49] == 2'b10 
             || brick_51 && brick_state[50] == 2'b10 || brick_52 && brick_state[51] == 2'b10 || brick_53 && brick_state[52] == 2'b10 || brick_54 && brick_state[53] == 2'b10 || brick_55 && brick_state[54] == 2'b10 || brick_56 && brick_state[55] == 2'b10 || brick_57 && brick_state[56] == 2'b10 || brick_58 && brick_state[57] == 2'b10 || brick_59 && brick_state[58] == 2'b10 || brick_60 && brick_state[59] == 2'b10 
             || brick_61 && brick_state[60] == 2'b10 || brick_62 && brick_state[61] == 2'b10 || brick_63 && brick_state[62] == 2'b10 || brick_64 && brick_state[63] == 2'b10 || brick_65 && brick_state[64] == 2'b10 || brick_66 && brick_state[65] == 2'b10 || brick_67 && brick_state[66] == 2'b10 || brick_68 && brick_state[67] == 2'b10 || brick_69 && brick_state[68] == 2'b10 || brick_70 && brick_state[69] == 2'b10 
             || brick_71 && brick_state[70] == 2'b10 || brick_72 && brick_state[71] == 2'b10 || brick_73 && brick_state[72] == 2'b10 || brick_74 && brick_state[73] == 2'b10 || brick_75 && brick_state[74] == 2'b10 || brick_76 && brick_state[75] == 2'b10 || brick_77 && brick_state[76] == 2'b10 || brick_78 && brick_state[77] == 2'b10 || brick_79 && brick_state[78] == 2'b10 || brick_80 && brick_state[79] == 2'b10 
@@ -364,7 +366,7 @@ module BrickBreaker_game(
             || brick_11 && brick_state[10] == 2'b01 || brick_12 && brick_state[11] == 2'b01 || brick_13 && brick_state[12] == 2'b01 || brick_14 && brick_state[13] == 2'b01 || brick_15 && brick_state[14] == 2'b01 || brick_16 && brick_state[15] == 2'b01 || brick_17 && brick_state[16] == 2'b01 || brick_18 && brick_state[17] == 2'b01 || brick_19 && brick_state[18] == 2'b01 || brick_20 && brick_state[19] == 2'b01
             || brick_21 && brick_state[20] == 2'b01 || brick_22 && brick_state[21] == 2'b01 || brick_23 && brick_state[22] == 2'b01 || brick_24 && brick_state[23] == 2'b01 || brick_25 && brick_state[24] == 2'b01 || brick_26 && brick_state[25] == 2'b01 || brick_27 && brick_state[26] == 2'b01 || brick_28 && brick_state[27] == 2'b01 || brick_29 && brick_state[28] == 2'b01 || brick_30 && brick_state[29] == 2'b01
             || brick_31 && brick_state[30] == 2'b01 || brick_32 && brick_state[31] == 2'b01 || brick_33 && brick_state[32] == 2'b01 || brick_34 && brick_state[33] == 2'b01 || brick_35 && brick_state[34] == 2'b01 || brick_36 && brick_state[35] == 2'b01 || brick_37 && brick_state[36] == 2'b01 || brick_38 && brick_state[37] == 2'b01 || brick_39 && brick_state[38] == 2'b01 || brick_40 && brick_state[39] == 2'b01 
-            || brick_41 && brick_state[40] == 2'b01 || brick_42 && brick_state[41] == 2'b01 || brick_43 && brick_state[42] == 2'b01 || brick_44 && brick_state[43] == 2'b01 || brick_45 && brick_state[44] == 2'b01 || brick_46 && brick_state[45] == 2'b01 || brick_47 && brick_state[46] == 2'b01 || brick_48 && brick_state[47] == 2'b01 || brick_49 && brick_state[48] == 2'b01 || brick_50 && brick_state[4999] == 2'b01 
+            || brick_41 && brick_state[40] == 2'b01 || brick_42 && brick_state[41] == 2'b01 || brick_43 && brick_state[42] == 2'b01 || brick_44 && brick_state[43] == 2'b01 || brick_45 && brick_state[44] == 2'b01 || brick_46 && brick_state[45] == 2'b01 || brick_47 && brick_state[46] == 2'b01 || brick_48 && brick_state[47] == 2'b01 || brick_49 && brick_state[48] == 2'b01 || brick_50 && brick_state[49] == 2'b01 
             || brick_51 && brick_state[50] == 2'b01 || brick_52 && brick_state[51] == 2'b01 || brick_53 && brick_state[52] == 2'b01 || brick_54 && brick_state[53] == 2'b01 || brick_55 && brick_state[54] == 2'b01 || brick_56 && brick_state[55] == 2'b01 || brick_57 && brick_state[56] == 2'b01 || brick_58 && brick_state[57] == 2'b01 || brick_59 && brick_state[58] == 2'b01 || brick_60 && brick_state[59] == 2'b01 
             || brick_61 && brick_state[60] == 2'b01 || brick_62 && brick_state[61] == 2'b01 || brick_63 && brick_state[62] == 2'b01 || brick_64 && brick_state[63] == 2'b01 || brick_65 && brick_state[64] == 2'b01 || brick_66 && brick_state[65] == 2'b01 || brick_67 && brick_state[66] == 2'b01 || brick_68 && brick_state[67] == 2'b01 || brick_69 && brick_state[68] == 2'b01 || brick_70 && brick_state[69] == 2'b01 
             || brick_71 && brick_state[70] == 2'b01 || brick_72 && brick_state[71] == 2'b01 || brick_73 && brick_state[72] == 2'b01 || brick_74 && brick_state[73] == 2'b01 || brick_75 && brick_state[74] == 2'b01 || brick_76 && brick_state[75] == 2'b01 || brick_77 && brick_state[76] == 2'b01 || brick_78 && brick_state[77] == 2'b01 || brick_79 && brick_state[78] == 2'b01 || brick_80 && brick_state[79] == 2'b01 
@@ -385,8 +387,10 @@ module BrickBreaker_game(
             ball_y_pos <= 12'd65;
             if (game_level == 1'b0) begin
                 pixel_data <= screen1_data;
+                brick_state_chosen <= brick_state_1;
             end else if (game_level == 1'b1) begin
                 pixel_data <= screen2_data;
+                brick_state_chosen <= brick_state_2;
             end
         end
     end
@@ -585,136 +589,136 @@ module BrickBreaker_game(
         // Reset when unlock is false
         end else begin
             for (k = 0; k < N_BRICKS; k = k + 1) begin
-                brick_state[0] <= brick_state_1[1:0];
-                brick_state[1] <= brick_state_1[3:2];
-                brick_state[2] <= brick_state_1[5:4];
-                brick_state[3] <= brick_state_1[7:6];
-                brick_state[4] <= brick_state_1[9:8];
-                brick_state[5] <= brick_state_1[11:10];
-                brick_state[6] <= brick_state_1[13:12];
-                brick_state[7] <= brick_state_1[15:14];
-                brick_state[8] <= brick_state_1[17:16];
-                brick_state[9] <= brick_state_1[19:18];
-                brick_state[10] <= brick_state_1[21:20];
-                brick_state[11] <= brick_state_1[23:22];
-                brick_state[12] <= brick_state_1[25:24];
-                brick_state[13] <= brick_state_1[27:26];
-                brick_state[14] <= brick_state_1[29:28];
-                brick_state[15] <= brick_state_1[31:30];
-                brick_state[16] <= brick_state_1[33:32];
-                brick_state[17] <= brick_state_1[35:34];
-                brick_state[18] <= brick_state_1[37:36];
-                brick_state[19] <= brick_state_1[39:38];          
-                brick_state[20] <= brick_state_1[41:40];
-                brick_state[21] <= brick_state_1[43:42];
-                brick_state[22] <= brick_state_1[45:44];
-                brick_state[23] <= brick_state_1[47:46];
-                brick_state[24] <= brick_state_1[49:48];
-                brick_state[25] <= brick_state_1[51:50];
-                brick_state[26] <= brick_state_1[53:52];
-                brick_state[27] <= brick_state_1[55:54];
-                brick_state[28] <= brick_state_1[57:56];
-                brick_state[29] <= brick_state_1[59:58];
-                brick_state[30] <= brick_state_1[61:60];
-                brick_state[31] <= brick_state_1[63:62];
-                brick_state[32] <= brick_state_1[65:64];
-                brick_state[33] <= brick_state_1[67:66];
-                brick_state[34] <= brick_state_1[69:68];
-                brick_state[35] <= brick_state_1[71:70];
-                brick_state[36] <= brick_state_1[73:72];
-                brick_state[37] <= brick_state_1[75:74];
-                brick_state[38] <= brick_state_1[77:76];
-                brick_state[39] <= brick_state_1[79:78];
-                brick_state[40] <= brick_state_1[81:80];
-                brick_state[41] <= brick_state_1[83:82];
-                brick_state[42] <= brick_state_1[85:84];
-                brick_state[43] <= brick_state_1[87:86];
-                brick_state[44] <= brick_state_1[89:88];
-                brick_state[45] <= brick_state_1[91:90];
-                brick_state[46] <= brick_state_1[93:92];
-                brick_state[47] <= brick_state_1[95:94];
-                brick_state[48] <= brick_state_1[97:96];
-                brick_state[49] <= brick_state_1[99:98];
-                brick_state[50] <= brick_state_1[101:100];
-                brick_state[51] <= brick_state_1[103:102];
-                brick_state[52] <= brick_state_1[105:104];
-                brick_state[53] <= brick_state_1[107:106];
-                brick_state[54] <= brick_state_1[109:108];
-                brick_state[55] <= brick_state_1[111:110];
-                brick_state[56] <= brick_state_1[113:112];
-                brick_state[57] <= brick_state_1[115:114];
-                brick_state[58] <= brick_state_1[117:116];
-                brick_state[59] <= brick_state_1[119:118];
-                brick_state[60] <= brick_state_1[121:120];
-                brick_state[61] <= brick_state_1[123:122];
-                brick_state[62] <= brick_state_1[125:124];
-                brick_state[63] <= brick_state_1[127:126];
-                brick_state[64] <= brick_state_1[129:128];
-                brick_state[65] <= brick_state_1[131:130];
-                brick_state[66] <= brick_state_1[133:132];
-                brick_state[67] <= brick_state_1[135:134];
-                brick_state[68] <= brick_state_1[137:136];
-                brick_state[69] <= brick_state_1[139:138];
-                brick_state[70] <= brick_state_1[141:140];
-                brick_state[71] <= brick_state_1[143:142];
-                brick_state[72] <= brick_state_1[145:144];
-                brick_state[73] <= brick_state_1[147:146];
-                brick_state[74] <= brick_state_1[149:148];
-                brick_state[75] <= brick_state_1[151:150];
-                brick_state[76] <= brick_state_1[153:152];
-                brick_state[77] <= brick_state_1[155:154];
-                brick_state[78] <= brick_state_1[157:156];
-                brick_state[79] <= brick_state_1[159:158];
-                brick_state[80] <= brick_state_1[161:160];
-                brick_state[81] <= brick_state_1[163:162];
-                brick_state[82] <= brick_state_1[165:164];
-                brick_state[83] <= brick_state_1[167:166];
-                brick_state[84] <= brick_state_1[169:168];
-                brick_state[85] <= brick_state_1[171:170];
-                brick_state[86] <= brick_state_1[173:172];
-                brick_state[87] <= brick_state_1[175:174];
-                brick_state[88] <= brick_state_1[177:176];
-                brick_state[89] <= brick_state_1[179:178];
-                brick_state[90] <= brick_state_1[181:180];
-                brick_state[91] <= brick_state_1[183:182];
-                brick_state[92] <= brick_state_1[185:184];
-                brick_state[93] <= brick_state_1[187:186];
-                brick_state[94] <= brick_state_1[189:188];
-                brick_state[95] <= brick_state_1[191:190];
-                brick_state[96] <= brick_state_1[193:192];
-                brick_state[97] <= brick_state_1[195:194];
-                brick_state[98] <= brick_state_1[197:196];
-                brick_state[99] <= brick_state_1[199:198];
-                brick_state[100] <= brick_state_1[201:200];
-                brick_state[101] <= brick_state_1[203:202];
-                brick_state[102] <= brick_state_1[205:204];
-                brick_state[103] <= brick_state_1[207:206];
-                brick_state[104] <= brick_state_1[209:208];
-                brick_state[105] <= brick_state_1[211:210];
-                brick_state[106] <= brick_state_1[213:212];
-                brick_state[107] <= brick_state_1[215:214];
-                brick_state[108] <= brick_state_1[217:216];
-                brick_state[109] <= brick_state_1[219:218];
-                brick_state[110] <= brick_state_1[221:220];
-                brick_state[111] <= brick_state_1[223:222];
-                brick_state[112] <= brick_state_1[225:224];
-                brick_state[113] <= brick_state_1[227:226];
-                brick_state[114] <= brick_state_1[229:228];
-                brick_state[115] <= brick_state_1[231:230];
-                brick_state[116] <= brick_state_1[233:232];
-                brick_state[117] <= brick_state_1[235:234];
-                brick_state[118] <= brick_state_1[237:236];
-                brick_state[119] <= brick_state_1[239:238];
-                brick_state[120] <= brick_state_1[241:240];
-                brick_state[121] <= brick_state_1[243:242];
-                brick_state[122] <= brick_state_1[245:244];
-                brick_state[123] <= brick_state_1[247:246];
-                brick_state[124] <= brick_state_1[249:248];
-                brick_state[125] <= brick_state_1[251:250];
-                brick_state[126] <= brick_state_1[253:252];
-                brick_state[127] <= brick_state_1[255:254];
-                brick_state[128] <= brick_state_1[257:256];
-                brick_state[129] <= brick_state_1[259:258];
+                brick_state[0] <= brick_state_chosen[1:0];
+                brick_state[1] <= brick_state_chosen[3:2];
+                brick_state[2] <= brick_state_chosen[5:4];
+                brick_state[3] <= brick_state_chosen[7:6];
+                brick_state[4] <= brick_state_chosen[9:8];
+                brick_state[5] <= brick_state_chosen[11:10];
+                brick_state[6] <= brick_state_chosen[13:12];
+                brick_state[7] <= brick_state_chosen[15:14];
+                brick_state[8] <= brick_state_chosen[17:16];
+                brick_state[9] <= brick_state_chosen[19:18];
+                brick_state[10] <= brick_state_chosen[21:20];
+                brick_state[11] <= brick_state_chosen[23:22];
+                brick_state[12] <= brick_state_chosen[25:24];
+                brick_state[13] <= brick_state_chosen[27:26];
+                brick_state[14] <= brick_state_chosen[29:28];
+                brick_state[15] <= brick_state_chosen[31:30];
+                brick_state[16] <= brick_state_chosen[33:32];
+                brick_state[17] <= brick_state_chosen[35:34];
+                brick_state[18] <= brick_state_chosen[37:36];
+                brick_state[19] <= brick_state_chosen[39:38];          
+                brick_state[20] <= brick_state_chosen[41:40];
+                brick_state[21] <= brick_state_chosen[43:42];
+                brick_state[22] <= brick_state_chosen[45:44];
+                brick_state[23] <= brick_state_chosen[47:46];
+                brick_state[24] <= brick_state_chosen[49:48];
+                brick_state[25] <= brick_state_chosen[51:50];
+                brick_state[26] <= brick_state_chosen[53:52];
+                brick_state[27] <= brick_state_chosen[55:54];
+                brick_state[28] <= brick_state_chosen[57:56];
+                brick_state[29] <= brick_state_chosen[59:58];
+                brick_state[30] <= brick_state_chosen[61:60];
+                brick_state[31] <= brick_state_chosen[63:62];
+                brick_state[32] <= brick_state_chosen[65:64];
+                brick_state[33] <= brick_state_chosen[67:66];
+                brick_state[34] <= brick_state_chosen[69:68];
+                brick_state[35] <= brick_state_chosen[71:70];
+                brick_state[36] <= brick_state_chosen[73:72];
+                brick_state[37] <= brick_state_chosen[75:74];
+                brick_state[38] <= brick_state_chosen[77:76];
+                brick_state[39] <= brick_state_chosen[79:78];
+                brick_state[40] <= brick_state_chosen[81:80];
+                brick_state[41] <= brick_state_chosen[83:82];
+                brick_state[42] <= brick_state_chosen[85:84];
+                brick_state[43] <= brick_state_chosen[87:86];
+                brick_state[44] <= brick_state_chosen[89:88];
+                brick_state[45] <= brick_state_chosen[91:90];
+                brick_state[46] <= brick_state_chosen[93:92];
+                brick_state[47] <= brick_state_chosen[95:94];
+                brick_state[48] <= brick_state_chosen[97:96];
+                brick_state[49] <= brick_state_chosen[99:98];
+                brick_state[50] <= brick_state_chosen[101:100];
+                brick_state[51] <= brick_state_chosen[103:102];
+                brick_state[52] <= brick_state_chosen[105:104];
+                brick_state[53] <= brick_state_chosen[107:106];
+                brick_state[54] <= brick_state_chosen[109:108];
+                brick_state[55] <= brick_state_chosen[111:110];
+                brick_state[56] <= brick_state_chosen[113:112];
+                brick_state[57] <= brick_state_chosen[115:114];
+                brick_state[58] <= brick_state_chosen[117:116];
+                brick_state[59] <= brick_state_chosen[119:118];
+                brick_state[60] <= brick_state_chosen[121:120];
+                brick_state[61] <= brick_state_chosen[123:122];
+                brick_state[62] <= brick_state_chosen[125:124];
+                brick_state[63] <= brick_state_chosen[127:126];
+                brick_state[64] <= brick_state_chosen[129:128];
+                brick_state[65] <= brick_state_chosen[131:130];
+                brick_state[66] <= brick_state_chosen[133:132];
+                brick_state[67] <= brick_state_chosen[135:134];
+                brick_state[68] <= brick_state_chosen[137:136];
+                brick_state[69] <= brick_state_chosen[139:138];
+                brick_state[70] <= brick_state_chosen[141:140];
+                brick_state[71] <= brick_state_chosen[143:142];
+                brick_state[72] <= brick_state_chosen[145:144];
+                brick_state[73] <= brick_state_chosen[147:146];
+                brick_state[74] <= brick_state_chosen[149:148];
+                brick_state[75] <= brick_state_chosen[151:150];
+                brick_state[76] <= brick_state_chosen[153:152];
+                brick_state[77] <= brick_state_chosen[155:154];
+                brick_state[78] <= brick_state_chosen[157:156];
+                brick_state[79] <= brick_state_chosen[159:158];
+                brick_state[80] <= brick_state_chosen[161:160];
+                brick_state[81] <= brick_state_chosen[163:162];
+                brick_state[82] <= brick_state_chosen[165:164];
+                brick_state[83] <= brick_state_chosen[167:166];
+                brick_state[84] <= brick_state_chosen[169:168];
+                brick_state[85] <= brick_state_chosen[171:170];
+                brick_state[86] <= brick_state_chosen[173:172];
+                brick_state[87] <= brick_state_chosen[175:174];
+                brick_state[88] <= brick_state_chosen[177:176];
+                brick_state[89] <= brick_state_chosen[179:178];
+                brick_state[90] <= brick_state_chosen[181:180];
+                brick_state[91] <= brick_state_chosen[183:182];
+                brick_state[92] <= brick_state_chosen[185:184];
+                brick_state[93] <= brick_state_chosen[187:186];
+                brick_state[94] <= brick_state_chosen[189:188];
+                brick_state[95] <= brick_state_chosen[191:190];
+                brick_state[96] <= brick_state_chosen[193:192];
+                brick_state[97] <= brick_state_chosen[195:194];
+                brick_state[98] <= brick_state_chosen[197:196];
+                brick_state[99] <= brick_state_chosen[199:198];
+                brick_state[100] <= brick_state_chosen[201:200];
+                brick_state[101] <= brick_state_chosen[203:202];
+                brick_state[102] <= brick_state_chosen[205:204];
+                brick_state[103] <= brick_state_chosen[207:206];
+                brick_state[104] <= brick_state_chosen[209:208];
+                brick_state[105] <= brick_state_chosen[211:210];
+                brick_state[106] <= brick_state_chosen[213:212];
+                brick_state[107] <= brick_state_chosen[215:214];
+                brick_state[108] <= brick_state_chosen[217:216];
+                brick_state[109] <= brick_state_chosen[219:218];
+                brick_state[110] <= brick_state_chosen[221:220];
+                brick_state[111] <= brick_state_chosen[223:222];
+                brick_state[112] <= brick_state_chosen[225:224];
+                brick_state[113] <= brick_state_chosen[227:226];
+                brick_state[114] <= brick_state_chosen[229:228];
+                brick_state[115] <= brick_state_chosen[231:230];
+                brick_state[116] <= brick_state_chosen[233:232];
+                brick_state[117] <= brick_state_chosen[235:234];
+                brick_state[118] <= brick_state_chosen[237:236];
+                brick_state[119] <= brick_state_chosen[239:238];
+                brick_state[120] <= brick_state_chosen[241:240];
+                brick_state[121] <= brick_state_chosen[243:242];
+                brick_state[122] <= brick_state_chosen[245:244];
+                brick_state[123] <= brick_state_chosen[247:246];
+                brick_state[124] <= brick_state_chosen[249:248];
+                brick_state[125] <= brick_state_chosen[251:250];
+                brick_state[126] <= brick_state_chosen[253:252];
+                brick_state[127] <= brick_state_chosen[255:254];
+                brick_state[128] <= brick_state_chosen[257:256];
+                brick_state[129] <= brick_state_chosen[259:258];
             end
             current_state <= BOUNCE_STOP;
         end
@@ -724,6 +728,7 @@ module BrickBreaker_game(
                 // Reset states
                 game_over <= 1'b0;
                 unlock <= 1'b0;
+                game_level <= 1'b0;
                 
                 reset_counter <= 32'd0;
             end else begin
@@ -803,5 +808,9 @@ module BrickBreaker_game(
     // Oled data for win screen
     BrickBreaker_winScreen winScreen (pixel_index, win_data);
     
+    // Game display for level 1
     BrickBreaker_level1 brick_setting_1 (.brick_state(brick_state_1));
+    
+    // Game display for level 2
+    BrickBreaker_level2 brick_setting_2 (.brick_state(brick_state_2));
 endmodule
