@@ -1,6 +1,6 @@
 
 *** Running vivado
-    with args -log BrickBreaker_game.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source BrickBreaker_game.tcl
+    with args -log Integrate.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Integrate.tcl
 
 
 ****** Vivado v2018.2 (64-bit)
@@ -8,55 +8,55 @@
   **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
     ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 
-source BrickBreaker_game.tcl -notrace
-Command: synth_design -top BrickBreaker_game -part xc7a35tcpg236-1
+source Integrate.tcl -notrace
+Command: synth_design -top Integrate -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 30036 
+INFO: Helper process launched with PID 22228 
 WARNING: [Synth 8-2611] redeclaration of ansi port pixel_index is not allowed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/MouseOledPaint_Setup.v:36]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 405.453 ; gain = 118.727
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 417.906 ; gain = 131.234
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_game' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:23]
-	Parameter BOUNDARY_TOP bound to: 0 - type: integer 
-	Parameter BOUNDARY_BOTTOM bound to: 95 - type: integer 
-	Parameter BOUNDARY_LEFT bound to: 63 - type: integer 
-	Parameter BOUNDARY_RIGHT bound to: 0 - type: integer 
-	Parameter SCREEN_WIDTH bound to: 96 - type: integer 
-	Parameter SCREEN_HEIGHT bound to: 64 - type: integer 
-	Parameter WHITE bound to: 16'b1111111111111111 
-	Parameter BLACK bound to: 16'b0000000000000000 
-	Parameter RED bound to: 16'b1111100000000000 
-	Parameter BLUE bound to: 16'b0000000000011111 
-	Parameter GREEN bound to: 16'b0000011111100000 
-	Parameter YELLOW bound to: 16'b1111111111100000 
-	Parameter BOARD_WIDTH bound to: 16 - type: integer 
-	Parameter BOARD_HEIGHT bound to: 3 - type: integer 
-	Parameter BOARD_COLOUR bound to: 16'b1111111111111111 
-	Parameter BOUNCE_TIME bound to: 5000000 - type: integer 
-	Parameter BRICK_WIDTH bound to: 5 - type: integer 
-	Parameter BRICK_HEIGHT bound to: 5 - type: integer 
-	Parameter BRICK_COLOUR_3 bound to: 16'b0000000000011111 
-	Parameter BRICK_COLOUR_2 bound to: 16'b0000011111100000 
-	Parameter BRICK_COLOUR_1 bound to: 16'b1111111111100000 
-	Parameter N_BRICKS bound to: 130 - type: integer 
-	Parameter BALL_MOVE_DELAY bound to: 1750000 - type: integer 
-	Parameter BALL_COLOUR bound to: 16'b1111100000000000 
-	Parameter BALL_RADIUS bound to: 1 - type: integer 
-	Parameter BOUNCE_STOP bound to: 0 - type: integer 
-	Parameter BOUNCE_UP bound to: 1 - type: integer 
-	Parameter BOUNCE_DOWN bound to: 2 - type: integer 
-	Parameter BOUNCE_UP_LEFT bound to: 3 - type: integer 
-	Parameter BOUNCE_DOWN_LEFT bound to: 4 - type: integer 
-	Parameter BOUNCE_DOWN_RIGHT bound to: 5 - type: integer 
-	Parameter BOUNCE_UP_RIGHT bound to: 6 - type: integer 
-	Parameter BALL_START_DELAY bound to: 300000000 - type: integer 
-	Parameter RESET_COUNT bound to: 500000000 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'Integrate' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Integrated_project.v:23]
 INFO: [Synth 8-6157] synthesizing module 'clk6p25m' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/clk6p25m.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'clk6p25m' (1#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/clk6p25m.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:272]
+INFO: [Synth 8-6157] synthesizing module 'TaskA' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:23]
+	Parameter WHITE bound to: 16'b1111111111111111 
+	Parameter ORANGE bound to: 16'b1111110110100000 
+	Parameter BLUE bound to: 16'b0000000000011111 
+	Parameter GREEN bound to: 16'b0000011111100000 
+	Parameter RED bound to: 16'b1111100000000000 
+	Parameter PURPLE bound to: 16'b1111100000011110 
+	Parameter BLACK bound to: 16'b0000000000000000 
+	Parameter ONE_SECOND bound to: 6250000 - type: integer 
+	Parameter TWO_SECOND bound to: 12500000 - type: integer 
+	Parameter THREE_SECOND bound to: 18750000 - type: integer 
+	Parameter FOUR_SECOND bound to: 25000000 - type: integer 
+	Parameter FIVE_SECOND bound to: 31250000 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'clk_divider' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/clk_divider.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'clk_divider' (2#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/clk_divider.v:3]
+INFO: [Synth 8-6157] synthesizing module 'debouncerA' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/debouncerA.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'debouncerA' (3#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/debouncerA.v:23]
+WARNING: [Synth 8-6090] variable 'timer' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:98]
+WARNING: [Synth 8-6090] variable 'timer' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:99]
+WARNING: [Synth 8-6090] variable 'timer1' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:103]
+WARNING: [Synth 8-6090] variable 'timer1' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:104]
+WARNING: [Synth 8-6090] variable 'timer2' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:107]
+WARNING: [Synth 8-6090] variable 'timer2' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:108]
+WARNING: [Synth 8-6090] variable 'timer3' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:111]
+WARNING: [Synth 8-6090] variable 'timer3' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:112]
+WARNING: [Synth 8-6090] variable 'timer4' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:115]
+WARNING: [Synth 8-6090] variable 'timer4' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:116]
+WARNING: [Synth 8-6090] variable 'timer5' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:119]
+WARNING: [Synth 8-6090] variable 'timer5' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:120]
+WARNING: [Synth 8-6090] variable 'step1' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:180]
+WARNING: [Synth 8-6090] variable 'step2' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:236]
+WARNING: [Synth 8-6090] variable 'step3' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:277]
+WARNING: [Synth 8-6090] variable 'step4' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:318]
+WARNING: [Synth 8-6090] variable 'step5' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:359]
+INFO: [Synth 8-6155] done synthesizing module 'TaskA' (4#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/TaskA.v:23]
 INFO: [Synth 8-6157] synthesizing module 'Oled_Display' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:36]
 	Parameter Width bound to: 96 - type: integer 
 	Parameter Height bound to: 64 - type: integer 
@@ -111,30 +111,24 @@ INFO: [Synth 8-6157] synthesizing module 'Oled_Display' [C:/Users/bened/OneDrive
 INFO: [Synth 8-226] default block is never used [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:123]
 INFO: [Synth 8-226] default block is never used [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:198]
 WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:346]
-INFO: [Synth 8-6155] done synthesizing module 'Oled_Display' (2#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:36]
-WARNING: [Synth 8-350] instance 'oled' of module 'Oled_Display' requires 14 connections, but only 11 given [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:785]
-INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_display' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_display.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_display' (3#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_display.v:23]
-INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_display2' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_display2.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_display2' (4#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_display2.v:23]
-INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_gameOver' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_gameOver.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_gameOver' (5#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_gameOver.v:23]
-INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_winScreen' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_winScreen.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_winScreen' (6#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_winScreen.v:23]
-INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_level1' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_level1.v:23]
-	Parameter N_BRICKS bound to: 130 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_level1' (7#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_level1.v:23]
-INFO: [Synth 8-6157] synthesizing module 'BrickBreaker_level2' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_level2.v:23]
-	Parameter N_BRICKS bound to: 130 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_level2' (8#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_level2.v:23]
-WARNING: [Synth 8-6014] Unused sequential element brick_col_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:431]
-WARNING: [Synth 8-6014] Unused sequential element brick_row_reg was removed.  [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:432]
-INFO: [Synth 8-6155] done synthesizing module 'BrickBreaker_game' (9#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:23]
-WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port JC[2]
-WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port PS2Clk
-WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port PS2Data
+INFO: [Synth 8-6155] done synthesizing module 'Oled_Display' (5#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:36]
+WARNING: [Synth 8-350] instance 'oled' of module 'Oled_Display' requires 14 connections, but only 11 given [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Integrated_project.v:86]
+INFO: [Synth 8-6157] synthesizing module 'Welcome_A' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Welcome_A.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Welcome_A' (6#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Welcome_A.v:23]
+INFO: [Synth 8-6157] synthesizing module 'Welcome_B' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Welcome_B.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Welcome_B' (7#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Welcome_B.v:23]
+INFO: [Synth 8-6157] synthesizing module 'Welcome_C' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Welcome_C.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Welcome_C' (8#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Welcome_C.v:23]
+WARNING: [Synth 8-689] width (1) of port connection 'pixel_data' does not match port width (16) of module 'Welcome_C' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Integrated_project.v:92]
+INFO: [Synth 8-6157] synthesizing module 'Welcome_D' [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Welcome_D.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Welcome_D' (9#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Welcome_D.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Integrate' (10#1) [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/Integrated_project.v:23]
+WARNING: [Synth 8-3331] design Integrate has unconnected port JC[2]
+WARNING: [Synth 8-3331] design Integrate has unconnected port btnR
+WARNING: [Synth 8-3331] design Integrate has unconnected port btnL
+WARNING: [Synth 8-3331] design Integrate has unconnected port btnD
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:16 . Memory (MB): peak = 680.211 ; gain = 393.484
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:17 . Memory (MB): peak = 524.066 ; gain = 237.395
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -147,10 +141,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:19 . Memory (MB): peak = 680.211 ; gain = 393.484
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:18 . Memory (MB): peak = 524.066 ; gain = 237.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:19 . Memory (MB): peak = 680.211 ; gain = 393.484
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:18 . Memory (MB): peak = 524.066 ; gain = 237.395
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -158,9 +152,93 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc]
+WARNING: [Vivado 12-584] No ports matched 'seg[0]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:82]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:82]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[0]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:83]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:83]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[1]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:84]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:84]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[1]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:85]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:85]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[2]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:86]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:86]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[2]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:87]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:87]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[3]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:88]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:88]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[3]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:89]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:89]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[4]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:90]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:90]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[4]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:91]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:91]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[5]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:92]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:92]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[5]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:93]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:93]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[6]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:94]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:94]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[6]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:95]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:95]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[0]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:100]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:100]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[0]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:101]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:101]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[1]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:102]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:102]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[1]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:103]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:103]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[2]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:104]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:104]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[2]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:105]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:105]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[3]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:106]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:106]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[3]'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:107]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:107]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'PS2Clk'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:274]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:274]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'PS2Clk'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:275]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:275]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'PS2Clk'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:276]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:276]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'PS2Data'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:277]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:277]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'PS2Data'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:278]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:278]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'PS2Data'. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:279]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc:279]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 Finished Parsing XDC File [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/BrickBreaker_game_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/BrickBreaker_game_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/constrs_1/new/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Integrate_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Integrate_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
@@ -168,70 +246,34 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1035.461 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 819.973 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1037.016 ; gain = 750.289
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:40 . Memory (MB): peak = 819.973 ; gain = 533.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1037.016 ; gain = 750.289
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:40 . Memory (MB): peak = 819.973 ; gain = 533.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1037.016 ; gain = 750.289
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:40 . Memory (MB): peak = 819.973 ; gain = 533.301
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5544] ROM "SLOW_CLK0" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "clk_output0" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "debounced_btn" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Oled_Display'
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "fsm_next_state0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:263]
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.srcs/sources_1/new/BrickBreaker_game.v:263]
-INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'BrickBreaker_game'
-INFO: [Synth 8-5545] ROM "ball_y_pos" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "ball_move_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "current_state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "ball_start_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "game_over" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "win_game" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "win_game" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "unlock" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "reset_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "bounce_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5544] ROM "ball_start_counter" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "ball_move_counter" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5545] ROM "ball_y_pos" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "ball_move_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "current_state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "ball_start_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "game_over" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "win_game" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "win_game" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "unlock" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "reset_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "bounce_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5544] ROM "ball_start_counter" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "ball_move_counter" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "pixel_data" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "active" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -269,90 +311,56 @@ INFO: [Synth 8-5544] ROM "pixel_data" won't be mapped to Block RAM because addre
                SendPixel | 00000000000000000010000000000000 |                            10000
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Oled_Display'
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                  iSTATE |                              000 |                             0000
-                 iSTATE0 |                              001 |                             0010
-                 iSTATE4 |                              010 |                             0011
-                 iSTATE3 |                              011 |                             0100
-                 iSTATE5 |                              100 |                             0101
-                 iSTATE2 |                              101 |                             0110
-*
-                 iSTATE1 |                              110 |                             0001
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'BrickBreaker_game'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:34 ; elapsed = 00:03:24 . Memory (MB): peak = 1037.016 ; gain = 750.289
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:01:26 . Memory (MB): peak = 819.973 ; gain = 533.301
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
-+------+-----------------------+------------+----------+
-|      |RTL Partition          |Replication |Instances |
-+------+-----------------------+------------+----------+
-|1     |BrickBreaker_game__GB0 |           1|     46962|
-|2     |BrickBreaker_game__GB1 |           1|      2707|
-|3     |BrickBreaker_game__GB2 |           1|     10371|
-+------+-----------------------+------------+----------+
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 6     
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input     27 Bit       Adders := 6     
 	   2 Input     17 Bit       Adders := 1     
-	   2 Input     13 Bit       Adders := 7     
-	   3 Input     13 Bit       Adders := 1     
-	   2 Input     12 Bit       Adders := 2     
 	   2 Input      6 Bit       Adders := 1     
 	   2 Input      3 Bit       Adders := 1     
-	   2 Input      2 Bit       Adders := 130   
-	   2 Input      1 Bit       Adders := 1     
 +---Registers : 
 	               40 Bit    Registers := 1     
-	               32 Bit    Registers := 3     
+	               32 Bit    Registers := 2     
+	               27 Bit    Registers := 6     
 	               17 Bit    Registers := 1     
-	               16 Bit    Registers := 1     
-	               12 Bit    Registers := 2     
-	                7 Bit    Registers := 1     
+	               16 Bit    Registers := 3     
 	                6 Bit    Registers := 1     
-	                4 Bit    Registers := 1     
 	                3 Bit    Registers := 1     
-	                2 Bit    Registers := 130   
-	                1 Bit    Registers := 4     
+	                1 Bit    Registers := 15    
 +---Muxes : 
-	   2 Input    260 Bit        Muxes := 1     
 	   2 Input     40 Bit        Muxes := 3     
+	   2 Input     32 Bit        Muxes := 4     
 	  32 Input     32 Bit        Muxes := 1     
-	   2 Input     32 Bit        Muxes := 5     
+	   2 Input     27 Bit        Muxes := 24    
 	  32 Input     20 Bit        Muxes := 1     
 	   2 Input     17 Bit        Muxes := 1     
-	   2 Input     16 Bit        Muxes := 3     
-	6144 Input     16 Bit        Muxes := 1     
-	   7 Input     16 Bit        Muxes := 1     
-	   2 Input     12 Bit        Muxes := 4     
-	   2 Input      7 Bit        Muxes := 1     
-	   4 Input      7 Bit        Muxes := 1     
+	   5 Input     16 Bit        Muxes := 1     
+	  31 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
 	  32 Input      6 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 2     
 	  32 Input      5 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 3     
-	   3 Input      4 Bit        Muxes := 1     
 	   2 Input      3 Bit        Muxes := 1     
-	1057 Input      3 Bit        Muxes := 1     
-	   2 Input      2 Bit        Muxes := 131   
-	   8 Input      2 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 1     
-	   5 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 682   
-	 131 Input      1 Bit        Muxes := 2     
-	 262 Input      1 Bit        Muxes := 2     
-	 261 Input      1 Bit        Muxes := 2     
-	   4 Input      1 Bit        Muxes := 2     
-	   6 Input      1 Bit        Muxes := 2     
-	   8 Input      1 Bit        Muxes := 134   
-	   5 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 15    
+	   7 Input      1 Bit        Muxes := 1     
+	  12 Input      1 Bit        Muxes := 1     
+	  17 Input      1 Bit        Muxes := 1     
+	  22 Input      1 Bit        Muxes := 1     
+	  27 Input      1 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -360,46 +368,14 @@ Finished RTL Component Statistics
 Start RTL Hierarchical Component Statistics 
 ---------------------------------------------------------------------------------
 Hierarchical RTL Component report 
-Module BrickBreaker_game 
+Module Integrate 
 Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     32 Bit       Adders := 6     
-	   2 Input     13 Bit       Adders := 7     
-	   3 Input     13 Bit       Adders := 1     
-	   2 Input     12 Bit       Adders := 2     
-	   2 Input      2 Bit       Adders := 130   
-	   2 Input      1 Bit       Adders := 1     
 +---Registers : 
-	               32 Bit    Registers := 3     
-	               16 Bit    Registers := 1     
-	               12 Bit    Registers := 2     
-	                7 Bit    Registers := 1     
-	                4 Bit    Registers := 1     
-	                2 Bit    Registers := 130   
-	                1 Bit    Registers := 3     
+	               16 Bit    Registers := 2     
+	                1 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input    260 Bit        Muxes := 1     
-	   2 Input     32 Bit        Muxes := 3     
-	   2 Input     16 Bit        Muxes := 3     
-	   7 Input     16 Bit        Muxes := 1     
-	   2 Input     12 Bit        Muxes := 4     
-	   2 Input      7 Bit        Muxes := 1     
-	   4 Input      7 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 3     
-	   3 Input      4 Bit        Muxes := 1     
-	1057 Input      3 Bit        Muxes := 1     
-	   2 Input      2 Bit        Muxes := 131   
-	   8 Input      2 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 1     
-	   5 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 679   
-	 131 Input      1 Bit        Muxes := 2     
-	 262 Input      1 Bit        Muxes := 2     
-	 261 Input      1 Bit        Muxes := 2     
-	   4 Input      1 Bit        Muxes := 2     
-	   6 Input      1 Bit        Muxes := 2     
-	   8 Input      1 Bit        Muxes := 134   
-	   5 Input      1 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 2     
 Module clk6p25m 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -410,6 +386,40 @@ Detailed RTL Component Info :
 +---Muxes : 
 	   2 Input      3 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 1     
+Module clk_divider 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module debouncerA 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+Module TaskA 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     27 Bit       Adders := 6     
++---Registers : 
+	               27 Bit    Registers := 6     
+	               16 Bit    Registers := 1     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     27 Bit        Muxes := 24    
+	   5 Input     16 Bit        Muxes := 1     
+	  31 Input     16 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   7 Input      1 Bit        Muxes := 1     
+	  12 Input      1 Bit        Muxes := 1     
+	  17 Input      1 Bit        Muxes := 1     
+	  22 Input      1 Bit        Muxes := 1     
+	  27 Input      1 Bit        Muxes := 1     
 Module Oled_Display 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -430,10 +440,6 @@ Detailed RTL Component Info :
 	   2 Input      5 Bit        Muxes := 2     
 	  32 Input      5 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 2     
-Module BrickBreaker_winScreen 
-Detailed RTL Component Info : 
-+---Muxes : 
-	6144 Input     16 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -450,190 +456,99 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5545] ROM "bounce_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "p_0_out" won't be mapped to RAM because address size (29) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "ball_y_pos" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "ball_move_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "current_state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "p_0_out" won't be mapped to RAM because address size (28) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "p_0_out" won't be mapped to RAM because address size (29) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "p_0_out" won't be mapped to RAM because address size (29) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "ball_start_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "unlock" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "game_over" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "reset_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "win_game" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "win_game" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port JC[2]
-WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port PS2Clk
-WARNING: [Synth 8-3331] design BrickBreaker_game has unconnected port PS2Data
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_0/\an_reg[1] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_0/\an_reg[2] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_0/\an_reg[3] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_2/\seg_reg[5] )
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[258]' (FDE) to 'i_0/brick_state_chosen_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[259]' (FDE) to 'i_0/brick_state_chosen_reg[1]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[238]' (FDE) to 'i_0/brick_state_chosen_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[239]' (FDE) to 'i_0/brick_state_chosen_reg[1]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[218]' (FDE) to 'i_0/brick_state_chosen_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[219]' (FDE) to 'i_0/brick_state_chosen_reg[1]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[198]' (FDE) to 'i_0/brick_state_chosen_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[199]' (FDE) to 'i_0/brick_state_chosen_reg[1]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[178]' (FDE) to 'i_0/brick_state_chosen_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[179]' (FDE) to 'i_0/brick_state_chosen_reg[1]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[158]' (FDE) to 'i_0/brick_state_chosen_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[159]' (FDE) to 'i_0/brick_state_chosen_reg[1]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[2]' (FDE) to 'i_0/brick_state_chosen_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[3]' (FDE) to 'i_0/brick_state_chosen_reg[1]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[0]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[1]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[256]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[257]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[254]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[255]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[252]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[253]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[250]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[251]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[248]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[249]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[246]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[247]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[244]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[245]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[242]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[243]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[240]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[241]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[236]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[237]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[234]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[235]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[232]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[233]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[230]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[231]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[228]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[229]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[226]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[227]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[224]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[225]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[222]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[223]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[220]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[221]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[216]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[217]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[214]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[215]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[212]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[213]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[210]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[211]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[208]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[209]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[206]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[207]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[204]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[205]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[202]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[203]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[200]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[201]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[196]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[197]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[194]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[195]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[192]' (FDE) to 'i_0/brick_state_chosen_reg[80]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[193]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[190]' (FDE) to 'i_0/brick_state_chosen_reg[80]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[191]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[188]' (FDE) to 'i_0/brick_state_chosen_reg[80]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[189]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[186]' (FDE) to 'i_0/brick_state_chosen_reg[80]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[187]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[184]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[185]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[182]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[183]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[180]' (FDE) to 'i_0/brick_state_chosen_reg[4]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[181]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[176]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[177]' (FDE) to 'i_0/brick_state_chosen_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[174]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[175]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[172]' (FDE) to 'i_0/brick_state_chosen_reg[80]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[173]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[170]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[171]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[168]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[169]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[166]' (FDE) to 'i_0/brick_state_chosen_reg[80]'
-INFO: [Synth 8-3886] merging instance 'i_0/brick_state_chosen_reg[167]' (FDE) to 'i_0/brick_state_chosen_reg[78]'
-INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/\brick_state_chosen_reg[79] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_0/\brick_state_chosen_reg[4] )
+INFO: [Synth 8-5545] ROM "clk_output0" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "btnC/counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "btnC/counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "btnC/state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "btnC/debounced_btn" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "btnU/counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "btnU/counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "btnU/state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "btnU/debounced_btn" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "oled/fsm_next_state0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "oled/fsm_next_state0" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-3917] design Integrate has port JC[7] driven by constant 1
+WARNING: [Synth 8-3331] design Integrate has unconnected port JC[2]
+WARNING: [Synth 8-3331] design Integrate has unconnected port btnR
+WARNING: [Synth 8-3331] design Integrate has unconnected port btnL
+WARNING: [Synth 8-3331] design Integrate has unconnected port btnD
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[1]' (FDR) to 'TaskA/oled_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[2]' (FDR) to 'TaskA/oled_data_reg[3]'
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[3]' (FDR) to 'TaskA/oled_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[5]' (FDR) to 'TaskA/oled_data_reg[10]'
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[6]' (FDR) to 'TaskA/oled_data_reg[9]'
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[7]' (FDR) to 'TaskA/oled_data_reg[10]'
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[8]' (FDR) to 'TaskA/oled_data_reg[10]'
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[11]' (FDS) to 'TaskA/oled_data_reg[12]'
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[12]' (FDS) to 'TaskA/oled_data_reg[13]'
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[13]' (FDS) to 'TaskA/oled_data_reg[14]'
+INFO: [Synth 8-3886] merging instance 'TaskA/oled_data_reg[14]' (FDS) to 'TaskA/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[0]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[1]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[2]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[3]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[4]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[5]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[6]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[7]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[8]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[9]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[10]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[11]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[12]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[13]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3886] merging instance 'led_reg[14]' (FDE) to 'led_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\led_reg[15] )
+WARNING: [Synth 8-3332] Sequential element (led_reg[15]) is unused and will be removed from module Integrate.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:22 ; elapsed = 00:04:57 . Memory (MB): peak = 1104.863 ; gain = 818.137
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:40 ; elapsed = 00:04:44 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 ROM:
-+----------------------+----------------+---------------+----------------+
-|Module Name           | RTL Object     | Depth x Width | Implemented As | 
-+----------------------+----------------+---------------+----------------+
-|BrickBreaker_display  | data           | 8192x16       | LUT            | 
-|BrickBreaker_display2 | data           | 8192x16       | LUT            | 
-|BrickBreaker_gameOver | data           | 8192x16       | LUT            | 
-|BrickBreaker_gameOver | data           | 8192x16       | LUT            | 
-|BrickBreaker_game     | winScreen/data | 8192x16       | LUT            | 
-|BrickBreaker_display2 | data           | 8192x16       | LUT            | 
-|BrickBreaker_display  | data           | 8192x16       | LUT            | 
-+----------------------+----------------+---------------+----------------+
++------------+------------+---------------+----------------+
+|Module Name | RTL Object | Depth x Width | Implemented As | 
++------------+------------+---------------+----------------+
+|Welcome_A   | data       | 8192x16       | LUT            | 
+|Welcome_B   | data       | 8192x16       | LUT            | 
+|Welcome_C   | data       | 8192x16       | LUT            | 
+|Welcome_D   | data       | 8192x16       | LUT            | 
++------------+------------+---------------+----------------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
-+------+-----------------------+------------+----------+
-|      |RTL Partition          |Replication |Instances |
-+------+-----------------------+------------+----------+
-|1     |BrickBreaker_game__GB0 |           1|     14581|
-|2     |BrickBreaker_game__GB1 |           1|       255|
-|3     |BrickBreaker_game__GB2 |           1|      6647|
-+------+-----------------------+------------+----------+
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:27 ; elapsed = 00:05:07 . Memory (MB): peak = 1104.863 ; gain = 818.137
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:47 ; elapsed = 00:05:03 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:57 ; elapsed = 00:06:09 . Memory (MB): peak = 1104.863 ; gain = 818.137
+Finished Timing Optimization : Time (s): cpu = 00:01:54 ; elapsed = 00:05:28 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
-+------+-----------------------+------------+----------+
-|      |RTL Partition          |Replication |Instances |
-+------+-----------------------+------------+----------+
-|1     |BrickBreaker_game__GB0 |           1|     14581|
-|2     |BrickBreaker_game__GB1 |           1|       255|
-|3     |BrickBreaker_game__GB2 |           1|      6647|
-+------+-----------------------+------------+----------+
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:59 ; elapsed = 00:06:14 . Memory (MB): peak = 1194.352 ; gain = 907.625
+Finished Technology Mapping : Time (s): cpu = 00:01:55 ; elapsed = 00:05:31 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -657,7 +572,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:03:00 ; elapsed = 00:06:16 . Memory (MB): peak = 1194.352 ; gain = 907.625
+Finished IO Insertion : Time (s): cpu = 00:01:56 ; elapsed = 00:05:34 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -670,7 +585,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:03:00 ; elapsed = 00:06:16 . Memory (MB): peak = 1194.352 ; gain = 907.625
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:56 ; elapsed = 00:05:34 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -682,25 +597,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:01 ; elapsed = 00:06:16 . Memory (MB): peak = 1194.352 ; gain = 907.625
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:56 ; elapsed = 00:05:34 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:03:01 ; elapsed = 00:06:16 . Memory (MB): peak = 1194.352 ; gain = 907.625
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:56 ; elapsed = 00:05:34 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:03:01 ; elapsed = 00:06:17 . Memory (MB): peak = 1194.352 ; gain = 907.625
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:56 ; elapsed = 00:05:34 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:03:01 ; elapsed = 00:06:17 . Memory (MB): peak = 1194.352 ; gain = 907.625
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:56 ; elapsed = 00:05:34 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -716,42 +631,43 @@ Report Cell Usage:
 +------+-------+------+
 |      |Cell   |Count |
 +------+-------+------+
-|1     |BUFG   |     2|
-|2     |CARRY4 |   127|
-|3     |LUT1   |    92|
-|4     |LUT2   |   740|
-|5     |LUT3   |   209|
-|6     |LUT4   |   836|
-|7     |LUT5   |  1073|
-|8     |LUT6   |  5570|
-|9     |MUXF7  |  1279|
-|10    |MUXF8  |   390|
+|1     |BUFG   |     3|
+|2     |CARRY4 |   110|
+|3     |LUT1   |    12|
+|4     |LUT2   |   464|
+|5     |LUT3   |   165|
+|6     |LUT4   |   159|
+|7     |LUT5   |   382|
+|8     |LUT6   |  3359|
+|9     |MUXF7  |  1147|
+|10    |MUXF8  |   361|
 |11    |FDE_1  |    32|
-|12    |FDRE   |   553|
-|13    |FDSE   |     5|
-|14    |IBUF   |     6|
-|15    |OBUF   |    18|
-|16    |OBUFT  |     1|
+|12    |FDRE   |   449|
+|13    |IBUF   |     8|
+|14    |OBUF   |    23|
+|15    |OBUFT  |     1|
 +------+-------+------+
 
 Report Instance Areas: 
-+------+--------------+----------------------+------+
-|      |Instance      |Module                |Cells |
-+------+--------------+----------------------+------+
-|1     |top           |                      | 10933|
-|2     |  clk625      |clk6p25m              |     9|
-|3     |  load2Screen |BrickBreaker_display2 |  1761|
-|4     |  loadScreen  |BrickBreaker_display  |  1263|
-|5     |  oled        |Oled_Display          |  4329|
-+------+--------------+----------------------+------+
++------+-------------+-------------+------+
+|      |Instance     |Module       |Cells |
++------+-------------+-------------+------+
+|1     |top          |             |  6675|
+|2     |  TaskA      |TaskA        |  1448|
+|3     |    btnC     |debouncerA   |   113|
+|4     |    btnU     |debouncerA_0 |   128|
+|5     |    clk6p25m |clk_divider  |    63|
+|6     |  clk625     |clk6p25m     |     9|
+|7     |  oled       |Oled_Display |  5141|
++------+-------------+-------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:03:01 ; elapsed = 00:06:17 . Memory (MB): peak = 1194.352 ; gain = 907.625
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:56 ; elapsed = 00:05:34 . Memory (MB): peak = 1040.820 ; gain = 754.148
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:02:46 ; elapsed = 00:06:04 . Memory (MB): peak = 1194.352 ; gain = 550.820
-Synthesis Optimization Complete : Time (s): cpu = 00:03:01 ; elapsed = 00:06:17 . Memory (MB): peak = 1194.352 ; gain = 907.625
+Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:46 ; elapsed = 00:05:19 . Memory (MB): peak = 1040.820 ; gain = 458.242
+Synthesis Optimization Complete : Time (s): cpu = 00:01:56 ; elapsed = 00:05:35 . Memory (MB): peak = 1040.820 ; gain = 754.148
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 1834 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 1658 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -760,11 +676,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   FDE_1 => FDRE (inverted pins: C): 32 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-205 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
+84 Infos, 59 Warnings, 28 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:03:03 ; elapsed = 00:06:21 . Memory (MB): peak = 1194.352 ; gain = 919.105
+synth_design: Time (s): cpu = 00:01:59 ; elapsed = 00:05:40 . Memory (MB): peak = 1040.820 ; gain = 765.660
 WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/BrickBreaker_game.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file BrickBreaker_game_utilization_synth.rpt -pb BrickBreaker_game_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.066 . Memory (MB): peak = 1194.352 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Sat Nov  4 14:12:32 2023...
+INFO: [Common 17-1381] The checkpoint 'C:/Users/bened/OneDrive/Documents/EE2026-Project/MODS/MODS.runs/synth_1/Integrate.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Integrate_utilization_synth.rpt -pb Integrate_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.058 . Memory (MB): peak = 1040.820 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sat Nov  4 20:28:23 2023...

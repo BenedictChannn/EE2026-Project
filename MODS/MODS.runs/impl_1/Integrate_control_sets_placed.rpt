@@ -1,0 +1,77 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Sat Nov  4 20:30:10 2023
+| Host         : MSI running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Integrate_control_sets_placed.rpt
+| Design       : Integrate
+| Device       : xc7a35t
+--------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    12 |
+| Unused register locations in slices containing registers |    22 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            1 |
+|    16+ |           11 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             414 |          105 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             316 |           46 |
+| Yes          | No                    | No                     |             104 |           12 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             128 |           18 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-----------------+-----------------------+-----------------------------------+------------------+----------------+
+|   Clock Signal  |     Enable Signal     |          Set/Reset Signal         | Slice Load Count | Bel Load Count |
++-----------------+-----------------------+-----------------------------------+------------------+----------------+
+| ~CLK_6P25M_BUFG |                       |                                   |                1 |              2 |
+| ~CLK_6P25M_BUFG |                       | oled/frame_counter[16]_i_1_n_0    |                5 |             34 |
+| ~CLK_6P25M_BUFG | oled/delay[0]_i_1_n_0 |                                   |                5 |             40 |
+|  CLK_IBUF_BUFG  |                       |                                   |               22 |             62 |
+|  CLK_IBUF_BUFG  |                       | TaskA/btnU/count[0]_i_1__0_n_0    |                8 |             64 |
+|  CLK_IBUF_BUFG  |                       | TaskA/clk6p25m/clear              |                8 |             64 |
+|  CLK_IBUF_BUFG  |                       | TaskA/btnC/count[0]_i_1_n_0       |                8 |             64 |
+|  CLK_IBUF_BUFG  | TaskA/btnU/counter    | TaskA/btnU/counter[31]_i_1__0_n_0 |                9 |             64 |
+|  CLK_IBUF_BUFG  | TaskA/btnC/counter_0  | TaskA/btnC/counter[31]_i_1_n_0    |                9 |             64 |
+| ~CLK_6P25M_BUFG | oled/state            |                                   |                7 |             64 |
+| ~CLK_6P25M_BUFG |                       | oled/spi_word[39]_i_1_n_0         |               17 |             90 |
+|  clk            |                       |                                   |               82 |            350 |
++-----------------+-----------------------+-----------------------------------+------------------+----------------+
+
+

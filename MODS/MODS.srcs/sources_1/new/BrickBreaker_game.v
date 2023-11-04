@@ -55,6 +55,7 @@ module BrickBreaker_game(
     parameter BOARD_COLOUR = WHITE;
     parameter BOUNCE_TIME = 32'd5000000;
     reg [31:0] bounce_counter = 32'd0;
+    reg [11:0] board_x_2prev = 12'd32;
     reg [11:0] board_x_prev = 12'd32;
     reg [11:0] board_x_curr = 12'd32;
     reg [11:0] board_y_pos = 12'd87;
@@ -89,7 +90,9 @@ module BrickBreaker_game(
     parameter BOUNCE_DOWN_RIGHT = 5;
     parameter BOUNCE_UP_RIGHT = 6;
     parameter BALL_START_DELAY = 32'd300000000;
+    parameter BALL_COLLIDE_DELAY = 32'd2000000;
     reg [31:0] ball_start_counter = 32'd0;
+    reg [31:0] ball_collide_counter = 32'd2000000;
     
     // Countdown for start of game
     reg [6:0] seg_3 = 7'b0110000;
@@ -433,8 +436,13 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= brick_state[i] - 1;
-                            current_state <= BOUNCE_DOWN;
+                            if (ball_collide_counter == BALL_COLLIDE_DELAY) begin
+                                brick_state[i] <= brick_state[i] - 1;
+                                current_state <= BOUNCE_DOWN;
+                                ball_collide_counter <= 0;
+                            end else begin
+                                ball_collide_counter <= ball_collide_counter + 1;
+                            end
                         end
                     end
                 end
@@ -442,9 +450,9 @@ module BrickBreaker_game(
                 if (ball_y_pos >= BOUNDARY_BOTTOM) begin
                     game_over <= 1'b1;
                 end else if (paddle_collision) begin
-                    if (board_x_curr - board_x_prev > 0) begin
+                    if (board_x_curr - board_x_2prev > 0) begin
                         current_state <= BOUNCE_UP_LEFT;
-                    end else if (board_x_curr - board_x_prev < 0) begin
+                    end else if (board_x_curr - board_x_2prev < 0) begin
                         current_state <= BOUNCE_UP_RIGHT;
                     end else begin
                         current_state <= BOUNCE_UP;
@@ -456,8 +464,13 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1)
                         && ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= brick_state[i] - 1;
-                            current_state <= BOUNCE_UP;
+                            if (ball_collide_counter == BALL_COLLIDE_DELAY) begin
+                                brick_state[i] <= brick_state[i] - 1;
+                                current_state <= BOUNCE_UP;
+                                ball_collide_counter <= 0;
+                            end else begin
+                                ball_collide_counter <= ball_collide_counter + 1;
+                            end
                         end
                     end
                 end
@@ -475,13 +488,23 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1<= (brick_row + 1) * BRICK_HEIGHT - 1
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= brick_state[i] - 1;
-                            current_state <= BOUNCE_DOWN_LEFT;
+                            if (ball_collide_counter == BALL_COLLIDE_DELAY) begin
+                                brick_state[i] <= brick_state[i] - 1;
+                                current_state <= BOUNCE_DOWN_LEFT;
+                                ball_collide_counter <= 0;
+                            end else begin
+                                ball_collide_counter <= ball_collide_counter + 1;
+                            end
                         end else if (brick_state[i] && (ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
                         && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
                         || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
-                            brick_state[i] <= brick_state[i] - 1;
-                            current_state <= BOUNCE_UP_RIGHT;
+                            if (ball_collide_counter == BALL_COLLIDE_DELAY) begin
+                                brick_state[i] <= brick_state[i] - 1;
+                                current_state <= BOUNCE_UP_RIGHT;
+                                ball_collide_counter <= 0;
+                            end else begin
+                                ball_collide_counter <= ball_collide_counter + 1;
+                            end
                         end
                     end
                 end
@@ -491,9 +514,9 @@ module BrickBreaker_game(
                 end else if (ball_x_pos >= BOUNDARY_LEFT) begin
                     current_state <= BOUNCE_DOWN_RIGHT;
                 end else if (paddle_collision) begin
-                    if (board_x_curr - board_x_prev > 0) begin
+                    if (board_x_curr - board_x_2prev > 0) begin
                         current_state <= BOUNCE_UP;
-                    end else if (board_x_curr - board_x_prev < 0) begin
+                    end else if (board_x_curr - board_x_2prev < 0) begin
                         current_state <= BOUNCE_UP_RIGHT;
                     end else begin
                         current_state <= BOUNCE_UP_LEFT;
@@ -505,13 +528,23 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 ) 
                         && ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= brick_state[i] - 1;
-                            current_state <= BOUNCE_UP_LEFT;
+                            if (ball_collide_counter == BALL_COLLIDE_DELAY) begin
+                                brick_state[i] <= brick_state[i] - 1;
+                                current_state <= BOUNCE_UP_LEFT;
+                                ball_collide_counter <= 0;
+                            end else begin
+                                ball_collide_counter <= ball_collide_counter + 1;
+                            end
                         end else if (brick_state[i] && (ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
                         && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
                         || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
-                            brick_state[i] <= brick_state[i] - 1;
-                            current_state <= BOUNCE_DOWN_RIGHT;
+                            if (ball_collide_counter == BALL_COLLIDE_DELAY) begin
+                                brick_state[i] <= brick_state[i] - 1;
+                                current_state <= BOUNCE_DOWN_RIGHT;
+                                ball_collide_counter <= 0;
+                            end else begin
+                                ball_collide_counter <= ball_collide_counter + 1;
+                            end
                         end
                     end
                 end
@@ -521,9 +554,9 @@ module BrickBreaker_game(
                 end else if (ball_x_pos <= BOUNDARY_RIGHT) begin
                     current_state <= BOUNCE_DOWN_LEFT;
                 end else if (paddle_collision) begin
-                    if (board_x_curr - board_x_prev > 0) begin
+                    if (board_x_curr - board_x_2prev > 0) begin
                         current_state <= BOUNCE_UP_LEFT;
-                    end else if (board_x_curr - board_x_prev < 0) begin
+                    end else if (board_x_curr - board_x_2prev < 0) begin
                         current_state <= BOUNCE_UP;
                     end else begin
                         current_state <= BOUNCE_UP_RIGHT;
@@ -535,13 +568,23 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= brick_state[i] - 1;
-                            current_state <= BOUNCE_UP_RIGHT;
+                            if (ball_collide_counter == BALL_COLLIDE_DELAY) begin
+                                brick_state[i] <= brick_state[i] - 1;
+                                current_state <= BOUNCE_UP_RIGHT;
+                                ball_collide_counter <= 0;
+                            end else begin
+                                ball_collide_counter <= ball_collide_counter + 1;
+                            end
                         end else if (brick_state[i] && (ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
                         && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
                         || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
-                            brick_state[i] <= brick_state[i] - 1;
-                            current_state <= BOUNCE_DOWN_LEFT;
+                            if (ball_collide_counter == BALL_COLLIDE_DELAY) begin
+                                brick_state[i] <= brick_state[i] - 1;
+                                current_state <= BOUNCE_DOWN_LEFT;
+                                ball_collide_counter <= 0;
+                            end else begin
+                                ball_collide_counter <= ball_collide_counter + 1;
+                            end
                         end
                     end
                 end
@@ -559,13 +602,23 @@ module BrickBreaker_game(
                         if (brick_state[i] && ((ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1
                         || ball_x_pos + 1 >= brick_row * BRICK_HEIGHT && ball_x_pos + 1 <= (brick_row + 1) * BRICK_HEIGHT - 1) 
                         && ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1)) begin
-                            brick_state[i] <= brick_state[i] - 1;
-                            current_state <= BOUNCE_DOWN_RIGHT;
+                            if (ball_collide_counter == BALL_COLLIDE_DELAY) begin
+                                brick_state[i] <= brick_state[i] - 1;
+                                current_state <= BOUNCE_DOWN_RIGHT;
+                                ball_collide_counter <= 0;
+                            end else begin
+                                ball_collide_counter <= ball_collide_counter + 1;
+                            end
                         end else if (brick_state[i] && (ball_x_pos - 1 >= brick_row * BRICK_HEIGHT && ball_x_pos - 1 <= (brick_row + 1) * BRICK_HEIGHT - 1 
                         && (ball_y_pos - 1 >= brick_col * BRICK_WIDTH && ball_y_pos - 1 <= (brick_col + 1) * BRICK_WIDTH - 1
                         || ball_y_pos + 1 >= brick_col * BRICK_WIDTH && ball_y_pos + 1 <= (brick_col + 1) * BRICK_WIDTH - 1))) begin
-                            brick_state[i] <= brick_state[i] - 1;
-                            current_state <= BOUNCE_UP_LEFT;
+                            if (ball_collide_counter == BALL_COLLIDE_DELAY) begin
+                                brick_state[i] <= brick_state[i] - 1;
+                                current_state <= BOUNCE_UP_LEFT;
+                                ball_collide_counter <= 0;
+                            end else begin
+                                ball_collide_counter <= ball_collide_counter + 1;
+                            end
                         end
                     end
                 end
@@ -764,20 +817,19 @@ module BrickBreaker_game(
                 bounce_counter <= bounce_counter - 1;
             end else if (bounce_counter == 0) begin
                 bounce_counter <= BOUNCE_TIME;
+                board_x_2prev <= board_x_prev;
+                board_x_prev <= board_x_curr;
                 if (btnU) begin
-                    board_x_prev <= board_x_curr;
                     board_x_curr <= (board_x_curr - 5 < BOARD_WIDTH / 2) ? BOARD_WIDTH / 2 : board_x_curr - 5;
                 end else if (btnD) begin
-                    board_x_prev <= board_x_curr;
                     board_x_curr <= (board_x_curr + 5 > SCREEN_HEIGHT - BOARD_WIDTH / 2 ) ? SCREEN_HEIGHT - BOARD_WIDTH / 2 : board_x_curr + 5;
-                end else begin
-                    board_x_prev <= board_x_curr;
-                end                
+                end    
             end
         // Reset when unlock is false
         end else begin
             board_x_curr <= 12'd32;
             board_x_prev <= 12'd32;
+            board_x_2prev <= 12'd32;
         end
     end
         

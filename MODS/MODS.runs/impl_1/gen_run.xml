@@ -1,73 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1699077962">
-  <File Type="BITSTR-BMM" Name="BrickBreaker_game_bd.bmm"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="BrickBreaker_game_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="BrickBreaker_game_timing_summary_init.rpt"/>
-  <File Type="ROUTE-PWR" Name="BrickBreaker_game_power_routed.rpt"/>
-  <File Type="PA-TCL" Name="BrickBreaker_game.tcl"/>
-  <File Type="OPT-TIMING" Name="BrickBreaker_game_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="BrickBreaker_game_opt.dcp"/>
-  <File Type="ROUTE-PWR-SUM" Name="BrickBreaker_game_power_summary_routed.pb"/>
-  <File Type="REPORTS-TCL" Name="BrickBreaker_game_reports.tcl"/>
-  <File Type="OPT-DRC" Name="BrickBreaker_game_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="BrickBreaker_game.hwdef"/>
-  <File Type="PWROPT-DCP" Name="BrickBreaker_game_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="BrickBreaker_game_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="BrickBreaker_game_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="BrickBreaker_game_placed.dcp"/>
-  <File Type="PLACE-IO" Name="BrickBreaker_game_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="BrickBreaker_game_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL" Name="BrickBreaker_game_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="BrickBreaker_game_utilization_placed.pb"/>
-  <File Type="PLACE-CTRL" Name="BrickBreaker_game_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="BrickBreaker_game_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="BrickBreaker_game_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BGN" Name="BrickBreaker_game.bgn"/>
-  <File Type="PLACE-TIMING" Name="BrickBreaker_game_timing_summary_placed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="BrickBreaker_game_postplace_pwropt.dcp"/>
-  <File Type="BG-BIN" Name="BrickBreaker_game.bin"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="BrickBreaker_game_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="BrickBreaker_game_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="BrickBreaker_game_drc_physopted.rpt"/>
-  <File Type="BITSTR-MSK" Name="BrickBreaker_game.msk"/>
-  <File Type="PHYSOPT-TIMING" Name="BrickBreaker_game_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="BrickBreaker_game_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="BrickBreaker_game_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="BrickBreaker_game_routed_bb.dcp"/>
-  <File Type="ROUTE-DRC" Name="BrickBreaker_game_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="BrickBreaker_game_drc_routed.pb"/>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1699100546">
+  <File Type="BITSTR-BMM" Name="Integrate_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="Integrate_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="Integrate_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR" Name="Integrate_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="Integrate.tcl"/>
+  <File Type="OPT-TIMING" Name="Integrate_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="Integrate_opt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="Integrate_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="Integrate_reports.tcl"/>
+  <File Type="OPT-DRC" Name="Integrate_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="Integrate.hwdef"/>
+  <File Type="PWROPT-DCP" Name="Integrate_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="Integrate_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="Integrate_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="Integrate_placed.dcp"/>
+  <File Type="PLACE-IO" Name="Integrate_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="Integrate_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="Integrate_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="Integrate_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="Integrate_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="Integrate_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="Integrate_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BGN" Name="Integrate.bgn"/>
+  <File Type="PLACE-TIMING" Name="Integrate_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="Integrate_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="Integrate.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="Integrate_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="Integrate_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="Integrate_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="Integrate.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="Integrate_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="Integrate_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="Integrate_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="Integrate_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="Integrate_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="Integrate_drc_routed.pb"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="BrickBreaker_game.ltx"/>
-  <File Type="ROUTE-DRC-RPX" Name="BrickBreaker_game_drc_routed.rpx"/>
-  <File Type="BITSTR-MMI" Name="BrickBreaker_game.mmi"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="BrickBreaker_game_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="BrickBreaker_game_methodology_drc_routed.rpx"/>
-  <File Type="BITSTR-SYSDEF" Name="BrickBreaker_game.sysdef"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="BrickBreaker_game_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-PWR-RPX" Name="BrickBreaker_game_power_routed.rpx"/>
-  <File Type="ROUTE-STATUS" Name="BrickBreaker_game_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="BrickBreaker_game_route_status.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="BrickBreaker_game_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-TIMING-PB" Name="BrickBreaker_game_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMING-RPX" Name="BrickBreaker_game_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="BrickBreaker_game_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="BrickBreaker_game_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW" Name="BrickBreaker_game_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="BrickBreaker_game_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="BrickBreaker_game_bus_skew_routed.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="BrickBreaker_game_postroute_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="BrickBreaker_game_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="BrickBreaker_game_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="BrickBreaker_game_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="BrickBreaker_game_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="BrickBreaker_game_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="BrickBreaker_game_bus_skew_postroute_physopted.pb"/>
-  <File Type="BG-BIT" Name="BrickBreaker_game.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="BrickBreaker_game_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-RBT" Name="BrickBreaker_game.rbt"/>
-  <File Type="BITSTR-NKY" Name="BrickBreaker_game.nky"/>
-  <File Type="BG-DRC" Name="BrickBreaker_game.drc"/>
-  <File Type="RDI-RDI" Name="BrickBreaker_game.vdi"/>
+  <File Type="BITSTR-LTX" Name="Integrate.ltx"/>
+  <File Type="ROUTE-DRC-RPX" Name="Integrate_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="Integrate.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="Integrate_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Integrate_methodology_drc_routed.rpx"/>
+  <File Type="BITSTR-SYSDEF" Name="Integrate.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Integrate_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="Integrate_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="Integrate_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="Integrate_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="Integrate_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="Integrate_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="Integrate_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="Integrate_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="Integrate_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="Integrate_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="Integrate_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="Integrate_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Integrate_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Integrate_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Integrate_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Integrate_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Integrate_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Integrate_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Integrate_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="Integrate.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Integrate_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="Integrate.rbt"/>
+  <File Type="BITSTR-NKY" Name="Integrate.nky"/>
+  <File Type="BG-DRC" Name="Integrate.drc"/>
+  <File Type="RDI-RDI" Name="Integrate.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
@@ -286,9 +286,51 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/Integrated_project.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Welcome_A.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Welcome_B.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Welcome_C.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Welcome_D.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/TaskA.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="BrickBreaker_game"/>
+      <Option Name="TopModule" Val="Integrate"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

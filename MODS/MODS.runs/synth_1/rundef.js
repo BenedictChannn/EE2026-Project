@@ -23,7 +23,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log BrickBreaker_game.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source BrickBreaker_game.tcl" );
+         "-log Integrate.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Integrate.tcl" );
 
 
 

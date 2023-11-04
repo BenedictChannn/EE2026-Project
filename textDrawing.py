@@ -17,7 +17,7 @@ def create_entry(text, width, height, font_size, text_color, shadow_color, cente
 
     # Offset for the main text
     main_offset_x = 48 - textlen // 2 if center else 2
-    main_offset_y =11
+    main_offset_y = 1
 
     # Offset for the shadow or outline
     shadow_offset_x = main_offset_x + 1  # Adjust this value for the desired shadow offset
@@ -39,7 +39,7 @@ def create_entry(text, width, height, font_size, text_color, shadow_color, cente
     for i in range(len(data)):
         for j in range(len(data[i])):
             r, g, b, a = data[i][j]
-            file.write("assign data[3072+" + str(count) + "] = ")
+            file.write("assign data[4608+" + str(count) + "] = ")
             file.write("16'b" + '{0:05b}'.format(r // 8) + "_" + '{0:06b}'.format(g // 4) + "_" + '{0:05b}'.format(b // 8) + ";")
             file.write('\n')
             count += 1
@@ -55,4 +55,6 @@ shadow_start_color = (0, 0, 255, 255)  # Shadow color (RGBA format)
 # create_entry("Welcome to", width, 16, 9, welcome_color, shadow_welcome_color, center=True)
 # create_entry("Brick Breaker!", width, 16, 9, welcome_color, shadow_welcome_color, center=True)
 # create_entry("Press btnC to start", width, 32, 6, start_color, shadow_start_color, center=True)
-create_entry("> LVL 1   LVL 2", width, 32, 7, start_color, shadow_start_color, center=True)
+# create_entry("> LVL 1   LVL 2", width, 32, 7, start_color, shadow_start_color, center=True)
+# create_entry("A:HS   B:Ben", width, 16, 9, start_color, shadow_start_color, center=True)
+create_entry("C:JX   D:JY", width, 16, 9, start_color, shadow_start_color, center=True)
