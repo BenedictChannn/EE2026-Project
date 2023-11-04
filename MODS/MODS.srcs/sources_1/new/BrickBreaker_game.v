@@ -21,7 +21,7 @@
 
 
 module BrickBreaker_game(
-    input CLK, btnU, btnD, btnC,
+    input CLK, btnU, btnD, btnC, btnL, btnR,
     output reg [6:0] seg, 
     output reg [3:0]an,
     output [7:0] JC,
@@ -100,7 +100,9 @@ module BrickBreaker_game(
     
     wire [12:0] pixel_index;
     reg [15:0] pixel_data;
-    wire [15:0] screen_data;
+    wire [15:0] screen1_data;
+    wire [15:0] screen2_data;
+    reg game_level = 1'b0;
     wire [15:0] over_data;
     wire [15:0] win_data;
 
@@ -379,9 +381,13 @@ module BrickBreaker_game(
         // Before game starts, display welcome screen
         // Reset when unlock is false
         end else if (!unlock && !game_over) begin
-            pixel_data <= screen_data;
             ball_x_pos <= 12'd32;
             ball_y_pos <= 12'd65;
+            if (game_level == 1'b0) begin
+                pixel_data <= screen1_data;
+            end else if (game_level == 1'b1) begin
+                pixel_data <= screen2_data;
+            end
         end
     end
     
@@ -738,6 +744,12 @@ module BrickBreaker_game(
         if (btnC && !game_over) begin
             unlock <= 1'b1;
         end
+        
+        if (btnL && !unlock) begin
+            game_level <= (game_level == 1'b0) ? game_level : game_level + 1;
+        end else if (btnR && !unlock) begin
+            game_level <= (game_level == 1'b1) ? game_level : game_level - 1;
+        end
     end
     
     // Control board movement
@@ -779,8 +791,11 @@ module BrickBreaker_game(
         .pmoden(JC[7])
     );
     
-    // Oled data for welcome screen
-     BrickBreaker_display loadScreen (pixel_index, screen_data);
+    // Oled data for welcome lvl 2 screen
+     BrickBreaker_display loadScreen (pixel_index, screen1_data);
+     
+    // Oled data for welcome lvl 2 screen
+    BrickBreaker_display2 load2Screen (pixel_index, screen2_data);
     
     // Oled data for game over screen
     BrickBreaker_gameOver gameOverScreen (pixel_index, over_data);

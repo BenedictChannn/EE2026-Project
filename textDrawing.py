@@ -2,8 +2,8 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 def create_entry(text, width, height, font_size, text_color, shadow_color, center):
-    file_name = "{0}_w{1}_h{2}_{3}".format(text, width, height, "center" if center else "left")
-    file = open("data/" + file_name + ".txt", "w")
+    # file_name = "{0}_w{1}_h{2}_{3}".format(text, width, height, "center" if center else "left")
+    file = open("data/" + "lvl 1 lvl 2" + ".txt", "w")
     print("Making entry for '{0}'".format(text))
 
     img = Image.new('RGBA', (width, height), "Black")
@@ -28,7 +28,7 @@ def create_entry(text, width, height, font_size, text_color, shadow_color, cente
     # Draw the main text on top of the shadow or outline
     draw.text((main_offset_x, main_offset_y), text, font=font, fill=text_color)
 
-    img.save("images/" + text + ".png")
+    img.save("images/" + "lvl 1 lvl 2" + ".png")
     data = np.array(img)
     print(np.shape(data))
 
@@ -51,7 +51,8 @@ start_color = (255, 0, 0, 255) # Red Color (RGBA format)
 shadow_welcome_color = (255, 0, 0, 255)  # Shadow color (RGBA format)
 shadow_start_color = (0, 0, 255, 255)  # Shadow color (RGBA format)
 
-# Welcome screen with a 3D effect
-create_entry("Welcome to", width, 16, 9, welcome_color, shadow_welcome_color, center=True)
-create_entry("Brick Breaker!", width, 16, 9, welcome_color, shadow_welcome_color, center=True)
-create_entry("Press btnC to start", width, 32, 6, start_color, shadow_start_color, center=True)
+# # Welcome screen with a 3D effect
+# create_entry("Welcome to", width, 16, 9, welcome_color, shadow_welcome_color, center=True)
+# create_entry("Brick Breaker!", width, 16, 9, welcome_color, shadow_welcome_color, center=True)
+# create_entry("Press btnC to start", width, 32, 6, start_color, shadow_start_color, center=True)
+create_entry("> LVL 1   LVL 2", width, 32, 7, start_color, shadow_start_color, center=True)
